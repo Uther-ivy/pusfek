@@ -1,0 +1,127 @@
+# -*- coding: utf-8 -*-
+import json
+import re
+import time, html
+import requests
+from lxml import etree
+from lxml.etree import HTML
+import tool
+from save_database import process_item
+
+# 岳阳市政府
+class baoshan_ggzy:
+    def __init__(self):
+        self.url_list = [
+            'http://www.yueyang.gov.cn/cxjs/12112/24215/default.htm',
+
+        ]
+        self.url = self.url_list.pop(0)
+        self.headers = {
+            # 'Cookie': 'homeid=1a444a31-e460-47ff-9931-1c075c0f3cd8',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+        }
+
+    def parse(self):
+        while True:
+            date = tool.date
+            # date='2021-04-20'
+            text = tool.requests_get_bm(self.url,self.headers)
+            html = HTML(text)
+            detail = html.xpath('//ul[@class="news-list"]/li')
+            for li in detail:
+                try:
+                    url=li.xpath('./a/@href')[0]
+                except:
+                    continue
+                if 'http' not in url:
+                    if '../' in url:
+                        url = 'http://www.yueyang.gov.cn/cxjs/' + url.replace('../', '')
+                    else:
+                        url = 'http://www.yueyang.gov.cn/cxjs/12112/24215/' + url
+                title = li.xpath('./a/text()')[0].strip()
+                date_Today = li.xpath('./a/span/text()')[0].strip()
+                if '发布' in date_Today:
+                    continue
+                if '测试' in title:
+                    continue
+                # print(title, url, date_Today)
+                # # time.sleep(666)
+                if tool.Transformation(date) <= tool.Transformation(date_Today):
+                    if tool.removal(title, date):
+                        self.parse_detile(title, url, date_Today)
+                    else:
+                        print('【existence】', url)
+                        continue
+                else:
+                    print('日期不符, 正在切换类型', date_Today, self.url)
+                    return
+
+    def parse_detile(self, title, url, date):
+        print(url)
+        t = tool.requests_get_bm(url, self.headers)
+        url_html = etree.HTML(t)
+        try:
+            detail = url_html.xpath('//div[@class="content"]')[0]
+            detail_html = etree.tostring(detail, method='HTML')
+            detail_html = html.unescape(detail_html.decode())
+            detail_text = url_html.xpath('string(//div[@class="content"])').replace('\xa0', '').replace('\n', ''). \
+                replace('\r', '').replace('\t', '').replace(' ', '').replace('\xa5', '')
+        except:
+            detail = url_html.xpath('//*[@id="zoom"]')[0]
+            detail_html = etree.tostring(detail, method='HTML')
+            detail_html = html.unescape(detail_html.decode())
+            detail_text = url_html.xpath('string(//*[@id="zoom"])').replace('\xa0', '').replace('\n', ''). \
+                replace('\r', '').replace('\t', '').replace(' ', '').replace('\xa5', '')
+        item = {}
+        item['title'] = title.replace('\u2022', '')
+        item['url'] = url
+        item['date'] = date
+        item['typeid'] = tool.get_typeid(item['title'])
+        item['senddate'] = int(time.time())
+        item['mid'] = 867
+        item['infotype'] = tool.get_infotype(item['title'])
+        item['body'] = tool.qudiao_width(detail_html)
+        item['endtime'] = tool.get_endtime(detail_text)
+        item['nativeplace'] = self.get_nativeplace(item['title'])
+        if item['endtime'] == '':
+            item['endtime'] = int(time.mktime(time.strptime(date, "%Y-%m-%d")))
+        else:
+            try:
+                item['endtime'] = int(time.mktime(time.strptime(item['endtime'], "%Y-%m-%d")))
+            except:
+                item['endtime'] = int(time.mktime(time.strptime(date, "%Y-%m-%d")))
+        item['tel'] = tool.get_tel(detail_text)
+        item['email'] = ''
+        item['winner'] = tool.get_winner(detail_text)
+        item['address'] = tool.get_address(detail_text)
+        item['linkman'] = tool.get_linkman(detail_text)
+        item['function'] = tool.get_function(detail_text)
+        item['resource'] = '岳阳市政府'
+        item['shi'] = 9506
+        item['sheng'] = 9500
+        # print(item)
+        item['removal']= title
+        process_item(item)
+
+    def get_nativeplace(self, addr):
+        city = ''
+        city_list = [['9506.001', '岳阳楼区'], ['9506.002', '云溪区'], ['9506.003', '君山区'], ['9506.004', '岳阳县'], ['9506.005', '华容县'], ['9506.006', '湘阴县'], ['9506.007', '平江县'], ['9506.008', '汨罗市'], ['9506.009', '临湘市']]
+        for i in city_list:
+            if i[1] in addr:
+                city = float(i[0])
+                break
+        if city == '':
+            city = 9506
+        return city
+
+if __name__ == '__main__':
+
+    import traceback, os
+    try:
+        jl = baoshan_ggzy()
+        jl.parse()
+    except Exception as e:
+        traceback.print_exc()
+        tool.send_error('报错文件：'+str(os.path.basename(__file__))+'报错信息：'+str(e))
+
+

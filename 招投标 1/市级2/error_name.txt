@@ -1,0 +1,911 @@
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 141, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 42, in parse
+    page += 1
+UnboundLocalError: local variable 'page' referenced before assignment
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 49, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 50, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 52, in parse
+    url = li.xpath('/a/@href')[0]
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 55, in parse
+    print(url)
+NameError: name 'url' is not defined
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 50, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 137, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 51, in parse
+    date_Today = html.xpath(f'(//tr[@height="22"]//td[3])[{li+1}]//a//@href').replace('\n', '').replace('\t', '').replace(' ', '').replace(
+AttributeError: 'list' object has no attribute 'replace'
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 52, in parse
+    date_Today = html.xpath(f'(//tr[@height="22"]//td[3])[{li+1}]//a//@href').replace('\n', '').replace('\t', '').replace(' ', '').replace(
+AttributeError: 'list' object has no attribute 'replace'
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 72, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 87, in parse_detile
+    detail = url_html.xpath('//*[@id="mainContent"]')[0]
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 71, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 86, in parse_detile
+    detail = url_html.xpath('//*[@id="mainContent"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 124, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 37, in parse
+    title = html.xpath(f'//tr[@style="height:22px;"]|(//tr[@height="22"]//td[2])[{li+1}]//a//text()')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 124, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 56, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 70, in parse_detile
+    detail = url_html.xpath('//*[@id="tblInfo"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 125, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 56, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 71, in parse_detile
+    detail = url_html.xpath('//*[@id="tblInfo"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 140, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 62, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 93, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 105, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    c = li.xpath('./a/font/text()')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 105, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    c = li.xpath('./a/font/text()')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 104, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    title = c+li.xpath('./a/@title')[0]
+NameError: name 'c' is not defined
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 80, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 117, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 89, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 117, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 89, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1010, in _send_output
+    self.send(msg)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 950, in send
+    self.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='49.87.77.144', port=27141): Max retries exceeded with url: http://www.xtggzy.com/ (Caused by ProxyError('Cannot connect to proxy.', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 111, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\招投标\tool.py", line 30, in get_cookie
+    response_2 = requests.get(url=url, headers=headers, verify=False,proxies=proxies)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\api.py", line 76, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\adapters.py", line 510, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='49.87.77.144', port=27141): Max retries exceeded with url: http://www.xtggzy.com/ (Caused by ProxyError('Cannot connect to proxy.', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')))
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 49, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 66, in parse_detile
+    detail = url_html.xpath('//*[@id="printSection"]/dl/div')[0]
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 49, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 66, in parse_detile
+    detail = url_html.xpath('//*[@id="printSection"]/dl/div')[0]
+IndexError: list index out of range
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 107, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 38, in parse
+    date_Today = li.xpath('./span[2]/text()')[0].replace('\r', '').replace('\n', '').replace('\t', '').replace(' ', '')
+IndexError: list index out of range
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 142, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 71, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 111, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\招投标\tool.py", line 22, in get_cookie
+    p = process_request()
+  File "D:\项目\招投标\招投标\tool.py", line 19, in process_request
+    return json.loads(redisconn.get("ip"))['http']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10060 connecting to 192.168.2.57:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+
+全国公共资源交易平台（怀化市）.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 124, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 90, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+徽采商城.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/徽采商城.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/徽采商城.py", line 33, in parse
+    detail = json.loads(text)['userarea']['gonggaolist']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+福建榕卫招标有限公司.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 102, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 32, in parse
+    detail = json.loads(text)['data']['list']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 142, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 71, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 144, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 144, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 151, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 78, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 77, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 156, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 83, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 165, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 93, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 166, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 94, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 163, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 114, in parse_detile
+    tool.Time_stamp_to_date(int(str(url_json['signUpEndTime'])[:-3])),
+KeyError: 'signUpEndTime'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 173, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 124, in parse_detile
+    tool.Time_stamp_to_date(signUpEndTime),
+  File "D:\项目\招投标\招投标\tool.py", line 174, in Time_stamp_to_date
+    timeArray = time.localtime(date)
+TypeError: an integer is required (got type str)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 173, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 126, in parse_detile
+    url_json['linkMan'], url_json['tel'], url_json['email'],
+KeyError: 'linkMan'
+
+全国公共资源交易平台（怀化市）.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 124, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 90, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+福建榕卫招标有限公司.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 103, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 32, in parse
+    detail = json.loads(text)['data']['list']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 187, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 76, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "D:\anaconda3\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "D:\anaconda3\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\anaconda3\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/仙桃市公共资源交易中心.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\tool.py", line 22, in get_cookie
+    p = process_request()
+  File "D:\项目\招投标\tool.py", line 19, in process_request
+    return json.loads(redisconn.get("ip"))['http']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10060 connecting to 192.168.2.57:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/衡阳市公共资源交易平台.py", line 33, in parse
+    detail = etree.HTML(text).xpath('/html/body/div[4]/div[3]/div/ul/li')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 41, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 58, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div/div/div')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 41, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 58, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div/div/div')[0]
+IndexError: list index out of range
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 60, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[2]/table')[0]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 42, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 67, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[3]/table')[0]
+IndexError: list index out of range
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 60, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[2]/table')[0]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 42, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 67, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[3]/table')[0]
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 1437 (char 1436)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 39, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 1437 (char 1436)
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 92, in parse_detile
+    item['shi'] = int(item['nativeplace'].split('.')[0])
+AttributeError: 'int' object has no attribute 'split'
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 61, in parse_detile
+    detail = url_html.xpath('//*[@id="template-center-mark"]')[0]
+IndexError: list index out of range
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 61, in parse_detile
+    deta = url_html.xpath('//*[@class="articleDetail"]/@value')[0]
+IndexError: list index out of range
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 43, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_html = json.loads(url_text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 35, in parse
+    title = li['advanceName']
+KeyError: 'advanceName'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 42, in parse
+    date_Today = li['advanceEndTime'].replace('\r', '').replace('\t', '').replace(' ', '')[:10]
+KeyError: 'advanceEndTime'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 119, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 41, in parse
+    .format(li['sourceType'],li['noticeId'],li['sourceHeaderId'],li['advanceNoticeId'],li['sourceFrom'])
+KeyError: 'sourceType'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+

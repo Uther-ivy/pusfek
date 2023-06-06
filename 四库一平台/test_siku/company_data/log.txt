@@ -1,0 +1,3 @@
+kid, title, number, cost, area,height, structure, grade, up_area, dw_area,
+                 layer, down_layer,long,wide,protect, scale, other, ztb_number, sg_number, xk_number,
+                 zl_number, aq_number, shock, green, green_type, shocks, limit, set, rebar, steel

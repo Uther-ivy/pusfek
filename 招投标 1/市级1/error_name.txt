@@ -1,0 +1,1147 @@
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 141, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 42, in parse
+    page += 1
+UnboundLocalError: local variable 'page' referenced before assignment
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 49, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 50, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 52, in parse
+    url = li.xpath('/a/@href')[0]
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 55, in parse
+    print(url)
+NameError: name 'url' is not defined
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 50, in parse
+    title = li.xpath('/a/text()')[0].replace('\n', '').replace('\t', '').replace(' ', '').replace('\r', '')
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 137, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 51, in parse
+    date_Today = html.xpath(f'(//tr[@height="22"]//td[3])[{li+1}]//a//@href').replace('\n', '').replace('\t', '').replace(' ', '').replace(
+AttributeError: 'list' object has no attribute 'replace'
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 52, in parse
+    date_Today = html.xpath(f'(//tr[@height="22"]//td[3])[{li+1}]//a//@href').replace('\n', '').replace('\t', '').replace(' ', '').replace(
+AttributeError: 'list' object has no attribute 'replace'
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 139, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 72, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 87, in parse_detile
+    detail = url_html.xpath('//*[@id="mainContent"]')[0]
+IndexError: list index out of range
+
+阜宁县公共资源交易专栏.py14
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 71, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/阜宁县公共资源交易专栏.py", line 86, in parse_detile
+    detail = url_html.xpath('//*[@id="mainContent"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 124, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 37, in parse
+    title = html.xpath(f'//tr[@style="height:22px;"]|(//tr[@height="22"]//td[2])[{li+1}]//a//text()')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 124, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 56, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 70, in parse_detile
+    detail = url_html.xpath('//*[@id="tblInfo"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 125, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 56, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 71, in parse_detile
+    detail = url_html.xpath('//*[@id="tblInfo"]')[0]
+IndexError: list index out of range
+
+中国邮政.py7
+Traceback (most recent call last):
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 140, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 62, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/PycharmProjects/招投标/市级/中国邮政.py", line 93, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 105, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    c = li.xpath('./a/font/text()')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 105, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    c = li.xpath('./a/font/text()')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 104, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/E招冀成.py", line 32, in parse
+    title = c+li.xpath('./a/@title')[0]
+NameError: name 'c' is not defined
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 80, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 117, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 89, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 117, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 89, in parse_detile
+    item['endtime'] = tool.get_endtime(detail_text)
+  File "D:\项目\招投标\招投标\tool.py", line 194, in get_endtime
+    if int(endtime[:2]) < 21:
+ValueError: invalid literal for int() with base 10: ''
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1255, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1301, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1250, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1010, in _send_output
+    self.send(msg)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 950, in send
+    self.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\urllib3\util\retry.py", line 439, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='49.87.77.144', port=27141): Max retries exceeded with url: http://www.xtggzy.com/ (Caused by ProxyError('Cannot connect to proxy.', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 111, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\招投标\tool.py", line 30, in get_cookie
+    response_2 = requests.get(url=url, headers=headers, verify=False,proxies=proxies)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\api.py", line 76, in get
+    return request('get', url, params=params, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\sessions.py", line 530, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\sessions.py", line 643, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\requests\adapters.py", line 510, in send
+    raise ProxyError(e, request=request)
+requests.exceptions.ProxyError: HTTPConnectionPool(host='49.87.77.144', port=27141): Max retries exceeded with url: http://www.xtggzy.com/ (Caused by ProxyError('Cannot connect to proxy.', NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025CF75C9070>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。')))
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 49, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 66, in parse_detile
+    detail = url_html.xpath('//*[@id="printSection"]/dl/div')[0]
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 49, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/上海地铁采购电子商务平台.py", line 66, in parse_detile
+    detail = url_html.xpath('//*[@id="printSection"]/dl/div')[0]
+IndexError: list index out of range
+
+中原云商电子招投标平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 107, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中原云商电子招投标平台.py", line 38, in parse
+    date_Today = li.xpath('./span[2]/text()')[0].replace('\r', '').replace('\n', '').replace('\t', '').replace(' ', '')
+IndexError: list index out of range
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 142, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 71, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 111, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\招投标\tool.py", line 22, in get_cookie
+    p = process_request()
+  File "D:\项目\招投标\招投标\tool.py", line 19, in process_request
+    return json.loads(redisconn.get("ip"))['http']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10060 connecting to 192.168.2.57:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+
+全国公共资源交易平台（怀化市）.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 124, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 90, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+徽采商城.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/徽采商城.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/徽采商城.py", line 33, in parse
+    detail = json.loads(text)['userarea']['gonggaolist']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+福建榕卫招标有限公司.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 102, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 32, in parse
+    detail = json.loads(text)['data']['list']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 142, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 71, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 144, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 144, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 72, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 151, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 50, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 78, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 77, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 156, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 83, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 165, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 93, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 166, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 94, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 163, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 114, in parse_detile
+    tool.Time_stamp_to_date(int(str(url_json['signUpEndTime'])[:-3])),
+KeyError: 'signUpEndTime'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 173, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 124, in parse_detile
+    tool.Time_stamp_to_date(signUpEndTime),
+  File "D:\项目\招投标\招投标\tool.py", line 174, in Time_stamp_to_date
+    timeArray = time.localtime(date)
+TypeError: an integer is required (got type str)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 173, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/招投标/市级/中国融通电子商务平台.py", line 126, in parse_detile
+    url_json['linkMan'], url_json['tel'], url_json['email'],
+KeyError: 'linkMan'
+
+全国公共资源交易平台（怀化市）.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 124, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/招投标/招投标/市级/全国公共资源交易平台（怀化市）.py", line 90, in parse_detile
+    item['nativeplace'] = tool.more(item['body'])
+KeyError: 'body'
+
+福建榕卫招标有限公司.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 103, in <module>
+    jl.parse()
+  File "D:/项目/招投标/招投标/市级/福建榕卫招标有限公司.py", line 32, in parse
+    detail = json.loads(text)['data']['list']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 187, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 55, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 76, in parse_detile
+    url_json = json.loads(json.loads(url_text)['result'])
+  File "D:\anaconda3\lib\json\__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "D:\anaconda3\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "D:\anaconda3\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+中国融通电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 191, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 59, in parse
+    self.parse_detile(title, url, date, annId, globalType)
+  File "D:/项目/招投标/市级/中国融通电子商务平台.py", line 139, in parse_detile
+    detail_html = url_ht.format(url_json['projectCode'], url_json['projectName'], url_json['procurementType'],
+KeyError: 'projectCode'
+
+仙桃市公共资源交易中心.py
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 559, in connect
+    sock = self._connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 615, in _connect
+    raise err
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 603, in _connect
+    sock.connect(socket_address)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/仙桃市公共资源交易中心.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/仙桃市公共资源交易中心.py", line 25, in parse
+    cookie=tool.get_cookie('http://www.xtggzy.com')['ASP.NET_SessionId']
+  File "D:\项目\招投标\tool.py", line 22, in get_cookie
+    p = process_request()
+  File "D:\项目\招投标\tool.py", line 19, in process_request
+    return json.loads(redisconn.get("ip"))['http']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 1606, in get
+    return self.execute_command('GET', name)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\client.py", line 898, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 1192, in get_connection
+    connection.connect()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\redis\connection.py", line 563, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10060 connecting to 192.168.2.57:6379. 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。.
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/招投标/市级/衡阳市公共资源交易平台.py", line 33, in parse
+    detail = etree.HTML(text).xpath('/html/body/div[4]/div[3]/div/ul/li')
+AttributeError: 'NoneType' object has no attribute 'xpath'
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 41, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 58, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div/div/div')[0]
+IndexError: list index out of range
+
+E招冀成.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 41, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/E招冀成.py", line 58, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div/div/div')[0]
+IndexError: list index out of range
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 60, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[2]/table')[0]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 42, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 67, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[3]/table')[0]
+IndexError: list index out of range
+
+衡阳市公共资源交易平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 60, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[2]/table')[0]
+IndexError: list index out of range
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 42, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/衡阳市公共资源交易平台.py", line 67, in parse_detile
+    detail = url_html.xpath('/html/body/div[4]/div[2]/div[3]/div[3]/table')[0]
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 1437 (char 1436)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/上海地铁采购电子商务平台.py", line 39, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 1437 (char 1436)
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 109, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 45, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 92, in parse_detile
+    item['shi'] = int(item['nativeplace'].split('.')[0])
+AttributeError: 'int' object has no attribute 'split'
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 108, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 61, in parse_detile
+    detail = url_html.xpath('//*[@id="template-center-mark"]')[0]
+IndexError: list index out of range
+
+贵州政府采购.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/贵州政府采购.py", line 61, in parse_detile
+    deta = url_html.xpath('//*[@class="articleDetail"]/@value')[0]
+IndexError: list index out of range
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 112, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 43, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_html = json.loads(url_text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 35, in parse
+    title = li['advanceName']
+KeyError: 'advanceName'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 116, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 42, in parse
+    date_Today = li['advanceEndTime'].replace('\r', '').replace('\t', '').replace(' ', '')[:10]
+KeyError: 'advanceEndTime'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 119, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 41, in parse
+    .format(li['sourceType'],li['noticeId'],li['sourceHeaderId'],li['advanceNoticeId'],li['sourceFrom'])
+KeyError: 'sourceType'
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+东方希望.py
+Traceback (most recent call last):
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 113, in <module>
+    jl.parse()
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 44, in parse
+    self.parse_detile(title, url, date_Today)
+  File "D:/项目/服务器程序逐个排查/招投标/市级/东方希望.py", line 59, in parse_detile
+    url_text = tool.selenium_get_to(url)
+  File "D:\项目\服务器程序逐个排查\招投标\tool.py", line 881, in selenium_get_to
+    driver = webdriver.Chrome(options=options)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 76, in __init__
+    RemoteWebDriver.__init__(
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 157, in __init__
+    self.start_session(capabilities, browser_profile)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 252, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: This version of ChromeDriver only supports Chrome version 92
+Current browser version is 96.0.4664.93 with binary path C:\Users\Administrator\AppData\Local\Google\Chrome\Application\chrome.exe
+
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 113, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 47, in parse
+    self.parse_detile(title, url, date_Today)
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 64, in parse_detile
+    detail = url_html.xpath('//*[@id="printSection"]/dl/div')[0]
+AttributeError: 'NoneType' object has no attribute 'xpath'
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 127, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 50, in parse
+    print(text['blocks']['edit']['rows'])
+TypeError: string indices must be integers
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 129, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 40, in parse
+    text=detail.replace("'", "`")
+AttributeError: 'list' object has no attribute 'replace'
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 129, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 40, in parse
+    text=json.dumps(detail.replace("'", "`"))
+AttributeError: 'list' object has no attribute 'replace'
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 129, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/上海地铁采购电子商务平台.py", line 52, in parse
+    print(text['blocks']['edit']['rows'])
+TypeError: string indices must be integers
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1400, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1312, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 92, in _call
+    return self._eval("{identifier}.apply(this, {args})".format(identifier=identifier, args=args))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 78, in _eval
+    return self.exec_(code)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 18, in exec_
+    return self._exec_(source)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 88, in _exec_
+    return self._extract_result(output)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 167, in _extract_result
+    raise ProgramError(value)
+execjs._exceptions.ProgramError: Error: Malformed UTF-8 data
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1400, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1312, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 92, in _call
+    return self._eval("{identifier}.apply(this, {args})".format(identifier=identifier, args=args))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 78, in _eval
+    return self.exec_(code)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 18, in exec_
+    return self._exec_(source)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 88, in _exec_
+    return self._extract_result(output)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 167, in _extract_result
+    raise ProgramError(value)
+execjs._exceptions.ProgramError: Error: Malformed UTF-8 data
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1313, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 92, in _call
+    return self._eval("{identifier}.apply(this, {args})".format(identifier=identifier, args=args))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 78, in _eval
+    return self.exec_(code)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 18, in exec_
+    return self._exec_(source)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 88, in _exec_
+    return self._extract_result(output)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 167, in _extract_result
+    raise ProgramError(value)
+execjs._exceptions.ProgramError: Error: Malformed UTF-8 data
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1313, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text.encode())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 91, in _call
+    args = json.dumps(args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1313, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text.encode())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 91, in _call
+    args = json.dumps(args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bytes is not JSON serializable
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1312, in parse
+    print(tex)
+NameError: name 'tex' is not defined
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1313, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 92, in _call
+    return self._eval("{identifier}.apply(this, {args})".format(identifier=identifier, args=args))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 78, in _eval
+    return self.exec_(code)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 18, in exec_
+    return self._exec_(source)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 88, in _exec_
+    return self._extract_result(output)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 167, in _extract_result
+    raise ProgramError(value)
+execjs._exceptions.ProgramError: Error: Malformed UTF-8 data
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1401, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 1313, in parse
+    dedata = execjs.compile(self.des).call('DES_Decrypt', text)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 37, in call
+    return self._call(name, *args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 92, in _call
+    return self._eval("{identifier}.apply(this, {args})".format(identifier=identifier, args=args))
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 78, in _eval
+    return self.exec_(code)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_abstract_runtime_context.py", line 18, in exec_
+    return self._exec_(source)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 88, in _exec_
+    return self._extract_result(output)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\site-packages\execjs\_external_runtime.py", line 167, in _extract_result
+    raise ProgramError(value)
+execjs._exceptions.ProgramError: Error: Malformed UTF-8 data
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 129, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 41, in parse
+    eval(plain)
+  File "<string>", line 1
+    {"success":true,"data":{"dataList":[{"bulletinID":"859a7b98-a260-4b32-85bc-337332d5d6f7","tenderProjectName":"长春轨道交通4号线天工路公共停车场项目","noticeName":"长春轨道交通4号线天工路公共停车场项目中标公示","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"吉林省","serverPlat":"中国招标投标公共服务平台","tradePlat":"","dataPlat":"","regionCode":"220100","regionName":"吉林省 长春市","noticeSendTime":"2023-04-12 08:37:21","bulletinSource":"发布工具","noticeUrl":"https://bulletin.cebpubservice.com/resultBulletin/2023-04-12/9556977.html","superviseDeptName":"/","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"c2ce7c7d-c95e-4db7-a860-d750c923ffed","tenderProjectName":"光大环保能源（泗阳）有限公司#2炉第一烟道水冷壁浇注料大修","noticeName":"光大环保能源（泗阳）有限公司#2炉第一烟道水冷壁浇注料大修中标结果公示","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"生态环保","reginProvince":"江苏省","serverPlat":"中国招标投标公共服务平台","tradePlat":"光大环境招标采购电子交易平台","dataPlat":"","regionCode":"320000","regionName":"江苏省 江苏省","noticeSendTime":"2023-04-12 08:14:02","bulletinSource":"光大环境招标采购电子交易平台","noticeUrl":"https://zcpt.cebenvironment.com.cn/ebi_resultBulletin/2023-04-12/275606.html","superviseDeptName":"/","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"9e1003e0-e7c0-4e90-b12d-fadd280d562e","tenderProjectName":"中国邮政集团有限公司本溪市分公司职工食堂食材采购项目包2、3","noticeName":"【中国邮政集团有限公司本溪市分公司职工食堂食材采购项目包2、3】中标结果公告","noticeMedia":"国家公共平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"辽宁省","serverPlat":"中国招标投标公共服务平台","tradePlat":"中国邮政电子采购与供应平台","dataPlat":"","regionCode":"210000","regionName":"辽宁省 辽宁省","noticeSendTime":"2023-04-12 08:12:01","bulletinSource":"中国邮政电子采购与供应平台","noticeUrl":"https://cg.11185.cn/resultBulletin/2023-04-12/24380.html","superviseDeptName":"中国邮政集团有限公司本溪市分公司综合办公室","leftOpenBidDay":0,"platformCode":"J1100000930","platformName":"中国招标投标公共服务平台","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"e7adaff2-503f-41c9-8a33-c7b2e7ba242b","tenderProjectName":"2023-2025年德清数据中心电梯维保服务采购项目","noticeName":"2023-2025年德清数据中心电梯维保服务采购项目比选结果公告","noticeMedia":"中捷电子招投标平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"浙江省","serverPlat":"中国招标投标公共服务平台","tradePlat":"中通服供应链管理有限公司电子招标系统","dataPlat":"","regionCode":"330000","regionName":"浙江省 浙江省","noticeSendTime":"2023-04-12 08:02:02","bulletinSource":"中通服供应链管理有限公司电子招标系统","noticeUrl":"https://zb.chinaccsscm.cn","superviseDeptName":"无","leftOpenBidDay":0,"platformCode":"I1100005050","platformName":"中国招标投标公共服务平台","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"2eca7c23-4fe4-4243-86d3-d0991768ee73","tenderProjectName":"杜蒙县2022年高标准农田建设项目（补充设计）","noticeName":"杜蒙县2022年高标准农田建设项目（补充设计）","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"市政","reginProvince":"黑龙江省","serverPlat":"A1100000001","tradePlat":"大庆市公共资源交易一体化平台","dataPlat":"大庆市公共资源交易一体化平台","regionCode":"230624","regionName":"黑龙江省 大庆市","noticeSendTime":"2023-04-12 05:39:50","bulletinSource":"大庆市公共资源交易一体化平台","noticeUrl":"http://221.209.152.208/","superviseDeptName":"监督部门名称","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"18ebdddf-5ee2-46fa-9d8a-32d6e0bac839","tenderProjectName":"兰州中川国际机场有限公司开关柜和变压器更新改造设计施工总承包","noticeName":"上海融通延安饭店消防设施检测及评估成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"房屋建筑","reginProvince":"甘肃省","serverPlat":"A1100000001","tradePlat":"","dataPlat":"","regionCode":"620000","regionName":"甘肃省 甘肃省","noticeSendTime":"2023-04-12 04:12:55","bulletinSource":"","noticeUrl":"https://www.ronghw.cn/eb/notice/d21c97d8829214886bb19a788a7c9a0b","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"24edf003-15ea-4ea7-9a41-c221bff7389a","tenderProjectName":"融通物管湖北分公司蓝天龙韵巴山夜雨项目通视整改工程项目","noticeName":"融通物管湖北分公司蓝天龙韵巴山夜雨项目通视整改工程项目成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"湖北省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"420106","regionName":"湖北省 武汉市","noticeSendTime":"2023-04-12 04:12:54","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/91aa84d03850a8099705b8fc9c7b3d18","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"1da0aaee-b98a-44e6-95ab-756bb66c6a8c","tenderProjectName":"融通农业发展（沈阳）有限责任公司2023年度设计单位选聘服务项目","noticeName":"融通农业发展（沈阳）有限责任公司2023年度设计单位选聘服务项目成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"辽宁省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"210103","regionName":"辽宁省 沈阳市","noticeSendTime":"2023-04-12 04:12:53","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/bd0f82bad85b6718f85c2ef19bccac8e","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"1e6c37e2-f939-48cb-8240-6983a7107387","tenderProjectName":"融通农业发展（沈阳）有限责任公司新民罗家房自种鲜食玉米项目作业服务单位（含农药）采购","noticeName":"融通农业发展（沈阳）有限责任公司新民罗家房自种鲜食玉米项目作业服务单位（含农药）采购成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"辽宁省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"210181","regionName":"辽宁省 沈阳市","noticeSendTime":"2023-04-12 04:12:53","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/f4e60b6853b80cb2df5907f3faaae4f8","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"b3cbcaea-0ace-4844-b3d6-2e27f7a566e3","tenderProjectName":"包头二九一医院公开竞争谈判遴选餐饮服务商（第一次）","noticeName":"包头二九一医院公开竞争谈判遴选餐饮服务商（第一次）成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"内蒙古自治区","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"150202","regionName":"内蒙古自治区 包头市","noticeSendTime":"2023-04-12 04:12:52","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/1de306f49e9bf97cac0edef54a1aa3ef","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false}],"totalPage":428051,"currentPage":1,"totalCount":4280505,"pageSize":10},"errorMessage":""}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+SyntaxError: invalid syntax
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 127, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 39, in parse
+    eval(plain)
+  File "<string>", line 1
+    {"success":true,"data":{"dataList":[{"bulletinID":"859a7b98-a260-4b32-85bc-337332d5d6f7","tenderProjectName":"长春轨道交通4号线天工路公共停车场项目","noticeName":"长春轨道交通4号线天工路公共停车场项目中标公示","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"吉林省","serverPlat":"中国招标投标公共服务平台","tradePlat":"","dataPlat":"","regionCode":"220100","regionName":"吉林省 长春市","noticeSendTime":"2023-04-12 08:37:21","bulletinSource":"发布工具","noticeUrl":"https://bulletin.cebpubservice.com/resultBulletin/2023-04-12/9556977.html","superviseDeptName":"/","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"c2ce7c7d-c95e-4db7-a860-d750c923ffed","tenderProjectName":"光大环保能源（泗阳）有限公司#2炉第一烟道水冷壁浇注料大修","noticeName":"光大环保能源（泗阳）有限公司#2炉第一烟道水冷壁浇注料大修中标结果公示","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"生态环保","reginProvince":"江苏省","serverPlat":"中国招标投标公共服务平台","tradePlat":"光大环境招标采购电子交易平台","dataPlat":"","regionCode":"320000","regionName":"江苏省 江苏省","noticeSendTime":"2023-04-12 08:14:02","bulletinSource":"光大环境招标采购电子交易平台","noticeUrl":"https://zcpt.cebenvironment.com.cn/ebi_resultBulletin/2023-04-12/275606.html","superviseDeptName":"/","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"9e1003e0-e7c0-4e90-b12d-fadd280d562e","tenderProjectName":"中国邮政集团有限公司本溪市分公司职工食堂食材采购项目包2、3","noticeName":"【中国邮政集团有限公司本溪市分公司职工食堂食材采购项目包2、3】中标结果公告","noticeMedia":"国家公共平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"辽宁省","serverPlat":"中国招标投标公共服务平台","tradePlat":"中国邮政电子采购与供应平台","dataPlat":"","regionCode":"210000","regionName":"辽宁省 辽宁省","noticeSendTime":"2023-04-12 08:12:01","bulletinSource":"中国邮政电子采购与供应平台","noticeUrl":"https://cg.11185.cn/resultBulletin/2023-04-12/24380.html","superviseDeptName":"中国邮政集团有限公司本溪市分公司综合办公室","leftOpenBidDay":0,"platformCode":"J1100000930","platformName":"中国招标投标公共服务平台","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"e7adaff2-503f-41c9-8a33-c7b2e7ba242b","tenderProjectName":"2023-2025年德清数据中心电梯维保服务采购项目","noticeName":"2023-2025年德清数据中心电梯维保服务采购项目比选结果公告","noticeMedia":"中捷电子招投标平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"其他","reginProvince":"浙江省","serverPlat":"中国招标投标公共服务平台","tradePlat":"中通服供应链管理有限公司电子招标系统","dataPlat":"","regionCode":"330000","regionName":"浙江省 浙江省","noticeSendTime":"2023-04-12 08:02:02","bulletinSource":"中通服供应链管理有限公司电子招标系统","noticeUrl":"https://zb.chinaccsscm.cn","superviseDeptName":"无","leftOpenBidDay":0,"platformCode":"I1100005050","platformName":"中国招标投标公共服务平台","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"0","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"2eca7c23-4fe4-4243-86d3-d0991768ee73","tenderProjectName":"杜蒙县2022年高标准农田建设项目（补充设计）","noticeName":"杜蒙县2022年高标准农田建设项目（补充设计）","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"市政","reginProvince":"黑龙江省","serverPlat":"A1100000001","tradePlat":"大庆市公共资源交易一体化平台","dataPlat":"大庆市公共资源交易一体化平台","regionCode":"230624","regionName":"黑龙江省 大庆市","noticeSendTime":"2023-04-12 05:39:50","bulletinSource":"大庆市公共资源交易一体化平台","noticeUrl":"http://221.209.152.208/","superviseDeptName":"监督部门名称","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"18ebdddf-5ee2-46fa-9d8a-32d6e0bac839","tenderProjectName":"兰州中川国际机场有限公司开关柜和变压器更新改造设计施工总承包","noticeName":"上海融通延安饭店消防设施检测及评估成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"房屋建筑","reginProvince":"甘肃省","serverPlat":"A1100000001","tradePlat":"","dataPlat":"","regionCode":"620000","regionName":"甘肃省 甘肃省","noticeSendTime":"2023-04-12 04:12:55","bulletinSource":"","noticeUrl":"https://www.ronghw.cn/eb/notice/d21c97d8829214886bb19a788a7c9a0b","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"","platformName":"","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"24edf003-15ea-4ea7-9a41-c221bff7389a","tenderProjectName":"融通物管湖北分公司蓝天龙韵巴山夜雨项目通视整改工程项目","noticeName":"融通物管湖北分公司蓝天龙韵巴山夜雨项目通视整改工程项目成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"湖北省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"420106","regionName":"湖北省 武汉市","noticeSendTime":"2023-04-12 04:12:54","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/91aa84d03850a8099705b8fc9c7b3d18","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"1da0aaee-b98a-44e6-95ab-756bb66c6a8c","tenderProjectName":"融通农业发展（沈阳）有限责任公司2023年度设计单位选聘服务项目","noticeName":"融通农业发展（沈阳）有限责任公司2023年度设计单位选聘服务项目成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"辽宁省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"210103","regionName":"辽宁省 沈阳市","noticeSendTime":"2023-04-12 04:12:53","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/bd0f82bad85b6718f85c2ef19bccac8e","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"1e6c37e2-f939-48cb-8240-6983a7107387","tenderProjectName":"融通农业发展（沈阳）有限责任公司新民罗家房自种鲜食玉米项目作业服务单位（含农药）采购","noticeName":"融通农业发展（沈阳）有限责任公司新民罗家房自种鲜食玉米项目作业服务单位（含农药）采购成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"辽宁省","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"210181","regionName":"辽宁省 沈阳市","noticeSendTime":"2023-04-12 04:12:53","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/f4e60b6853b80cb2df5907f3faaae4f8","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false},{"bulletinID":"b3cbcaea-0ace-4844-b3d6-2e27f7a566e3","tenderProjectName":"包头二九一医院公开竞争谈判遴选餐饮服务商（第一次）","noticeName":"包头二九一医院公开竞争谈判遴选餐饮服务商（第一次）成交结果公告","noticeMedia":"中国招标投标公共服务平台","bulletinTypeName":"中标结果公示","docGetEndTime":null,"bidDocRefferEndTime":null,"bidOpenTime":"","notieIndustriestName":"能源电力","reginProvince":"内蒙古自治区","serverPlat":"A1100000001","tradePlat":"中国融通电子商务平台","dataPlat":"中国融通电子商务平台","regionCode":"150202","regionName":"内蒙古自治区 包头市","noticeSendTime":"2023-04-12 04:12:52","bulletinSource":"中国融通电子商务平台","noticeUrl":"https://www.ronghw.cn/eb/notice/1de306f49e9bf97cac0edef54a1aa3ef","superviseDeptName":"","leftOpenBidDay":0,"platformCode":"M1101085050","platformName":"A1100000001","commentCount":0,"hot":0,"viewCount":0,"favCount":0,"subscriptionCount":0,"tenderBidder":"","tenderAgency":"","isNew":0,"grade":null,"dataSource":"1","potentialBidderDetails":false,"classifyName":null,"classifyCode":null,"subcription":false,"similarProjectsBidInfo":false,"fav":false}],"totalPage":428051,"currentPage":1,"totalCount":4280505,"pageSize":10},"errorMessage":""}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+SyntaxError: invalid syntax
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 127, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 39, in parse
+    json.loads(plain)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 9605 (char 9604)
+
+中国招投标公共服务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 127, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/招投标 1/市级1/中国招投标公共服务平台.py", line 39, in parse
+    json.loads(plain)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1 column 9605 (char 9604)
+

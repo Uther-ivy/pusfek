@@ -1,0 +1,232 @@
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 111, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 38, in parse
+    detail = json.loads(re.findall('var __ei=(.*?);.*?var __eiInfo', text, re.S)[0])['blocks']['edit']['rows']
+IndexError: list index out of range
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 130, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 52, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 130, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 52, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 131, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 52, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 134, in <module>
+    jl = alashan_ggzy()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 53, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 135, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 53, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 136, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
+上海地铁采购电子商务平台.py
+Traceback (most recent call last):
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 138, in <module>
+    jl.parse()
+  File "C:/Users/Administrator/Desktop/pusfek/中标信息/市级1/上海地铁采购电子商务平台.py", line 54, in parse
+    detail = json.loads(text)['blocks']['edit']['rows']
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\__init__.py", line 357, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python38\lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 2 column 1 (char 1)
+
