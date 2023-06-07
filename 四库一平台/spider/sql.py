@@ -577,7 +577,6 @@ def insert_base(data):
     # 插入资质表 addon17_zzlx
     kid=id[0]
     print(kid)
-
     for cert in certs:
         print(cert)
         zzmc = cert.get('certName')
