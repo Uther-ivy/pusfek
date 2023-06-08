@@ -7,8 +7,8 @@ import time
 
 num=0
 url = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XK2C1C3E708F5D494F17&qty=1&format=json&split=0&iv=0&sign=07f208e19a95015125b82b5019350d4e'
-url1 = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XKC8416A9E4338E5A354&qty=1&format=json&split=0&iv=0&sign=3bb1d6ed4bed56f8ad16267d5c1d38d5'
-url2 = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XKBFEE5A22CA5B733690&qty=1&format=json&split=0&iv=0&sign=d099bbdbdd624381fca56bc87a81008c'
+url2 = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XKC8416A9E4338E5A354&qty=1&format=json&split=0&iv=0&sign=3bb1d6ed4bed56f8ad16267d5c1d38d5'
+# url2 = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XKBFEE5A22CA5B733690&qty=1&format=json&split=0&iv=0&sign=d099bbdbdd624381fca56bc87a81008c'
 
 def replace_ip():
     # redisconn = redis.Redis(host='127.0.0.1', port=6379, db=7, password='1214')
