@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="ubuntu" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="siku" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="ubuntu">
+      <paths name="siku">
         <serverdata>
           <mappings>
-            <mapping deploy="/Users/Administrator/Desktop/新建文件夹/siku_spider" local="$PROJECT_DIR$/../siku_spider" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$/四库一平台" web="/" />
           </mappings>
         </serverdata>
       </paths>
