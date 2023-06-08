@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="6ab13e67-3504-4b69-88d0-1b175fe9d706" name="native_siku">
+        <fileTransfer accessType="SFTP" host="192.168.0.198" port="22" sshConfigId="7241f83f-71b2-48c2-bd7f-e520930b7d2f" sshConfig="adminstrator@192.168.0.198:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

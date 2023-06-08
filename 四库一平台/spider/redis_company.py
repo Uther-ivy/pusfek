@@ -49,7 +49,6 @@ def company_four():#获取一个未采集的四库名称
     dedup = RedisDeduplication()
     return dedup.get_one('补充资质信息').decode('utf-8')
 
-
 def company_four_over(qymc):#采集四库信息结束
     dedup = RedisDeduplication()
     dedup.add('type2',qymc)
