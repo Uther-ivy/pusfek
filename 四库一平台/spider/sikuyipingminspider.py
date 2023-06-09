@@ -45,7 +45,7 @@ class MinSpider(object):
             'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4 Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.62 XWEB/2577 MMWEBSDK/200701 Mobile Safari/537.36 MMWEBID/8001 MicroMessenger/7.0.17.1720(0x2700113F) Process/appbrand0 WeChat/arm64 NetType/WIFI Language/zh_CN ABI/arm64',
             'Referer': 'https://servicewechat.com/wx8f070e7958a940d1/48/page-frame.html',
             'citycode': '',
-            'token': 't_58dc8b534b9140aab20aebe097184feb',
+            'token': 't_7151596a491649e883544dd44101ff5f',
             'Accept-Encoding': 'gzip, deflate, br',
             'content-type': 'application/json'
         }
@@ -654,9 +654,8 @@ class MinSpider(object):
     # 建设工程企业list
     def get_new_company_id(self,page,fil):
         try:
-            channel_url = f'https://sky.mohurd.gov.cn/skyapi/api/statis/getResult?' \
-                              f'_t=0.4809449572782587&keys=corp%2Fdata_search%2Fpage&qyTypeCode=&aptCode=&' \
-                              f'regionNum=&pageNumber={page}&pageSize=15&keyWord='
+            channel_url = f'https://sky.mohurd.gov.cn/skyapi/api/statis/getResult?_t={round(random.random(),16)}&keys=corp%2Fdata_search%2Fpage&qyTypeCode=&aptCode=&regionNum=&pageNumber={page}&pageSize=15&keyWord='
+            print(time.time())
             resdata = self.jiemi_(self.request_(channel_url)['data'])
             if len(resdata)>0:
                 for res in json.loads(resdata):

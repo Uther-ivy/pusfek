@@ -24,8 +24,9 @@ def excute_company():
         # companylist = read_file('企业名称/1.txt')
         # companylist = read_file('./test_siku/companyname/errorname2.txt')
         companylist=[
-            '91610800064834709T',
-            '南京鑫盈和装饰工程有限公司', '湖南忆江南园林有限公司','全椒县方唐建筑设计有限公司',
+            '山西德宇工程管理咨询有限公司'
+            # '91610800064834709T',
+            # '南京鑫盈和装饰工程有限公司', '湖南忆江南园林有限公司','全椒县方唐建筑设计有限公司',
             #  '瑞安永捷环境工程有限公司', '天津蓝铃盛丰广告有限公司','菏泽华杰东方装饰设计有限公司',
             #   '葫芦岛市惠群物业管理有限公司', '天津市南开区金桥装饰装修服务中心','上海壹杰信息技术有限公司','浙江砼盟建筑材料有限公司',
             # '中建八局第一建设有限公司','吉林亿北建设工程有限公司','攀枝花市一通建筑工程有限责任公司','内蒙古万兴建设有限公司',
@@ -62,7 +63,7 @@ def excute_company():
                 print(companybase)
                 cid=companybase[1]
                 cname=companybase[0]
-                scthread = threading.Thread(target=spider.companysearch, args=(cid, fil, cname), )
+                scthread = threading.Thread(target=spider.companysearch, args=(cid, cname), )
                 print('*' * 20, scthread.getName(), '*' * 20)
                 scthread.start()
                 threads.append(scthread)
@@ -273,9 +274,6 @@ def excute_new_company(fil):
     except Exception as e:
         logging.error(f"def excute_company 获取失败{e}\n{traceback.format_exc()}")
 
-
-
-
 #获取人员
 def get_company_person(fil):
     try:
@@ -431,10 +429,10 @@ if __name__ == '__main__':
     # print(len(company_list))
     # fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
     # insertbase()
-    # testxinyongdaima('91610800064834709T')
+    testxinyongdaima('91610800064834709T')
     # excute_company()
-
-    get_company_project_(fil)
+    # excute_company()
+    # get_company_project_(fil)
 
     # get_company_project_(fil)
     # get_company_base_cert(fil)

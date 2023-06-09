@@ -12,12 +12,12 @@ from spider.sql import search_yunqi_cai, search_cai, del_cname, serch_siku_id, s
 
 def get_company_cid1(fil):
     try:
-        spider = MinSpider(fil)
+        spider = MinSpider()
         spider.replace_ip()
         # companylist = read_file(fil)
         # companylist = read_file('./test_siku/companyname/errorname2.txt')
         companylist=[
-            '上海乐尔环保科技股份有限公司',
+            '山西德宇工程管理咨询有限公司',
             # '吉林亿北建设工程有限公司','攀枝花市一通建筑工程有限责任公司','内蒙古万兴建设有限公司',
         #     '贵州德亨环境科技工程有限公司','集安市清云市政设计有限公司','河北建设集团卓诚路桥工程有限公司','徐闻县第一建筑工程总公司',
         #     '青岛海洋工程勘察设计研究院','海南壹鼎建筑工程有限公司','广西巍海消防工程有限公司','广西好气派装饰有限公司',
@@ -69,7 +69,7 @@ def run1():
 
 def get_company_cid(fil):
     try:
-        spider = MinSpider(fil)
+        spider = MinSpider()
         spider.replace_ip()
         while True:
             companylist = []

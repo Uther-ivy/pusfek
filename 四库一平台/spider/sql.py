@@ -275,10 +275,10 @@ def insert_qr(fid, aid):
     excute_mysql(sql, (fid, aid),True)
 
 
-def insert_qx(aid, prjnum):
+def insert_qx(aid, xid):
     sql = "insert into yunqi_qx(aid, xid) values (%s,%s);"
 
-    excute_mysql(sql, (aid, prjnum),True)
+    excute_mysql(sql, (aid, xid),True)
 
 
 def search_aid(pnumber):
@@ -632,7 +632,6 @@ def insert_addon18(reg,cname):
             else:
                 update_person_cert(personid[0],leixing)
                 print(f'人员update_cert {name} 入库完成')
-
         else:
             inertaddon18(fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq)
             print(f"人员inertaddon18 {name}入库完成")
@@ -693,12 +692,12 @@ def insert_addoninfos(pro, cname):
                          zzjgdm, jsxz, tarea, lxjb)
         print(f"项目表yunqi_addoninfos{title}入库完成")
         # print(pnumber)
-    aid = search_aid(pnumber)
-    if searchqx(pnumber):
+    xid = search_aid(pnumber)
+    if searchqx(xid):
         print(f'qx {pnumber} exist')
     else:
-        insert_qx(aid, pnumber)
-        print(f'qx {aid} 关联入库完成')
+        insert_qx(fid, xid)
+        print(f'qx {fid} 关联入库完成')
 
     # 插入参与单位与相关负责人yunqi_addoninfos_cydw
     if pro.get('jointhing'):
@@ -714,7 +713,7 @@ def insert_addoninfos(pro, cname):
         ]
         for jointhing in pro.get('jointhing'):
             qid = fid #企业id
-            kid = aid[0]
+            kid = xid[0]
             qymc = jointhing.get('corpname', '-')
             tyshxydm = jointhing.get('corpcode', '-', )
             name = jointhing.get('personname', '-')
@@ -752,7 +751,7 @@ def insert_addoninfos(pro, cname):
         ]
         for contract in pro.get('contract'):
             dj_number = contract.get('recordNum')
-            kid = aid[0]  # '项目id',
+            kid = xid[0]  # '项目id',
             ba_number = contract.get('provinceContractNum')
             ht_type = ''
             for typeid in contractType:
@@ -808,7 +807,7 @@ def insert_addoninfos(pro, cname):
     if pro.get('licence'):
         for licence in pro.get('licence'):
             kid = fid
-            pid = aid[0]
+            pid = xid[0]
             sgbh = licence.get('builderLicenceNum', '-')
             sjbh = licence.get('projectPlanNum', '0')
             htje = licence.get('contractMoney', '0')
@@ -868,7 +867,7 @@ def insert_addoninfos(pro, cname):
             {'id': "005", 'name': "9度"}]
         for unit in pro.get('unit'):
             number = unit.get('unitcode', '-')
-            kid = aid[0]
+            kid = xid[0]
             title = unit.get('subprjname')
             cost = unit.get('invest', '0.0')
             area = unit.get('buildarea', '0.0')
@@ -940,7 +939,7 @@ def insert_addoninfos(pro, cname):
         for censor in pro.get('censor'):
             sgtschgbh = censor.get('censorNum', '-')
             kid = fid
-            pid = aid[0]
+            pid = xid[0]
             sjbh = censor.get('provinceCensorNum', '-')
             kcdw = censor.get('', '-')
             kcdw_sf = censor.get('', '-')
@@ -1003,7 +1002,7 @@ def insert_addoninfos(pro, cname):
         for tender in pro.get('tender'):
             tzsbh = tender.get('tenderNum', '-')
             kid = fid
-            pid = aid[0]
+            pid = xid[0]
             zblx = tender.get('tenderClassNum')
             for ptender in prtenderclasss:
                 if ptender['id'] == zblx:
@@ -1038,7 +1037,7 @@ def insert_addoninfos(pro, cname):
                 print(f'安全员 sgxcaqy {name} exist')
             else:
                 kid = fid  # 企业id
-                pid = aid[0]  # 项目id
+                pid = xid[0]  # 项目id
                 qymc = safeuser.get('corpName')
                 aqxkzbh = safeuser.get('certID', '-')
                 sgxkzbh = safeuser.get('builderLicenceNum', '-')
@@ -1057,7 +1056,7 @@ def insert_addoninfos(pro, cname):
             name = manageuser.get('userName', '-')
             title = title
             kid = fid  # 企业id
-            pid = aid[0]  # 项目id
+            pid = xid[0]  # 项目id
             tyshxydm = manageuser.get('corpCode', '-')
             idnum = manageuser.get('iDCard', '-')
             ssqy = manageuser.get('corpName', '-')
@@ -1263,7 +1262,7 @@ def insert_addoninfos(pro, cname):
             name = operation.get('userName')
             title = title
             kid = fid  # 企业id
-            pid = aid[0]  # 项目id
+            pid = xid[0]  # 项目id
             idnum = operation.get('iDCard', '-')
             ssqy = operation.get('corpName', '-')
             tyshxydm = operation.get('corpCode', '-')
@@ -1290,7 +1289,7 @@ def insert_addoninfos(pro, cname):
             sbbabh = mechanics.get('recordNum', '-')
             title = title
             kid = fid  # 企业id
-            pid = aid[0] # 项目id
+            pid = xid[0] # 项目id
             jxsbmc = mechanics.get('mechanicsname', '-')
             cqdw = mechanics.get('havecorpName', '-')
             jxmodel = mechanics.get('model', '-')
@@ -1417,7 +1416,7 @@ def insert_addoninfos(pro, cname):
                 'name': "图审机构审查人从事专业名称"
             }]
         for censoruser in pro.get('censor_user'):
-            kid = aid[0]#项目id
+            kid = xid[0]#项目id
             CORPNAME = censoruser.get('corpname','-')
             IDCARD= censoruser.get('idcard','-')
             SPECIALTYTYP= censoruser.get('specialtytypnum','99')
