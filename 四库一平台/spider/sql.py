@@ -241,14 +241,14 @@ def insertzzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg):
 
 
 # 关联项目
-def insertaddoninfos(fid, typeid, mid, title, senddate, linkman, pnumber, ztzmoney, lxwh, sjxmnumber, zzjgdm, jsxz,
+def insertaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber, zzjgdm, jsxz,
                      tarea, lxjb):
 
     sql = "insert into " \
-          "yunqi_addoninfos(fid,typeid,mid,title,senddate,linkman,pnumber,ztzmoney,lxwh,sjxmnumber,zzjgdm,jsxz,tarea,tzsbh,lxjb)" \
+          "yunqi_addoninfos(fid,typeid,mid,title,senddate,nativeplace,linkman,pnumber,ztzmoney,lxwh,sjxmnumber,zzjgdm,jsxz,tarea,tzsbh,lxjb)" \
           " values " \
-          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    excute_mysql(sql, (fid, typeid, mid, title, senddate, linkman, pnumber, ztzmoney, lxwh, sjxmnumber, zzjgdm, jsxz,tarea, "''", lxjb),True)
+          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    excute_mysql(sql, (fid, typeid, mid, title, senddate,nativeplace, linkman, pnumber, ztzmoney, lxwh, sjxmnumber, zzjgdm, jsxz,tarea, "''", lxjb),True)
 
 
 # 人员表
@@ -548,6 +548,7 @@ def insert_base(data):
 
     nativeplace = findcityid(cityid)
     certType = certs[0]['certType']
+
     if '资质' in certType:
         typename = re.findall(r'([\S]+)资质', certType)
         tyid = findtypeid(typename[0])
@@ -661,6 +662,7 @@ def insert_addoninfos(pro, cname):
         {'id': "01", 'name': 13},
         {'id': "02", 'name': 18}
     ]
+
     fid = searchdb(cname)[0]#企业id
     pnumber = project.get('prjNum')
     title = project.get('prjName')
@@ -670,6 +672,7 @@ def insert_addoninfos(pro, cname):
             typeid = prtype['name']
     mid = 10036
     senddate = int(time.time())
+    nativeplace=project.get('')
     linkman = project.get('buildCorpName', '-')
     ztzmoney = project.get('allInvest', 0.0)
     sjxmnumber = project.get('provincePrjNum', '-')
@@ -682,13 +685,13 @@ def insert_addoninfos(pro, cname):
     lxjb = project.get('prjApprovalLevelNum', '-')
     tarea = project.get('allArea', 0.0)
     # insertaddoninfos()
-    print('addoninfos:', fid, typeid, mid, title, senddate, linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
+    print('addoninfos:', fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
           zzjgdm, jsxz, tarea, lxjb)
     if searchpnumber(pnumber):
         print('项目表yunqi_addoninfos', pnumber, 'exist')
         # continue
     else:
-        insertaddoninfos(fid, typeid, mid, title, senddate, linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
+        insertaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
                          zzjgdm, jsxz, tarea, lxjb)
         print(f"项目表yunqi_addoninfos{title}入库完成")
         # print(pnumber)
