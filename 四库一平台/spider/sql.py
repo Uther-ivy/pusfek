@@ -92,7 +92,7 @@ def searchzzlb(zzmc):
             # print(lis['pron'],type(lis['pron']))
             if zzmc in lis['pron']:
                 print(lis['pron'], lis['parent_id'])
-                return lis['parent_id']
+                return lis
 
 
 # 查看人员证件类型id
@@ -213,15 +213,17 @@ def inster_siku_id(cname,skid):
 
 
 # 增加数据
-def insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, xiangmu, zizhi, rynum, m_id):
+def insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id):
     sql = "insert into " \
-          "yunqi_addon17(typeid,qymc,tyshxydm,qyfr,zclx,nativeplace,xxdz,xiangmu,zizhi,rynum,m_id) " \
+          "yunqi_addon17(typeid,qymc,tyshxydm,qyfr,zclx,nativeplace,xxdz,zzlb,xiangmu,zizhi,rynum,m_id) " \
           "values " \
-          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
 
-    excute_mysql(sql, (typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, xiangmu, zizhi, rynum, m_id),True)
+    excute_mysql(sql, (typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb,xiangmu, zizhi, rynum, m_id),True)
 
-
+def upadtebase(zzlb,aid):
+    sql = f"update yunqi_addon17 set zzlb='{zzlb}' where aid='{aid}';"
+    excute_mysql(sql, commit=True)
 
 
 # 查询企业信息
@@ -526,6 +528,9 @@ def insert_skid(cname,skid):
 
 
 # 插入yunqi_addon17
+
+
+
 def insert_base(data):
     print(data)
     base = data.get('base')
@@ -543,12 +548,9 @@ def insert_base(data):
             cityid=cityid[0]
         else:
             cityid=0
-
     print(cityid)
-
     nativeplace = findcityid(cityid)
     certType = certs[0]['certType']
-
     if '资质' in certType:
         typename = re.findall(r'([\S]+)资质', certType)
         tyid = findtypeid(typename[0])
@@ -561,16 +563,23 @@ def insert_base(data):
     xiangmu = message.get('projectCount')
     zizhi = message.get('certCount')
     rynum = message.get('regPersonCount')
+    print(type(certs[0]),certs[0].get('certName'))
+    zzlb=searchzzlb(certs[0].get('certName')).get('id')
+    print(zzlb)
+    # if not zzlb:
+    #     zzlb = 0.0
+    # time.sleep(222222)
     m_id = 10036
     py = ''
     for pin in lazy_pinyin(qymc):
         py += pin
-    print("addon17:", typeid, py, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, xiangmu, zizhi, rynum, m_id)
+    print("addon17:", typeid, py, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id)
     id = searchdb(qymc)
     if id:
         print(f'企业基本信息yunqi_addon17 {qymc} exist!')
+        upadtebase(zzlb,id[0])
     else:
-        insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, xiangmu, zizhi, rynum, m_id)
+        insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb, xiangmu, zizhi, rynum, m_id)
         id = searchdb(qymc)
         print(f'企业基本信息addon17{qymc}入库完成')
 
@@ -581,7 +590,8 @@ def insert_base(data):
     for cert in certs:
         print(cert)
         zzmc = cert.get('certName')
-        zzlb = searchzzlb(zzmc)
+        print(zzmc)
+        zzlb = searchzzlb(zzmc)['parent_id']
         if not zzlb:
             zzlb = 0.0
         zzzsh =cert.get('certId')
