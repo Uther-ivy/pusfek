@@ -563,12 +563,12 @@ def insert_base(data):
     xiangmu = message.get('projectCount')
     zizhi = message.get('certCount')
     rynum = message.get('regPersonCount')
-    print(type(certs[0]),certs[0].get('certName'))
-    zzlb=searchzzlb(certs[0].get('certName')).get('id')
+    zzl=searchzzlb(certs[0].get('certName'))
+    if zzl:
+        zzlb=zzl.get('id')
+    else:
+        zzlb=0
     print(zzlb)
-    # if not zzlb:
-    #     zzlb = 0.0
-    # time.sleep(222222)
     m_id = 10036
     py = ''
     for pin in lazy_pinyin(qymc):
@@ -590,10 +590,12 @@ def insert_base(data):
     for cert in certs:
         print(cert)
         zzmc = cert.get('certName')
-        print(zzmc)
-        zzlb = searchzzlb(zzmc)['parent_id']
-        if not zzlb:
-            zzlb = 0.0
+        zzlbid = searchzzlb(zzmc)
+        if zzlbid:
+            zzlb =zzlbid.get('parent_id')
+            print('zzzzzzzzzzzzzzzzzzzzzzzzz:',zzlb)
+        else:
+            zzlb=0
         zzzsh =cert.get('certId')
         fzrq = Transformation(cert.get('organDate','0'))
         zsyxq = Transformation(cert.get('endDate','0'))
