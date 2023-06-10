@@ -70,7 +70,7 @@ def excute_new_company():
             print('waiting1h......')
             time.sleep(3600)
         spider.replace_ip()
-        for page in range(1,15):
+        for page in range(1,11):
             spider.get_new_company_id(page,fil)
         newcompanyset=spider.new_companyset
         print(newcompanyset)

@@ -408,11 +408,12 @@ def excute_yunqi_cai(fil):
     except Exception as e:
         logging.error(f"excute_companyid获取失败{e}\n{traceback.format_exc()}")
 
-# def insertbase():
-#     data={'base': {'legalMan': '刘银川', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8', 'id': '002105291335084697', 'address': '新疆图木舒克市前海西街27号（双创中心）', 'regionFullname': '新疆生产建设兵团-第三师', 'qyRegType': '有限责任公司（自然人投资或控股）'}, 'messagecount': {'certCount': 2, 'regPersonCount': 9, 'projectCount': 0}, 'cert': [{'certType': '建筑业企业资质', 'certName': '电力工程施工总承包三级', 'organDate': '2022-12-29', 'endDate': '2023-12-31', 'organName': '新疆生产建设兵团住房和城乡建设局', 'certId': 'D266006420', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8'}, {'certType': '建筑业企业资质', 'certName': '电力工程施工总承包三级', 'organDate': '2021-12-24', 'endDate': '2023-12-31', 'organName': '乌鲁木齐市建设局（乌鲁木齐市人民防空办公室）', 'certId': 'D365019422', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8'}], 'regporson': [], 'project': [], 'badcredit': [], 'goodcredit': [], 'black': [], 'punishlist': [], 'chage': []}
+def insertbase():
+    # data={'base': {'legalMan': '刘银川', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8', 'id': '002105291335084697', 'address': '新疆图木舒克市前海西街27号（双创中心）', 'regionFullname': '新疆生产建设兵团-第三师', 'qyRegType': '有限责任公司（自然人投资或控股）'}, 'messagecount': {'certCount': 2, 'regPersonCount': 9, 'projectCount': 0}, 'cert': [{'certType': '建筑业企业资质', 'certName': '电力工程施工总承包三级', 'organDate': '2022-12-29', 'endDate': '2023-12-31', 'organName': '新疆生产建设兵团住房和城乡建设局', 'certId': 'D266006420', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8'}, {'certType': '建筑业企业资质', 'certName': '电力工程施工总承包三级', 'organDate': '2021-12-24', 'endDate': '2023-12-31', 'organName': '乌鲁木齐市建设局（乌鲁木齐市人民防空办公室）', 'certId': 'D365019422', 'corpName': '新疆华宇星建设工程有限公司', 'corpCode': '91650100MA775EDJX8'}], 'regporson': [], 'project': [], 'badcredit': [], 'goodcredit': [], 'black': [], 'punishlist': [], 'chage': []}
+    data={'base': {'legalMan': '洛拥', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012', 'id': '002105291258788829', 'address': '昌都镇聚盛街91号', 'qyRegType': '有限责任公司（自然人投资或控股）'}, 'messagecount': {'certCount': 5, 'regPersonCount': 3, 'projectCount': 0}, 'cert': [{'certType': '建筑业企业资质', 'certName': '公路工程施工总承包二级', 'organDate': '2020-06-22', 'endDate': '2025-06-22', 'organName': '西藏自治区住房和城乡建设厅', 'certId': 'D254002763', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012'}, {'certType': '建筑业企业资质', 'certName': '市政公用工程施工总承包三级', 'organDate': '2020-09-07', 'endDate': '2025-09-07', 'organName': '昌都市住房和城乡建设局', 'certId': 'D354164411', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012'}, {'certType': '建筑业企业资质', 'certName': '公路路基工程专业承包三级', 'organDate': '2020-09-07', 'endDate': '2025-09-07', 'organName': '昌都市住房和城乡建设局', 'certId': 'D354164411', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012'}, {'certType': '建筑业企业资质', 'certName': '建筑工程施工总承包三级', 'organDate': '2020-09-07', 'endDate': '2025-09-07', 'organName': '昌都市住房和城乡建设局', 'certId': 'D354164411', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012'}, {'certType': '建筑业企业资质', 'certName': '水利水电工程施工总承包三级', 'organDate': '2020-09-07', 'endDate': '2025-09-07', 'organName': '昌都市住房和城乡建设局', 'certId': 'D354164411', 'corpName': '昌都察雅县利民建筑有限责任公司', 'corpCode': '915403007419282012'}], 'regporson': [], 'project': [], 'badcredit': [], 'goodcredit': [], 'black': [], 'punishlist': [], 'chage': []}
 
 
-    # insert_base(data)
+    insert_base(data)
 def testxinyongdaima(name):
     name = name.replace('\n', '')
     url = f"https://sky.mohurd.gov.cn/skyapi/api/statis/getResult?_t=0.41493411788348533&keys=corp%2Fdata_search" \
@@ -428,8 +429,8 @@ if __name__ == '__main__':
     # print(company_list)
     # print(len(company_list))
     # fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
-    # insertbase()
-    testxinyongdaima('91610800064834709T')
+    insertbase()
+    # testxinyongdaima('91610800064834709T')
     # excute_company()
     # excute_company()
     # get_company_project_(fil)
