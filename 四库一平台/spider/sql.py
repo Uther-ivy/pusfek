@@ -564,7 +564,6 @@ def insert_base(data):
     zizhi = message.get('certCount')
     rynum = message.get('regPersonCount')
     zzl=searchzzlb(certs[0].get('certName'))
-
     if zzl:
         zzlb=zzl.get('id')
     else:
