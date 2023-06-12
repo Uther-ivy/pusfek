@@ -324,10 +324,9 @@ class MinSpider(object):
     def get_project_data(self,pid,cname,ptype):
         detail_dict = {}
         try:
-
             prodetail = self.get_project_detail(pid, ptype)  # 项目详情
             print(prodetail)
-            time.sleep(22222)
+            # time.sleep(22222)
             jointhing = self.get_jointhing(pid,ptype)
             unit = self.get_unit(pid,ptype)
             tender = self.get_tender(pid,ptype)
