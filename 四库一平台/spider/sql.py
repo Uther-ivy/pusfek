@@ -61,7 +61,6 @@ def str_date(date):
 def findcityid(name):
     city=''
     print(name)
-    time.sleep(20)
     if name == 0:
         return 0
     if "-" in name:
