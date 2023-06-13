@@ -60,7 +60,8 @@ def str_date(date):
 # 查找cityid
 def findcityid(name):
     city=''
-    # print(typeid)
+    print(name)
+    time.sleep(20)
     if name == 0:
         return 0
     if "-" in name:
@@ -1041,7 +1042,9 @@ def insert_addoninfos(pro, cname):
             typeid = prtype['name']
     mid = 10036
     senddate = int(time.time())
-    nativeplace = findcityid(get_region(str(project.get('cityNum'))))
+    cityid=str(project.get('cityNum'))
+    print(cityid)
+    nativeplace = findcityid(get_region(cityid))
     linkman = project.get('buildCorpName', '-')
     ztzmoney = project.get('allInvest', 0.0)
     sjxmnumber = project.get('provincePrjNum', '-')
