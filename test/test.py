@@ -59,23 +59,21 @@ def run():
     # proxy =replace_ip()
     # print(proxy)
     session=requests.session()
-    url = f'https://ggzyxx.deyang.gov.cn/pub/showJyxxContent?page=0&time=3m&areaCode=&menuCode=JYGCJS&menuTypeCode=&contentTypeCode=&keyname=&startTime=2023-02-23&endTime=2023-05-23&areaCodeFlag=1&isProvince=&_csrf=7506bedd-c5ea-4430-81cd-bbbd60839f14'
-    url = f'https://ggzyxx.deyang.gov.cn/pub/indexContent_one?'
+    url = f'http://139.224.15.208/api/main-search/'
     print(url)
-    payload = 'projNO=51060000000002567&' \
-              'projType=JYGCJSZB&' \
-              'projTypeCode=ZBGG&' \
-              'projContentId=857877f0-cddf-40fd-ac90-99c3d0b11026&' \
-              'tmpTypeCode='
-    data = None
-    print(payload)
+    payload = {"entstatus":"",
+               "enttype":"","nic":"E",
+               "esdate_start":"2022-06-13",
+               "esdate_end":"2023-06-13","regcap_start":"",
+               "regcap_end":"","region":"","opscope":"",
+               "ltype":"","page_size":20,"page_index":3}
     headers={
-'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
              }
     # data_list = session.get(url,headers=headers)
-    data_list = session.post(url,headers=headers,params=payload)
-
-    print(data_list.content.decode())
+    data_list = json.loads(session.post(url,headers=headers,data=payload).content.decode())
+    for db in data_list.get('data').get('list'):
+        print(db)
 
 #
 def BeautifulStoneSoup():
@@ -425,10 +423,10 @@ if __name__ == '__main__':
     # thread_test()
     # uuid()
     # parameter_setting()
-    times()
+    # times()
     # pop_test()
     # urllibtest()
-    # run()
+    run()
 
 
     # img_recognition()
