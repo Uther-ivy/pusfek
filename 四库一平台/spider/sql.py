@@ -34,7 +34,10 @@ db = PooledDB(
 #     charset="utf8"
 # )
 def Transformation(date):
+    print(date)
     if '1970-01-01' in str(date):
+        times = 0
+    if '1900-01-01' in str(date):
         times = 0
     elif '-' in str(date):
         times = int(time.mktime(time.strptime(date, "%Y-%m-%d")))
@@ -59,8 +62,6 @@ def str_date(date):
 
 # 查找cityid
 def findcityid(name):
-    city=''
-    print(name)
     if name == 0:
         return 0
     if "-" in name:
@@ -81,9 +82,43 @@ def findcityid(name):
 
 
 def get_region(regid):
-    region = [{'region_id': '110100', 'region_name': '北京市', 'region_fullname': '北京市-北京市'},
+    region = [
+        {'region_id': '110000', 'region_fullname': '北京市'},
+        {'region_id': '120000', 'region_fullname': '天津市'},
+        {'region_id': '130000', 'region_fullname': '河北省'},
+        {'region_id': '140000', 'region_fullname': '山西省'},
+        {'region_id': '150000', 'region_fullname': '内蒙古自治区'},
+        {'region_id': '210000', 'region_fullname': '辽宁省'},
+        {'region_id': '220000', 'region_fullname': '吉林省'},
+        {'region_id': '230000', 'region_fullname': '黑龙江省'},
+        {'region_id': '310000', 'region_fullname': '上海市'},
+        {'region_id': '320000', 'region_fullname': '江苏省'},
+        {'region_id': '330000', 'region_fullname': '浙江省'},
+        {'region_id': '340000', 'region_fullname': '安徽省'},
+        {'region_id': '350000', 'region_fullname': '福建省'},
+        {'region_id': '360000', 'region_fullname': '江西省'},
+        {'region_id': '370000', 'region_fullname': '山东省'},
+        {'region_id': '410000', 'region_fullname': '河南省'},
+        {'region_id': '420000', 'region_fullname': '湖北省'},
+        {'region_id': '430000', 'region_fullname': '湖南省'},
+        {'region_id': '440000', 'region_fullname': '广东省'},
+        {'region_id': '450000', 'region_fullname': '广西壮族自治区'},
+        {'region_id': '460000', 'region_fullname': '海南省'},
+        {'region_id': '500000', 'region_fullname': '重庆市'},
+        {'region_id': '510000', 'region_fullname': '四川省'},
+        {'region_id': '520000', 'region_fullname': '贵州省'},
+        {'region_id': '530000', 'region_fullname': '云南省'},
+        {'region_id': '540000', 'region_fullname': '西藏自治区'},
+        {'region_id': '610000', 'region_fullname': '陕西省'},
+        {'region_id': '620000', 'region_fullname': '甘肃省'},
+        {'region_id': '630000', 'region_fullname': '青海省'},
+        {'region_id': '640000', 'region_fullname': '宁夏回族自治区'},
+        {'region_id': '650000', 'region_fullname': '新疆维吾尔自治区'},
+        {'region_id': '650000', 'region_fullname': '新疆建设兵团'},
+
+        {'region_id': '110100', 'region_name': '北京市', 'region_fullname': '北京市-北京市'},
               {'region_id': '120100', 'region_name': '天津市', 'region_fullname': '天津市-天津市'},
-              {'region_id': '120200', 'region_name': '县', 'region_fullname': '天津市-天津市'},
+              {'region_id': '120200', 'region_name': '天津市', 'region_fullname': '天津市-天津市'},
               {'region_id': '130100', 'region_name': '石家庄', 'region_fullname': '河北省-石家庄市'},
               {'region_id': '130200', 'region_name': '唐山', 'region_fullname': '河北省-唐山市'},
               {'region_id': '130300', 'region_name': '秦皇岛', 'region_fullname': '河北省-秦皇岛市'},
@@ -443,8 +478,9 @@ def get_region(regid):
               ]
     for lis in region:
         if lis.get('region_id')==regid:
-            # lis.get('region_fullname')
-            return lis.get('region_fullname')
+            cityname=lis.get('region_fullname')
+            print(cityname)
+            return cityname
 
 # 获取zzlb的号码
 def searchzzlb(zzmc):
@@ -1041,9 +1077,8 @@ def insert_addoninfos(pro, cname):
             typeid = prtype['name']
     mid = 10036
     senddate = int(time.time())
-    cityid=str(project.get('cityNum'))
-    print(cityid)
-    nativeplace = findcityid(get_region(cityid))
+    cityid=get_region(str(project.get('cityNum')))
+    nativeplace = findcityid(cityid)
     linkman = project.get('buildCorpName', '-')
     ztzmoney = project.get('allInvest', 0.0)
     sjxmnumber = project.get('provincePrjNum', '-')
