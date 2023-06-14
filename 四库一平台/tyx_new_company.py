@@ -15,8 +15,8 @@ def list_parse():
         print(url)
         payload = {"entstatus": "",
                    "enttype": "", "nic": "E",
-                   "esdate_start": "2018-06-13",
-                   "esdate_end": "2020-06-13", "regcap_start": "",
+                   "esdate_start": "",
+                   "esdate_end": "2008-06-14", "regcap_start": "",
                    "regcap_end": "", "region": "", "opscope": "",
                    "ltype": "", "page_size": 20, "page_index": page}
         headers = {
@@ -25,7 +25,7 @@ def list_parse():
         # data_list = session.get(url,headers=headers)
         data_list = json.loads(session.post(url, headers=headers, data=payload).content.decode())
         for db in data_list.get('data').get('list'):
-            print([db.get('entname'),db.get('uniscid')])
+            print(db)
             dedup.add('new_company_name', str(db.get('entname')))
             dedup.add('new_company_organization', str(db.get('uniscid')))
 
