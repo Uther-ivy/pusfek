@@ -77,8 +77,8 @@ def run_project():
 
 if __name__ == '__main__':
 
-    while True:
+    # while True:
         run_project()
         print('完成，休息25分继续')
-        time.sleep(1500)
+        # time.sleep(1500)
 
