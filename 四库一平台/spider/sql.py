@@ -82,6 +82,7 @@ def findcityid(name):
 
 
 def get_region(regid):
+    print(regid)
     region = [
         {'region_id': '110000', 'region_fullname': '北京市'},
         {'region_id': '120000', 'region_fullname': '天津市'},
@@ -296,8 +297,7 @@ def get_region(regid):
         {'region_id': '421100', 'region_name': '黄冈', 'region_fullname': '湖北省-黄冈市'},
         {'region_id': '421200', 'region_name': '咸宁', 'region_fullname': '湖北省-咸宁市'},
         {'region_id': '421300', 'region_name': '随州', 'region_fullname': '湖北省-随州市'},
-        {'region_id': '422800', 'region_name': '恩施土家族苗族自治州',
-         'region_fullname': '湖北省-恩施土家族苗族自治州'},
+        {'region_id': '422800', 'region_name': '恩施土家族苗族自治州','region_fullname': '湖北省-恩施土家族苗族自治州'},
         {'region_id': '429000', 'region_name': '省直辖县级行政区划', 'region_fullname': '湖北省-省直辖县级行政区划'},
         {'region_id': '430100', 'region_name': '长沙', 'region_fullname': '湖南省-长沙市'},
         {'region_id': '430200', 'region_name': '株洲', 'region_fullname': '湖南省-株洲市'},
@@ -312,8 +312,7 @@ def get_region(regid):
         {'region_id': '431100', 'region_name': '永州', 'region_fullname': '湖南省-永州市'},
         {'region_id': '431200', 'region_name': '怀化', 'region_fullname': '湖南省-怀化市'},
         {'region_id': '431300', 'region_name': '娄底', 'region_fullname': '湖南省-娄底市'},
-        {'region_id': '433100', 'region_name': '湘西土家族苗族自治州',
-         'region_fullname': '湖南省-湘西土家族苗族自治州'},
+        {'region_id': '433100', 'region_name': '湘西土家族苗族自治州','region_fullname': '湖南省-湘西土家族苗族自治州'},
         {'region_id': '440100', 'region_name': '广州', 'region_fullname': '广东省-广州市'},
         {'region_id': '440200', 'region_name': '韶关', 'region_fullname': '广东省-韶关市'},
         {'region_id': '440300', 'region_name': '深圳', 'region_fullname': '广东省-深圳市'},
@@ -383,12 +382,9 @@ def get_region(regid):
         {'region_id': '520400', 'region_name': '安顺', 'region_fullname': '贵州省-安顺市'},
         {'region_id': '520500', 'region_name': '毕节', 'region_fullname': '贵州省-毕节市'},
         {'region_id': '520600', 'region_name': '铜仁', 'region_fullname': '贵州省-铜仁市'},
-        {'region_id': '522300', 'region_name': '黔西南布依族苗族自治州',
-         'region_fullname': '贵州省-黔西南布依族苗族自治州'},
-        {'region_id': '522600', 'region_name': '黔东南苗族侗族自治州',
-         'region_fullname': '贵州省-黔东南苗族侗族自治州'},
-        {'region_id': '522700', 'region_name': '黔南布依族苗族自治州',
-         'region_fullname': '贵州省-黔南布依族苗族自治州'},
+        {'region_id': '522300', 'region_name': '黔西南布依族苗族自治州','region_fullname': '贵州省-黔西南布依族苗族自治州'},
+        {'region_id': '522600', 'region_name': '黔东南苗族侗族自治州','region_fullname': '贵州省-黔东南苗族侗族自治州'},
+        {'region_id': '522700', 'region_name': '黔南布依族苗族自治州','region_fullname': '贵州省-黔南布依族苗族自治州'},
         {'region_id': '530100', 'region_name': '昆明', 'region_fullname': '云南省-昆明市'},
         {'region_id': '530300', 'region_name': '曲靖', 'region_fullname': '云南省-曲靖市'},
         {'region_id': '530400', 'region_name': '玉溪', 'region_fullname': '云南省-玉溪市'},
@@ -688,8 +684,8 @@ def searchqr(aid):
     return data
 
 
-def searchqx(aid):
-    sql = f"select aid from yunqi_qx where (xid='{aid}')"
+def searchqx(xid):
+    sql = f"select aid from yunqi_qx where (xid='{xid}')"
     data = excute_mysql(sql)
     return data
 
@@ -699,10 +695,10 @@ def search_aid(pnumber):
     return data
 
 
-def searchpnumber(pnumber):
-    sql = f"select aid from yunqi_addoninfos where (pnumber='{pnumber}')"
-    data = excute_mysql(sql)
-    return data
+# def searchpnumber(pnumber,title):
+#     sql = f"-- select aid from yunqi_addoninfos where (pnumber='{pnumber}'and title='{title}')"
+#     data = excute_mysql(sql)
+#     return data
 
 
 
@@ -927,9 +923,6 @@ def insert_skid(cname,skid):
 
 
 # 插入yunqi_addon17
-
-
-
 def insert_base(data):
     print(data)
     base = data.get('base')
@@ -1059,6 +1052,7 @@ def insert_addon18(reg,cname):
 # 插入项目表yunqi_addoninfos
 def insert_addoninfos(pro, cname):
     # 插入项目表yunqi_addoninfos
+    print(pro)
     project = pro.get('prodetail')
     Propertys = [
         {'id': "001", 'name': "新建"},
@@ -1082,8 +1076,12 @@ def insert_addoninfos(pro, cname):
     mid = 10036
     senddate = int(time.time())
     cityid=get_region(str(project.get('cityNum')))
-    nativeplace = findcityid(cityid)
-    print('ssssssssssssssssssssssssss:',cityid,nativeplace)
+    print(cityid)
+    if cityid:
+        nativeplace = findcityid(cityid)
+    else:
+        nativeplace=0.0
+    # print('ssssssssssssssssssssssssss:',cityid,nativeplace)
     linkman = project.get('buildCorpName', '-')
     ztzmoney = project.get('allInvest', 0.0)
     sjxmnumber = project.get('provincePrjNum', '-')
@@ -1099,21 +1097,23 @@ def insert_addoninfos(pro, cname):
     print('addoninfos:', fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
           zzjgdm, jsxz, tarea, lxjb)
     # time.sleep(222222)
-    if searchpnumber(pnumber):
+    aid=search_aid(pnumber)
+    if aid:
         print('项目表yunqi_addoninfos', pnumber, 'exist')
         updataaddoninfos(pnumber,nativeplace)
         # continue
     else:
         insertaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
                          zzjgdm, jsxz, tarea, lxjb)
-        print(f"项目表yunqi_addoninfos{title}入库完成")
+        print(f"项目表yunqi_addoninfos{pnumber}入库完成")
+        aid = search_aid(pnumber)
         # print(pnumber)
-    xid = search_aid(pnumber)
-    if searchqx(xid):
-        print(f'qx {pnumber} exist')
+    xid = aid
+    if searchqx(xid[0]):
+        print(f'qx {xid} exist')
     else:
         insert_qx(fid, xid)
-        print(f'qx {fid} 关联入库完成')
+        print(f'qx {xid} 关联入库完成')
 
     # 插入参与单位与相关负责人yunqi_addoninfos_cydw
     if pro.get('jointhing'):

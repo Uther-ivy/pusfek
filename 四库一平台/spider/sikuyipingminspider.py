@@ -175,18 +175,13 @@ class MinSpider(object):
             try:
                 logging.error(f"{traceback.format_exc()}\nReacquire connection.... 1")
                 self.randomtime()
-                self.replace_ip2(types)
+                self.replace_ip(types)
                 res = self.req_(url, types)
             except:
                 logging.error(f"{traceback.format_exc()}\nReacquire connection.... 2")
                 self.randomtime()
-                self.replace_ip(types)
+                self.replace_ip2(types)
                 res = self.req_(url, types)
-            # self.request_(url,types="default")
-
-
-
-            # print(res)
         return res
 
 
@@ -262,7 +257,7 @@ class MinSpider(object):
                 for data in person_data:
                     code = data['regTypeCode']
                     count = data['count']
-                    # print(code,count)
+                    print(code,count)
                     for page in range(math.ceil(count / 15)):
                         self.replace_ip('person')
                         url = f"https://sky.mohurd.gov.cn/skyapi/api/statis/getResult?_t=0.287965522231608&keys=corp%2Fcorp_detail_regperson_type%2Fpage&pageNumber={page + 1}&pageSize=15&corpId={cid}&regTypeCode={code}"
@@ -278,6 +273,7 @@ class MinSpider(object):
     # 公司历史业绩
     def get_project_info1(self, project,cid,cname):
         projectlist = []
+        pjtheard = []
         try:
             for page in range(math.ceil(project / 15)):
                 ptype='project'
@@ -285,8 +281,7 @@ class MinSpider(object):
                 project_url = f'https://sky.mohurd.gov.cn/skyapi/api/statis/getResult?_t=0.3891597792453172&keys=corp%2Fcorp_detail_project%2Fpage&provinceNum=&cityNum=&countyNum=&projectType=&pageNumber={page + 1}&pageSize=15&corpId={cid}'
                 resdata = json.loads(self.jiemi_(self.request_(project_url)['data']))[0]['data']['records']
                 while True:
-                    pjtheard = []
-                    if len(resdata)>5:
+                    if len(resdata)>=5:
                         thnum=5
                     elif 0<len(resdata)<5:
                         thnum=len(resdata)
@@ -294,15 +289,17 @@ class MinSpider(object):
                         break
                     for n in range(thnum):
                         prodict=resdata.pop()
+                        # print(prodict)
                         print(prodict['prjName'])
                         pid = prodict['prjNum']
-                        pj_thread = threading.Thread(target=self.get_project_data, args=(pid,cname,ptype))
+                        projectlist.append(pid)
+                        pj_thread = threading.Thread(target=self.get_project_data, args=(pid,cname,ptype,projectlist))
                         pj_thread.start()
                         pjtheard.append(pj_thread)
                     for pjth in pjtheard:
                         pjth.join()
-
-
+            # for w in projectlist:
+            #     print(w)
         except Exception as e:
             logging.error(f"历史业绩获取失败{e}\n{traceback.format_exc()}")
         return projectlist
@@ -321,7 +318,7 @@ class MinSpider(object):
             logging.error(f"历史业绩获取失败{e}\n{traceback.format_exc()}")
         return projectlist
 
-    def get_project_data(self,pid,cname,ptype):
+    def get_project_data(self,pid,cname,ptype,projectlist):
         detail_dict = {}
         try:
             prodetail = self.get_project_detail(pid, ptype)  # 项目详情

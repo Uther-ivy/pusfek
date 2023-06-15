@@ -336,9 +336,8 @@ def get_company_person_readfile(fil):
 def get_company_project_():
     try:
 
-        get_company_project = [serch_siku_id('河北建设集团卓诚路桥工程有限公司')]
+        get_company_project = [serch_siku_id('四川川交路桥有限责任公司')]
         print(get_company_project)
-        today_timestamp = int(time.mktime(time.strptime(fil, "%Y-%m-%d")))
         spider = MinSpider()
         spider.replace_ip()
         while True:
