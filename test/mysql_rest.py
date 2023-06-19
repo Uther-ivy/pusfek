@@ -40,16 +40,18 @@ def excute_mysql(sql, params=None, commit=False):
         finally:
             close_mysql(cur,pooldb)
 
-
-
 def search_url():
 
-    sql = f"select * from dede_addoninfos7 where url  like 'http://cr16g.crcc.cn%';"
+    # sql = f"select * from dede_addoninfos7 where title  like 'http://cr16g.crcc.cn%';"
+    sql = "select * from dede_arctiny where title ='沈阳和平区';"
     data= excute_mysql(sql)
     print(data)
     return data
+def del_():
+    sql = f" delete from dede_addoninfos7 where url='http://cr16g.crcc.cn%';"
+    data = excute_mysql(sql,commit=True)
+    print(data)
+    return data
 
-
-
-
+# del_()
 search_url()

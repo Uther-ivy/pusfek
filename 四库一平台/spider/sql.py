@@ -490,7 +490,7 @@ def searchzzlb(zzmc):
         for lis in lines.get('RECORDS'):
             # print(lis['pron'],type(lis['pron']))
             if zzmc in lis['pron']:
-                print(lis['pron'], lis['parent_id'])
+                print(lis['pron'], lis['id'])
                 return lis
 
 
@@ -640,8 +640,8 @@ def insertzzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg):
           "(%s,%s,%s,%s,%s,%s,%s);"
     excute_mysql(sql, (kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg),True)
 
-def delete_zzlx(kid):
-    sql = f"delete from yunqi_addon17_zzlx where (kid='{kid}')"
+def updata_zzlx(zzlb,zzid):
+    sql = f"update yunqi_addon17_zzlx set zzlb='{zzlb}' where id='{zzid}'"
     excute_mysql(sql,commit=True)
 
 
@@ -960,7 +960,7 @@ def insert_base(data):
         zzlb=zzl.get('id')
     else:
         zzlb=0
-    print(zzlb)
+    # print('2222222222222222222222222222222222222222222222222222222222222222',zzlb)
     m_id = 10036
     py = ''
     for pin in lazy_pinyin(qymc):
@@ -984,8 +984,8 @@ def insert_base(data):
         zzmc = cert.get('certName')
         zzlbid = searchzzlb(zzmc)
         if zzlbid:
-            zzlb =zzlbid.get('parent_id')
-            print('zzzzzzzzzzzzzzzzzzzzzzzzz:',zzlb)
+            zzlb =zzlbid.get('id')
+            # print('zzzzzzzzzzzzzzzzzzzzzzzzz:',zzlb)
         else:
             zzlb=0
         zzzsh =cert.get('certId')
@@ -993,8 +993,10 @@ def insert_base(data):
         zsyxq = Transformation(cert.get('endDate','0'))
         fzjg = cert['organName']
         print('zzlx:', kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg)
-        if searchzmc(kid,zzmc):
+        zzid=searchzmc(kid, zzmc)
+        if zzid:
             print(f'资质addon17_zzlx {qymc} exist!')
+            updata_zzlx(zzlb,zzid[0])
         else:
             insertzzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg)
             print(f"资质addon17_zzlx {zzmc} 入库完成")

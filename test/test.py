@@ -59,7 +59,7 @@ def run():
     # proxy =replace_ip()
     # print(proxy)
     session=requests.session()
-    url = f'http://139.224.15.208/api/main-search/'
+    url = f'http://39.107.102.206:8087/permission/getSecretKey'
     print(url)
     payload = {"entstatus":"",
                "enttype":"","nic":"E",
@@ -71,9 +71,8 @@ def run():
         'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
              }
     # data_list = session.get(url,headers=headers)
-    data_list = json.loads(session.post(url,headers=headers,data=payload).content.decode())
-    for db in data_list.get('data').get('list'):
-        print(db)
+    data=session.post(url,headers=headers).content.decode()
+    print(data)
 
 #
 def BeautifulStoneSoup():

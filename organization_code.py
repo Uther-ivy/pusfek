@@ -49,7 +49,6 @@ def get_company_base_cert(company_base_cert_list):
                 companybase = company_base_cert_list.pop()
                 print(companybase)
                 cname = companybase[0].replace('\n', '')
-
                 cid = companybase[1]
                 companys.add(cname)
                 print(cname, cid)
@@ -65,9 +64,6 @@ def get_company_base_cert(company_base_cert_list):
 
 def run_base():
     company_list = list(serch_siku())
-
-
-
     lists = []
     start = 0
     for a in range(1):
