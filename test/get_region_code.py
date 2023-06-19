@@ -3,7 +3,7 @@ import time
 import requests
 
 from spider.sikuyipingminspider import MinSpider
-from jiemi.prase_code import webjiema
+from siku_jiemi.prase_code import webjiema
 
 session=requests.session()
 

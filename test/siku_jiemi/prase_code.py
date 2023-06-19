@@ -14,7 +14,7 @@ from lxml.builder import unicode
 
 
 
-def webjiema(cipher_text):
+def web_jiema_AES(data):
     null = ""
     true = ""
     false=""
@@ -24,19 +24,18 @@ def webjiema(cipher_text):
     # iv = "1234567890123456".encode('utf-8')
     mode = AES.MODE_CBC
     cryptos = AES.new(key, mode, iv)
-    print(base64.b64decode(cipher_text))
-    print(a2b_hex(cipher_text))
-    plain_text_ = cryptos.decrypt(a2b_hex(cipher_text))
+    print(base64.b64decode(data))
+    print(a2b_hex(data))
+    plain_text_ = cryptos.decrypt(a2b_hex(data))
     print(plain_text_)
     Plain_text=bytes.decode(plain_text_)#.replace('',"").replace('',"").replace('',"").replace('',"").replace('',"").replace('',"")
     Plain_text=re.findall(r'(.*})',Plain_text)[0]#.replace('',"").replace('',"").replace('',"").replace('',"").replace('',"").replace('',"")
-
     print(type(Plain_text),Plain_text)
     Plain_text=eval(Plain_text)
     print(type(Plain_text),Plain_text)
     return Plain_text
 
-def shoujijiemi(data):
+def xiaochengxu_jiemi(data):
     js_infos = '''function deCrypt(t) {
                 Object.defineProperty(exports, "__esModule", {
                 value: !0
@@ -62,7 +61,7 @@ def shoujijiemi(data):
     return dedata
 
 
-def jiemi_CEB(data):
+def web_jiema_CEB(data):
     null = ""
     true = ""
     false = ""
@@ -94,7 +93,8 @@ if __name__ == '__main__':
     # shoujijiemi(xcx)
 
 #网页
-    a = '95780ba0943730051dccb5fe3918f9fe15642a943ae0c649ec8701a8a078dcdf873f8789ca8d21d353a78c2001f2d727fdecc71b938b6ecd3ee104d12aba1e0a37034e55c3d55f51597ac9e039abc37351813f87357f4f617f2135f89db8a21892051502c85ca1a3e80fca7dff62bcfb0f45d309e997bd5b72cdb8874e098d5b30c1ab0521741e9fcac1411080a73a7610d273d8d54461f8dee92593f0e46d2de007eb6e5d38658f662421cc86e237c790ec5b2f48bfc515150c4d5b9a8921a5a37349a5b7bd9ae73ee73f47c0e57706cf4dafe66717560e4566308c9e07cbd23c5ffacbc78817f0e8c6434687a386839394bf774658494c487d3dff972379ad7215b0be030fd91aaf471b56a2362bf73a9883de7a3f75b86d27fb40a30431909cdb4db3b8eab1fe1f184ad8c866fc504d88542cd095e2d8dad19d85d4e4386687a173ac85f8c91f22b73ba0d22c04648baaf5abc540325f44b7b6ba3061411745a273d019cea091db21c490a11898b2955509a70a0963eb0dbf0045ff227c3a773529810c104f23efacce57b414d3070af6ed4c00cc506c4b37711fde2f3718150ee8d964ead2a227c4becc55ef0f3200d34a91a8556a4842880af5c7f251207cd9d5070dde4d377db4e29658bf10f39347e7a2ae2b2fdd46732c35eaf7e9f42b254743c6dddecb12db1b81855717a7e8143d49c6e6fbd2ba8dfa272447eed9281b10eafd67d0d2746591510b58ec505c4b45b481ed2a3237ded5d1d16256cbff4a230625b8b33c7d49232ecefad31735ea61792430f41c1b40a7db1c7522769a52bf41a7043d72edfc08abf0bba843a890e43952ba0e41bc78409da5f5e76189a1f2f4415fa53219fedb5b7e6fb83c34fd28793618418b4abae74d79a5e5bf687d847ff5eb5286823736794bc08ba443291f329cdbe266a718690059492aee2770ab90e09d6402ed145b1517c515b645a64524c6f9dbc71767aeaeedd20134491f21a0a2d8a21a3ec9fd7cf727b1ddbb1c9de5ec7a699344f4a230dc3953211bcc0d56c89b94ad40f308e692275a7f4c0245e527eb711f7596ebe8186811d4db477b6eb241bdfba93f3b2fd9b8794b6eb7a07fcd528b21618ead33db4752207198428570fd16f2eaeb1528eb3b3d006072a9abdce0339913287de75ef29aeba4a76d45789b9f4fbd57d687fea7ae248dc2140d067cbe040ee953b55dea7e373a54b4c6ff209730b7c2cdb3e20da2460218922d134862faedae99e0d28ab63a721aaf6e23bac1eb0f865d726b55645c59da9aaea7fcb64c8548752a3ba64f7a641851347a64b8ab0c72f6c3807cce6768db1c023b967a3c7b59981254f15b2465214b690815dcae114ae259fcb7649ee563f5c955fa5bd4c65d29aa9d92cde7850dcdfc2f02ff0f86a87ad8d4ced73919dd1ca348ac7e5194bb1f3c2e371bce'
-    webjiema(a)
-    # jiemi_CEB(a)
+    data = '95780ba0943730051dccb5fe3918f9feae9abf241f28ec50003716c9927ce836e75cf0843f74ca2eebe0fd3276462bb9059717d20e9d7718eecf4adfdd7243f8a8e6860c3aca71962e58f8c0fc4781d00995bb85377b2ac55f0476589f73126f0b80a837491dc8f26848b35e0e636577cfab2a11ab4f172a27a7e1e3a53afe6ed8551fdb3f22ceec69bc8829523fa08b351e5c353ba45435c8bb95da93a13ed0213fc1620411bd7d6c9285248a79b05c38f4d7f92616417accada5ac1f1b83f4d58b0b1e70a4c7dea35fc5a2bebf6334cadf70ede90a3a15c3b84a932a3ad130a41b3311804f7142f68428f7e6c64204'
+    web_jiema_AES(data)
+    # xiaochengxu_jiemi(data)
+    # web_jiema_CEB(data)
 
