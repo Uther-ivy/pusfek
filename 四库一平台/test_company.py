@@ -24,7 +24,7 @@ def excute_company():
         # companylist = read_file('企业名称/1.txt')
         # companylist = read_file('./test_siku/companyname/errorname2.txt')
         companylist=[
-            '河北建设集团卓诚路桥工程有限公司'
+            '湖北仁益建设工程有限公司','陕西启封江超建筑工程有限公司','湖北凌盈建设有限公司',
             # '91610800064834709T',
             # '南京鑫盈和装饰工程有限公司', '湖南忆江南园林有限公司','全椒县方唐建筑设计有限公司',
             #  '瑞安永捷环境工程有限公司', '天津蓝铃盛丰广告有限公司','菏泽华杰东方装饰设计有限公司',
@@ -428,8 +428,8 @@ if __name__ == '__main__':
     # fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
     # insertbase()
     # testxinyongdaima('91610800064834709T')
-    # excute_company()
-    get_company_project_()
+    excute_company()
+    # get_company_project_()
 
     # get_company_project_(fil)
     # get_company_base_cert(fil)

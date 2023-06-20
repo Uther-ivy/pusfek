@@ -39,11 +39,15 @@ def excute_mysql(sql, params=None, commit=False):
             print(traceback.format_exc())
         finally:
             close_mysql(cur,pooldb)
+def update_data(id,url):
+    sql = f"update dede_arctiny set url='{url}' where id='{id}';"
+    data = excute_mysql(sql, commit=True)
+    print(data)
+    return data
 
-def search_url():
 
-    # sql = f"select * from dede_addoninfos7 where title  like 'http://cr16g.crcc.cn%';"
-    sql = "select * from dede_arctiny where title ='沈阳和平区';"
+def search_data():
+    sql = "select  id,url from dede_arctiny where url like'https://cg.95306.cn/proxy/portal/elasticSearch/indexView?noticeId=%';"
     data= excute_mysql(sql)
     print(data)
     return data
@@ -54,4 +58,8 @@ def del_():
     return data
 
 # del_()
-search_url()
+for data in search_data():
+    id=data[0]
+    url=data[1].replace('https://cg.95306.cn/proxy/portal/elasticSearch/indexView?noticeId=','https://cg.95306.cn/baseinfor/notice/informationShow?id=')
+    update_data(id, url)
+    print(id, url)

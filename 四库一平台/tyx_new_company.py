@@ -18,7 +18,7 @@ def list_parse():
                    "esdate_start": "",
                    "esdate_end": "2008-06-14", "regcap_start": "",
                    "regcap_end": "", "region": "", "opscope": "",
-                   "ltype": "", "page_size": 20, "page_index": page}
+                   "ltype": "", "page_size": 50, "page_index": page}
         headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
         }
