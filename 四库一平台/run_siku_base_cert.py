@@ -54,6 +54,8 @@ def get_company_base_cert(company_base_cert_list):
 
 def run_base():
     company_list = list(serch_siku())
+    print(len(company_list))
+    time.sleep(222)
     lists = []
     start = cert_params[0]
     for a in range(cert_params[1]):
@@ -88,7 +90,7 @@ if __name__ == '__main__':
         print('获取person')
         run_project()
         print('获取project')
-
+        print(datetime.datetime.now())
         # run2()
     # while True:
     #     time.sleep(2)

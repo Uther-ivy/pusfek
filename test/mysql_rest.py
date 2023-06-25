@@ -47,7 +47,7 @@ def update_data(id,url):
 
 
 def search_data():
-    sql = "select  id,url from dede_arctiny where url like'https://cg.95306.cn/proxy/portal/elasticSearch/indexView?noticeId=%';"
+    sql = "select  id,url from dede_arctiny where url like'http://ggzyjy.ahsz.gov.cn/%';"
     data= excute_mysql(sql)
     print(data)
     return data
@@ -58,8 +58,12 @@ def del_():
     return data
 
 # del_()
-for data in search_data():
-    id=data[0]
-    url=data[1].replace('https://cg.95306.cn/proxy/portal/elasticSearch/indexView?noticeId=','https://cg.95306.cn/baseinfor/notice/informationShow?id=')
-    update_data(id, url)
-    print(id, url)
+
+search_data()
+
+# for data in search_data():
+#     id=data[0]
+#     url=data[1].replace('https://cg.95306.cn/proxy/portal/elasticSearch/indexView?noticeId=','https://cg.95306.cn/baseinfor/notice/informationShow?id=')
+#     update_data(id, url)
+#     print(id, url)
+

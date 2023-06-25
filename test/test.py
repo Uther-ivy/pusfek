@@ -153,23 +153,7 @@ def get_cookie():
         cookie.save()
         print(resp)
 
-def times():
-    import time
-    # dates = 1669823999000
-    # dates='2022-10-18'
-    # time.strftime('%Y-%m-%d', time.localtime())
-    # futher=datetime.datetime.fromtimestamp(dates / 1000).strftime("%Y-%m-%d")
-    # print(futher)
-    today_date= datetime.date.today()
-    today_str = time.strptime(str(today_date), "%Y-%m-%d")
-    today_str2 = int(time.mktime(today_str))
-    print(today_date,today_str,today_str2)
-    print(int(time.mktime(time.strptime(str(datetime.date.today()), "%Y-%m-%d"))))
 
-    # 1682438400
-    # if isinstance(dates, int):
-    #     print(time.localtime())
-        # futher = time.strftime('%Y-%m', time.localtime(futher/1000))
 def regex():
     all_db = [{'districtName': '远安市', 'articleId': 'cgyxgg_c60156831f3444088ff4c56dba9931ae', 'publishDate': 1667923200000,
                'procurement': '金口街道办事处2022年12(至)12月政府采购意向', 'title': '葛店镇民政办公室2022年12(至)12月政府采购意向',
@@ -425,7 +409,7 @@ if __name__ == '__main__':
     # times()
     # pop_test()
     # urllibtest()
-    run()
+    # run()
 
 
     # img_recognition()
@@ -435,7 +419,7 @@ if __name__ == '__main__':
     # replace_ip()
     # base64_decode()
     # nodejs()
-    # times()
+    times()
     # runjs()
     # regex()
     # mid = str(time.time() * 1000)

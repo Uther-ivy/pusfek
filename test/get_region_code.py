@@ -3,7 +3,7 @@ import time
 import requests
 
 from spider.sikuyipingminspider import MinSpider
-from siku_jiemi.prase_code import webjiema
+from siku_jiemi.prase_code import web_jiema_AES
 
 session=requests.session()
 
@@ -44,7 +44,7 @@ code_list= [
 city_list=[]
 for code in code_list:
     print(code)
-    url = f'https://jzsc.mohurd.gov.cn/APi/webApi/asite/region/index?region_id={code[0]}'
+    url = f'https://jzsc.mohurd.gov.cn/APi/webApi/asite/region/index?region_id={code["region_id"]}'
     # url = f'https://jzsc.mohurd.gov.cn/APi/webApi/dataservice/query/comp/list?qy_region={420200}&pg=0&pgsz=15&total=0'
     print(url)
     headers={
@@ -53,7 +53,7 @@ for code in code_list:
     # data_list = session.get(url,headers=headers)
     ss=session.get(url, headers=headers,verify=False).content.decode()
     print(ss)
-    data_list = webjiema(ss)['data']
+    data_list = web_jiema_AES(ss)['data']
     print(data_list)
     for nn in  data_list:
         city_list.append(nn)
