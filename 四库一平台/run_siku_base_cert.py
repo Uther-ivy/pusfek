@@ -1,5 +1,6 @@
 import datetime
 import logging
+import random
 import sys
 import threading
 import time
@@ -91,9 +92,10 @@ if __name__ == '__main__':
         run_project()
         print('获取project')
         print(datetime.datetime.now())
+        time.sleep(random.random()*300)
+
         # run2()
     # while True:
-    #     time.sleep(2)
     #     spider = MinSpider(fil)
     #     print(spider.booltime())
     # get_company_base_cert_readfile()
