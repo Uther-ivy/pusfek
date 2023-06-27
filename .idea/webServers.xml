@@ -3,9 +3,9 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="2747217c-4b02-4e25-ba19-459c10291ff6" name="siku">
-        <fileTransfer rootFolder="/C:/Users/Administrator/Desktop/siku_spider" accessType="SFTP" host="192.168.0.200" port="22" sshConfigId="1d23f689-68b4-444b-be39-53c3c6e1de57" sshConfig="administrator@192.168.0.200:22 password">
+        <fileTransfer rootFolder="/C:/Users/Administrator/Desktop" accessType="SFTP" host="192.168.0.174" port="22" sshConfigId="1d23f689-68b4-444b-be39-53c3c6e1de57" sshConfig="administrator@192.168.0.174:22 password">
           <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>
@@ -13,6 +13,13 @@
         <fileTransfer accessType="SFTP" host="192.168.0.198" port="22" sshConfigId="7241f83f-71b2-48c2-bd7f-e520930b7d2f" sshConfig="adminstrator@192.168.0.198:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="ba83a2f3-dbc5-4ad7-8ae0-609613bec98c" name="174fserver">
+        <fileTransfer rootFolder="/C:/Users/Administrator/Desktop" accessType="SFTP" host="192.168.0.174" port="22" sshConfigId="1d23f689-68b4-444b-be39-53c3c6e1de57" sshConfig="administrator@192.168.0.174:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
         </fileTransfer>
       </webServer>

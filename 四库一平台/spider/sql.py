@@ -612,22 +612,25 @@ def inster_siku_id(cname,skid):
 
 
 # 增加数据
-def insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id):
+def insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id, py):
     sql = "insert into " \
-          "yunqi_addon17(typeid,qymc,tyshxydm,qyfr,zclx,nativeplace,xxdz,zzlb,xiangmu,zizhi,rynum,m_id) " \
+          "yunqi_addon17(typeid,qymc,tyshxydm,qyfr,zclx,nativeplace,xxdz,zzlb,xiangmu,zizhi,rynum,m_id,py) " \
           "values " \
-          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+          "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
 
-    excute_mysql(sql, (typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb,xiangmu, zizhi, rynum, m_id),True)
+    excute_mysql(sql, (typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb,xiangmu, zizhi, rynum, m_id,py),True)
 
-def upadtebase(zzlb,aid):
-    sql = f"update yunqi_addon17 set zzlb='{zzlb}' where aid='{aid}';"
-    excute_mysql(sql, commit=True)
+def upadtebase(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id, py,aid):
+    sql="update yunqi_addon17 " \
+        f"set typeid=%s, qymc=%s, tyshxydm=%s, qyfr=%s, zclx=%s, nativeplace=%s, xxdz=%s,zzlb=%s, xiangmu=%s, zizhi=%s, rynum=%s, m_id=%s, py=%s where aid='{aid}';"
+    excute_mysql(sql,(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id, py),commit=True)
+   #
+
 
 
 # 查询企业信息
 def searchdb(qymc):
-    sql = "select aid,tyshxydm,xiangmu,zizhi,rynum from yunqi_addon17 where (qymc='{}')".format(qymc)
+    sql = f"select aid,tyshxydm,xiangmu,zizhi,rynum from yunqi_addon17 where (qymc='{qymc}')"
     data = excute_mysql(sql)
     return data
 
@@ -640,9 +643,9 @@ def insertzzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg):
           "(%s,%s,%s,%s,%s,%s,%s);"
     excute_mysql(sql, (kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg),True)
 
-def updata_zzlx(zzlb,zzid):
-    sql = f"update yunqi_addon17_zzlx set zzlb='{zzlb}' where id='{zzid}'"
-    excute_mysql(sql,commit=True)
+def updata_zzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg,zzid):
+    sql = f"update yunqi_addon17_zzlx set kid=%s, zzlb=%s, zzzsh=%s, zzmc=%s, fzrq=%s, zsyxq=%s,fzjg=%s  where id='{zzid}';"
+    excute_mysql(sql,(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg),commit=True)
 
 
 def searchzmc(kid,zzmc):
@@ -659,14 +662,14 @@ def inertaddon18(fid, typeid, name, sex, idcard, cardname, leixing, companyid, z
     excute_mysql(sql, (fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq),True)
 
 
-def searchperson(zyyzh,name):
-    sql = f"select aid , leixing from yunqi_addon18 where (zyyzh='{zyyzh}' and name='{name}')"
+def searchperson(zyyzh):
+    sql = f"select aid , leixing from yunqi_addon18 where zyyzh='{zyyzh}';"
     data=excute_mysql(sql)
     return data
 
-def update_person_cert(aid,leixing):
-    sql = f"update yunqi_addon18 set leixing='{leixing}' where aid='{aid}';"
-    excute_mysql(sql, commit=True)
+def update_person_cert(fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq,aid):
+    sql = f"update yunqi_addon18 set fid=%s, typeid=%s, name=%s, sex=%s, idcard=%s, cardname=%s, leixing=%s, companyid=%s, zsbh=%s, zyyzh=%s, yxq=%s where aid='{aid}';"
+    excute_mysql(sql, (fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq),commit=True)
 
 
 def insert_qr(fid, aid):
@@ -712,9 +715,11 @@ def insertaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnu
           "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
     excute_mysql(sql, (fid, typeid, mid, title, senddate,nativeplace, linkman, pnumber, ztzmoney, lxwh, sjxmnumber, zzjgdm, jsxz,tarea, "''", lxjb),True)
 
-def updataaddoninfos(pnumber,nativeplace):
-    sql = f"update yunqi_addoninfos set nativeplace='{nativeplace}' where pnumber='{pnumber}';"
-    excute_mysql(sql, commit=True)
+def updataaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
+          zzjgdm, jsxz, tarea, lxjb):
+    sql = f"update yunqi_addoninfos set fid=%s, typeid=%s, mid=%s, title=%s, senddate=%s, nativeplace=%s,linkman=%s, pnumber=%s, ztzmoney=%s, lxwh=%s, sjxmnumber=%s, zzjgdm=%s, jsxz=%s, tarea=%s, lxjb=%s where pnumber='{pnumber}';"
+    excute_mysql(sql,(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
+          zzjgdm, jsxz, tarea, lxjb), commit=True)
 
 def search_cydw(kid, qymc):
     sql = f"select * from yunqi_addoninfos_cydw where (kid='{kid}' and qymc='{qymc}')"
@@ -839,7 +844,7 @@ def search_sgxcglr(name, title):
 
 
 def insert_sgxcglr(title, kid, pid, tyshxydm, name, idnum, ssqy, sgxkzbh, gwmc, zsbh, zsyxq, fzdw):
-    
+
 
     sql = "insert into yunqi_addoninfos_sgxcglr(title, kid, pid, tyshxydm, name, idnum, ssqy, sgxkzbh, gwmc, zsbh, zsyxq, fzdw) " \
           "values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
@@ -965,13 +970,15 @@ def insert_base(data):
     py = ''
     for pin in lazy_pinyin(qymc):
         py += pin
-    print("addon17:", typeid, py, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id)
+    print("addon17:", typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id, py)
+    # time.sleep(22222)
     id = searchdb(qymc)
     if id:
         print(f'企业基本信息yunqi_addon17 {qymc} exist!')
-        upadtebase(zzlb,id[0])
+        upadtebase(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz,zzlb, xiangmu, zizhi, rynum, m_id, py,id[0])
+        print(f'企业基本信息yunqi_addon17 {qymc} update')
     else:
-        insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb, xiangmu, zizhi, rynum, m_id)
+        insertdata(typeid, qymc, tyshxydm, qyfr, zclx, nativeplace, xxdz, zzlb, xiangmu, zizhi, rynum, m_id,py)
         id = searchdb(qymc)
         print(f'企业基本信息addon17{qymc}入库完成')
 
@@ -996,7 +1003,8 @@ def insert_base(data):
         zzid=searchzmc(kid, zzmc)
         if zzid:
             print(f'资质addon17_zzlx {qymc} exist!')
-            updata_zzlx(zzlb,zzid[0])
+            updata_zzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg,zzid[0])
+            print(f'资质addon17_zzlx {qymc} update')
         else:
             insertzzlx(kid, zzlb, zzzsh, zzmc, fzrq, zsyxq, fzjg)
             print(f"资质addon17_zzlx {zzmc} 入库完成")
@@ -1031,18 +1039,15 @@ def insert_addon18(reg,cname):
         companyid = reg.get('gsname')
         yxq = reg.get('reg_end')
         print('addon18:', fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq)
-        personid=searchperson(zyyzh,name)
+        personid=searchperson(zyyzh)
         if personid:
-            if personid[1]:
-                print(personid[1])
-                print(f'人员inertaddon18 {name} exist')
-            else:
-                update_person_cert(personid[0],leixing)
-                print(f'人员update_cert {name} 入库完成')
+            print(f'人员cert {name} exit!')
+            update_person_cert(fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq,personid[0])
+            print(f'人员update_cert {name} update')
         else:
             inertaddon18(fid, typeid, name, sex, idcard, cardname, leixing, companyid, zsbh, zyyzh, yxq)
             print(f"人员inertaddon18 {name}入库完成")
-            personid = searchperson(zyyzh, name)
+            personid = searchperson(zyyzh)
         aid = personid[0]
         if searchqr(aid):
             print('qx', aid, 'exist')
@@ -1102,7 +1107,9 @@ def insert_addoninfos(pro, cname):
     aid=search_aid(pnumber)
     if aid:
         print('项目表yunqi_addoninfos', pnumber, 'exist')
-        updataaddoninfos(pnumber,nativeplace)
+        # updataaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
+        #   zzjgdm, jsxz, tarea, lxjb)
+        # print('项目表yunqi_addoninfos', pnumber, 'update')
         # continue
     else:
         insertaddoninfos(fid, typeid, mid, title, senddate, nativeplace,linkman, pnumber, ztzmoney, lxwh, sjxmnumber,
@@ -1351,7 +1358,7 @@ def insert_addoninfos(pro, cname):
                           long, wide, protect, scale, other, ztb_number, sg_number, xk_number, zl_number, aq_number, shock,
                           green, green_type, shocks, limit, set, rebar, steel)
                 print(f'工程项目单体 dt 插入{number}成功')
-    
+
     # 插入施工图审查yunqi_addoninfos_sgtsc
     if pro.get('censor'):
         for censor in pro.get('censor'):
@@ -1724,7 +1731,7 @@ def insert_addoninfos(pro, cname):
             else:
                 insert_sgxcjxsb(title, kid, pid, jxsbmc, cqdw, jxmodel, sgxkzbh, sydw, sybw, acdw, sbbabh, jhjcsj, jhccsj)
                 print(f'现场机械设备 sgxcjxsb 插入{sbbabh}成功')
-    
+
     #专业人员名单 addoninfos_zyry
     if pro.get('censor_user'):
         userSpecialTypes = [

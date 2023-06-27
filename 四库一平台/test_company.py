@@ -237,9 +237,9 @@ def get_company_base_cert():
         #     spider.randomtime()
     except Exception as e:
         logging.error(f"get_company_base_cert 获取失败{e}\n{traceback.format_exc()}")
-def excute_new_company(fil):
+def excute_new_company():
     try:
-        spider=MinSpider(fil)
+        spider=MinSpider()
         spider.replace_ip()
         # for page in range(1,6):
         spider.get_new_company_id()
