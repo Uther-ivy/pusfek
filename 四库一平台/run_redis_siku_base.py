@@ -47,7 +47,7 @@ def get_redis_company_id_base_cert():
                 cname = companybase[0]
                 if not searchdb(cname):
                     cid = companybase[1]
-                    scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname),)
+                    scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname,times),)
                     scthread.start()
                     threads_base_cert.append(scthread)
             for thread in threads_base_cert:

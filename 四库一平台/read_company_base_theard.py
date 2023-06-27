@@ -12,8 +12,10 @@ from spider.sikuyipingminspider import MinSpider
 from spider.sql import searchdb
 
 
-def get_company_base_cert_readfile(fil,files):
+def get_company_base_cert_readfile(files):
     try:
+        times = str(datetime.date.today())
+        fil = f'company_id{times}.txt'
         reads = read_file(files)
         company_list = []
         for n in reads:
@@ -30,11 +32,11 @@ def get_company_base_cert_readfile(fil,files):
         if len(company_list)==0:
             print('company_list is',company_list)
             sys.exit()
-        spider = MinSpider(fil)
+        spider = MinSpider()
         spider.replace_ip()
         print(type(company_list), len(company_list), company_list)
         while True:
-            if spider.booltime():  # is true wating 1h
+            if spider.booltime(times):  # is true wating 1h
                 print('wait1h......')
                 time.sleep(3600)
             threads = []
@@ -48,7 +50,7 @@ def get_company_base_cert_readfile(fil,files):
                 companybase=company_list.pop()
                 cname = companybase[0].replace('\n', '')
                 cid = companybase[1]
-                scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, fil, cname),)
+                scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname, times),)
                 scthread.start()
                 threads.append(scthread)
             for thread in threads:
@@ -59,7 +61,7 @@ def get_company_base_cert_readfile(fil,files):
         logging.error(f"get_company_base_cert 获取失败{e}\n{traceback.format_exc()}")
         print(files)
 def theard_reads():
-    fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
+
     process = []
     osdir=os.listdir('./READS_C')
     for a in osdir:
@@ -67,7 +69,7 @@ def theard_reads():
         for t in ostxt:
             print(f'./READS_C/{a}/{t}')
             files=f'./READS_C/{a}/{t}'
-            p = Process(target=get_company_base_cert_readfile, args=(fil,files))
+            p = Process(target=get_company_base_cert_readfile, args=(files))
             print(p.name)
             p.start()
             p.join()

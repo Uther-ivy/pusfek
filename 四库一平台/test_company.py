@@ -38,6 +38,19 @@ def excute_company():
             # '铁门关市鑫泉商贸有限责任公司','新疆玖鑫商贸有限公司','铁门关市双博科技有限公司','铁门关市帮达商贸有限公司',
             # '新疆运丰棉业机械有限公司','新疆中如新材料有限责任公司','新疆久泰钢结构工程有限公司','铁门关市中意新材料有限公司'
         ]#
+        company_list = [
+            '新疆华博建筑工程有限公司',
+            '西藏曲协建设工程有限公司',
+            '广州晟开工程有限公司',
+            '西藏添宝建筑工程有限公司',
+            '中交（三沙）开发建设有限公司',
+            '青海平垣建设工程有限公司',
+            '西藏斯巴尔建设有限公司',
+            '新疆毫美建筑工程有限责任公司',
+            '新疆百诚建筑工程有限公司',
+            '西藏桥穆玉日建筑工程有限责任公司',
+            '新疆振峰工程建设有限公司',
+        ]
         print(companylist)
         while True:
             threads = []
@@ -75,7 +88,7 @@ def excute_company():
         logging.error(f"excute_companyid获取失败{e}\n{traceback.format_exc()}")
 def get_redis_company_id_base_cert(fil):
     try:
-        spider = MinSpider(fil)
+        spider = MinSpider()
         spider.replace_ip()
         # while True:
         companys = set()
@@ -114,12 +127,13 @@ def get_redis_company_id_base_cert(fil):
                 spider.randomtime()
     except Exception as e:
         logging.error(f"def get_redis_company_id_base_cert 获取失败{e}\n{traceback.format_exc()}")
-def excute_company_readfile(fil):
+def excute_company_read_file():
     fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
     # get_redis_company_id_base_cert(fil)
-    spider = MinSpider(fil)
+    spider = MinSpider()
     spider.replace_ip()
     company_list = read_file('company_id2023')
+
     threads = []
     for company in company_list:
         # print(type(eval(company)),company)
@@ -241,8 +255,8 @@ def excute_new_company():
     try:
         spider=MinSpider()
         spider.replace_ip()
-        # for page in range(1,6):
-        spider.get_new_company_id()
+        for page in range(1,6):
+            spider.get_new_company_id(page,fil)
         newcompanyset=spider.new_companyset
         print(newcompanyset)
         while True:
@@ -422,7 +436,7 @@ if __name__ == '__main__':
     # insertbase()
     # testxinyongdaima('91610800064834709T')
     # excute_company()
-    get_company_cid()
+    # get_company_cid()
     # get_company_project_()
 
     # get_company_project_(fil)
@@ -432,8 +446,10 @@ if __name__ == '__main__':
     # excute_new_company(fil)
     # excute_listdir_company(fil)
     # excute_yunqi_cai(fil)
-    # excute_company(fil)
-    # companylist = read_file('企业名称/1.txt')[::-1]
+    # excute_company()
+    excute_company_read_file()
+
+# companylist = read_file('企业名称/1.txt')[::-1]
     # print(companylist)
     # print(companylist)
 

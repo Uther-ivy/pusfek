@@ -46,7 +46,7 @@ def excute_new_company_thread():
                     print(cname, cid, psnum)
                     if psnum == None:
                         # scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname),)
-                        scthread = threading.Thread(target=spider.companysearch, args=(cid, cname),)
+                        scthread = threading.Thread(target=spider.companysearch, args=(cid, cname,times),)
                         scthread.start()
                         threads.append(scthread)
                 for thread in threads:

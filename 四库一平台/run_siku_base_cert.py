@@ -41,7 +41,7 @@ def get_company_base_cert(company_base_cert_list):
                 cid = companybase[1]
                 companys.add(cname)
                 print(cname, cid)
-                scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid,cname), )
+                scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid,cname,times), )
                 scthread.start()
                 threads.append(scthread)
             for thread in threads:

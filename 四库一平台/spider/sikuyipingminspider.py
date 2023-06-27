@@ -695,7 +695,7 @@ class MinSpider(object):
             # insert_yunqi_cai(name, times)
 
 
-    def run_search_base_cert(self, cid, name):
+    def run_search_base_cert(self, cid, name,fil):
         try:
             company_data = self.company_dict()
             get_company_base = self.get_company_info(cid)  # 基础信息
@@ -708,21 +708,12 @@ class MinSpider(object):
             print(company_data)
             insert_base(company_data)
             # company_four_over(name)
-            # personnum = get_detail_info['regPersonCount']
-            # projectnum = get_detail_info['projectCount']
-            # if personnum > 0:
-            #     company_data['regporson'] = self.get_person_info(cid,iddict)
-            # if projectnum > 0:
-            #     company_data['project'] = self.get_project_info(projectnum,cid,iddict)
-
-            # print(f'{name} has saved the companydb{ip_num}.json')
         except Exception as e:
-            # logging.error(f"{name}获取失败{e}\n{traceback.format_exc()}")
-            # file=f"./company_name/errorcompany{fil}.txt"
-            # wirte_file(file,name,cid)
+            file=f"./errorcompany{fil}.txt"
+            wirte_file(file,name)
             logging.error(f"{name}获取失败{e}\n{traceback.format_exc()}")
 
-    def companysearch(self, cid, name):
+    def companysearch(self, cid, name,fil):
         try:
             company_data = self.company_dict()
             get_company_base = self.get_company_info(cid)  # 基础信息
@@ -756,8 +747,8 @@ class MinSpider(object):
             # print(f'{name} has saved the companydb{ip_num}.json')
         except Exception as e:
             # logging.error(f"{name}获取失败{e}\n{traceback.format_exc()}")
-            # file=f"./company_name/errorcompany{fil}.txt"
-            # wirte_file(file,name,cid)
+            file=f"./errorcompany{fil}.txt"
+            wirte_file(file,name)
             logging.error(f"{name}获取失败{e}\n{traceback.format_exc()}")
 
 # def autorun():
