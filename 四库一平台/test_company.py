@@ -19,12 +19,25 @@ from spider.sql import search_yunqi_cai, search_cai, del_cname, serch_siku, serc
 
 def excute_company():
     try:
+        times = str(datetime.date.today())
+        fil = f'company_id{times}.txt'
         spider = MinSpider()
         spider.replace_ip()
         # companylist = read_file('企业名称/1.txt')
         # companylist = read_file('./test_siku/companyname/errorname2.txt')
         companylist=[
-            '东营格瑞电子科技有限公司','泰安市恒泰消防工程有限公司','山东中优建设工程有限公司',
+            # '东营格瑞电子科技有限公司','泰安市恒泰消防工程有限公司','山东中优建设工程有限公司',
+            '新疆华博建筑工程有限公司',
+            '西藏曲协建设工程有限公司',
+            '广州晟开工程有限公司',
+            '西藏添宝建筑工程有限公司',
+            '中交（三沙）开发建设有限公司',
+            '青海平垣建设工程有限公司',
+            '西藏斯巴尔建设有限公司',
+            '新疆毫美建筑工程有限责任公司',
+            '新疆百诚建筑工程有限公司',
+            '西藏桥穆玉日建筑工程有限责任公司',
+            '新疆振峰工程建设有限公司',
             # '91610800064834709T',
             # '南京鑫盈和装饰工程有限公司', '湖南忆江南园林有限公司','全椒县方唐建筑设计有限公司',
             #  '瑞安永捷环境工程有限公司', '天津蓝铃盛丰广告有限公司','菏泽华杰东方装饰设计有限公司',
@@ -38,19 +51,6 @@ def excute_company():
             # '铁门关市鑫泉商贸有限责任公司','新疆玖鑫商贸有限公司','铁门关市双博科技有限公司','铁门关市帮达商贸有限公司',
             # '新疆运丰棉业机械有限公司','新疆中如新材料有限责任公司','新疆久泰钢结构工程有限公司','铁门关市中意新材料有限公司'
         ]#
-        company_list = [
-            '新疆华博建筑工程有限公司',
-            '西藏曲协建设工程有限公司',
-            '广州晟开工程有限公司',
-            '西藏添宝建筑工程有限公司',
-            '中交（三沙）开发建设有限公司',
-            '青海平垣建设工程有限公司',
-            '西藏斯巴尔建设有限公司',
-            '新疆毫美建筑工程有限责任公司',
-            '新疆百诚建筑工程有限公司',
-            '西藏桥穆玉日建筑工程有限责任公司',
-            '新疆振峰工程建设有限公司',
-        ]
         print(companylist)
         while True:
             threads = []
@@ -76,7 +76,8 @@ def excute_company():
                 print(companybase)
                 cid=companybase[1]
                 cname=companybase[0]
-                scthread = threading.Thread(target=spider.companysearch, args=(cid, cname), )
+                # scthread = threading.Thread(target=spider.companysearch, args=(cid, cname,times), )
+                scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname,times), )
                 print('*' * 20, scthread.getName(), '*' * 20)
                 scthread.start()
                 threads.append(scthread)
@@ -446,8 +447,8 @@ if __name__ == '__main__':
     # excute_new_company(fil)
     # excute_listdir_company(fil)
     # excute_yunqi_cai(fil)
-    # excute_company()
-    excute_company_read_file()
+    excute_company()
+    # excute_company_read_file()
 
 # companylist = read_file('企业名称/1.txt')[::-1]
     # print(companylist)

@@ -76,7 +76,7 @@ def findcityid(name):
         # print(lines)
     for lis in lines.get('RECORDS'):
         # print(lis)
-        if city in lis['name']:
+        if lis['name']in city:
             print(lis['name'], lis['id'])
             return lis['id']
 
