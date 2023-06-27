@@ -8,6 +8,7 @@ import traceback
 
 import schedule
 
+from read_company_base import get_company_base_cert_readfile
 from spider.redis_company import company_four_over
 from spider.sikuyipingminspider import MinSpider, wirte_file
 from spider.sql import insert_skid, searchdb
@@ -22,6 +23,7 @@ def excute_new_company_thread():
             if spider.booltime(times):  # is true wating 1h
                 print('exiting......')
                 wirte_file(fil, data=1)
+                get_company_base_cert_readfile()
                 return
             spider.replace_ip()
             for page in range(1, 11):
