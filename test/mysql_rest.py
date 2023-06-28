@@ -39,15 +39,15 @@ def excute_mysql(sql, params=None, commit=False):
             print(traceback.format_exc())
         finally:
             close_mysql(cur,pooldb)
-def update_data(id,sheng):
-    sql = f"update dede_arctiny set sheng='{sheng}' where id='{id}';"
+def update_data(id,shi):
+    sql = f"update dede_arctiny set shi='{shi}',nativeplace='{shi}' where id='{id}';"
     data = excute_mysql(sql, commit=True)
     print(data)
     return data
 
 
 def search_data():
-    sql = "select  id,sheng from dede_arctiny where url like'http://ggzyjy.liaocheng.gov.cn/%';"
+    sql = "select  id,shi from dede_arctiny where url like'https://ygcg.jinshenjy.com%';"
     data= excute_mysql(sql)
     print(data)
     return data
@@ -63,7 +63,7 @@ def search_data():
 
 for data in search_data():
     id=data[0]
-    sheng=8000
-    update_data(id, sheng)
+    shi=2501
+    update_data(id, shi)
     # print(data)
 
