@@ -93,34 +93,35 @@ class cgyxspider(object):
 
     def get_data_detail(self, res):
             detail_list=list()
-            size=len(res.xpath("//tr//tr"))
-            for num in range(2,size+1):
-                detail_dict = {}
-                proname = res.xpath(f"//tr//tr[{num}]/td[2]/p//text()")
-                if proname:
-                    proname = proname[0]
-                price = res.xpath(f"//tr//tr[{num}]/td[4]/p//text()")
-                if price :
+            # size=len(res.xpath("//tr//tr"))
+            content=etree.tostring(res.xpath("//div[@class='listConts']")[0],method='HTML').decode()
+            # for num in range(2,size+1):
+            #     detail_dict = {}
+            #     proname = res.xpath(f"//tr//tr[{num}]/td[2]/p//text()")
+            #     if proname:
+            #         proname = proname[0]
+            price = res.xpath(f"//tr//tr[2]/td[4]/p/span[1]/text()")
+            if price :
                     price = price[0]
-                require = res.xpath(f"//tr//tr[{num}]/td[3]/p//text()")
-                if require:
-                    require = require[0]
-                futher = res.xpath(f"//tr//tr[{num}]/td[5]/p//text()")
-                if futher:
+            #     require = res.xpath(f"//tr//tr[{num}]/td[3]/p//text()")
+            #     if require:
+            #         require = require[0]
+            futher = res.xpath(f"//tr//tr[2]/td[6]/p/span[1]/text()")
+            if futher:
                     futher = int(time.mktime(time.strptime(futher[0], "%Y年%m月")))
-                comment = res.xpath(f"//tr/tr[{num}]/td[6]/p//text()")
-                if comment:
-                    comment = comment[0]
-
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+            #     comment = res.xpath(f"//tr/tr[{num}]/td[6]/p//text()")
+            #     if comment:
+            #         comment = comment[0]
+            #
+            #     detail_dict['proname'] = proname
+            #     detail_dict['price'] = price
+            #     detail_dict['require'] = require
+            #     detail_dict['futher'] = futher
+            #     detail_dict['comment'] = comment
+            #     detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
 
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -185,12 +186,12 @@ def run(page,spider,times,file):
                         detail_data = etree.HTML(content)
                         proc=detail_data.xpath("//div[@class='info']/midea[2]/text()")[0]
                         prodict['procurement'] =re.findall('发布人[：:]\s?(\S+)',proc)[0]
-                        prodict['detail'] = spider.get_data_detail(detail_data)
+                        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detail_data)
+                        print(prodict)
                         # spider.write_data(file, str(prodict)+'\n')
                         mysqldb = serversql()
                         rundb(mysqldb, prodict)
                     print(detailurl)
-                    print(prodict)
                         # print(prodict)
                         # exit()
                 else:

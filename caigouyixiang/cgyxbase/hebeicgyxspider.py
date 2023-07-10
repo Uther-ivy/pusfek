@@ -90,6 +90,7 @@ class cgyxspider(object):
                     data=data[0]
                 detailarray = data.split('#_@_@')
                 detaillist = detailarray[0].split('#_#')
+                table_html = ''
                 for num in range(len(detaillist)):
                     detail_dict = {}
                     proname = detailarray[1]
@@ -113,15 +114,42 @@ class cgyxspider(object):
                     if comment:
                         comment= comment.split('#_#')[num]
                     # print(proname, price, require, futher, comment)
-                    detail_dict['proname'] = proname
-                    detail_dict['price'] = price
+                    # detail_dict['proname'] = proname
+                    # detail_dict['price'] = price
                     # detail_dict['protype'] =
-                    detail_dict['require'] = require
-                    detail_dict['futher'] = futher
-                    detail_dict['comment'] = comment
-                    detail_list.append(detail_dict)
+                    # detail_dict['require'] = require
+                    # detail_dict['futher'] = futher
+                    # detail_dict['comment'] = comment
+                    # detail_list.append(detail_dict)
+                    table_html+=f"""
+                        <tr>
+                            <th width="30"  align="center">{num+1}</th>
+                            <th width="90" >{proname}</th>
+                            <th width="600" >{require}</th>
+                            <th width="60"  align="center">{price}</th>
+                            <th width="90"  align="center">{futher}</th>
+                            <th width="30" >{comment}</th>
+                        </tr>"""
+                content=f"""
+                <table width="1100" border="1" align="center" cellpadding="0" cellspacing="1"  id="intentionAnnc" style="table-layout: fixed;word-break: break-all; word-wrap: break-word;">
+                    <tbody>
+                        <tr>
+                            <th width="30" bgcolor="#FFFFFF" align="center">序号</th>
+                            <th width="90" bgcolor="#FFFFFF">采购项目名称</th>
+                            <th width="600" bgcolor="#FFFFFF">采购需求概况</th>
+                            <th width="60" bgcolor="#FFFFFF" align="center">预算金额（万元）</th>
+                            <th width="90" bgcolor="#FFFFFF" align="center">预计采购时间</th>
+                            <th width="30" bgcolor="#FFFFFF">备注</th>
+                        </tr>
+                         {table_html}
+                    </tbody>
+                </table>
+                
+                               
+                       """
+
                     # print( proname,price,require,futher,comment)
-                return detail_list
+                return content, futher,price
         except Exception as e:
             logging.error(f"detail获取失败{e}\n{traceback.format_exc()}\n{url}")
 
@@ -130,6 +158,7 @@ class cgyxspider(object):
     def get_data_list(self, times,page):
         params=['index.html','index_1047.html']
         params1=[f'index_{page}.html',f'index_1047_{page}.html']
+        print(page)
         for size in range(len(params)):
             if page >= 1:
                  url= f'http://www.ccgp-hebei.gov.cn/province/zfcgyxgg/zfcgyx/{params1[size]}'
@@ -198,7 +227,7 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl = href
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(detailurl)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)

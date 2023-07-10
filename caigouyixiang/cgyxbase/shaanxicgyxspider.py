@@ -78,43 +78,44 @@ class cgyxspider(object):
         res = self.request_(url, method='get')
         if res:
             detail = etree.HTML(res)
-            size= detail.xpath("//table[@class='noticeTable']//tr")
-            for num in range(2,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[2]/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                require = detail.xpath(f"//tr[{num}]/td[3]/text()")
-                if require:
-                    require = require[0]
-                price = detail.xpath(f"//tr[{num}]/td[4]/text()")
-                if price :
+            content= etree.tostring(detail.xpath("//div[@class='noticeArea']")[0],method='HTML').decode()
+            # size= detail.xpath("//table[@class='noticeTable']//tr")
+            # for num in range(2,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[2]/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            #     require = detail.xpath(f"//tr[{num}]/td[3]/text()")
+            #     if require:
+            #         require = require[0]
+            price = detail.xpath(f"//tr[2]/td[4]/text()")
+            if price :
                     price =price[0]
-                futher = detail.xpath(f"//tr[{num}]/td[5]/text()")
-                if futher:
+            futher = detail.xpath(f"//tr[2]/td[5]/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[6]/text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # comment = detail.xpath(f"//tr[{num}]/td[6]/text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
 
 
     def get_data_list(self, times,page):
-        url = f'http://www.ccgp-shaanxi.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do?&siteId=a7a15d60-de5b-42f2-b35a-7e3efc34e54f&channel=1eb454a2-7ff7-4a3b-b12c-12acc2685bd1&currPage={page}&pageSize=10&noticeType=59%2C5E&regionCode=&purchaseManner=&title=&openTenderCode=&purchaseNature=&operationStartTime=&operationEndTime=&selectTimeName=noticeTime&cityOrArea='
+        url = f'http://www.ccgp-shaanxi.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do?&siteId=a7a15d60-de5b-42f2-b35a-7e3efc34e54f&channel=1eb454a2-7ff7-4a3b-b12c-12acc2685bd1&currPage={page}&pageSize=10&noticeType=59%2C5E&regionCode=610100&purchaseManner=&title=&openTenderCode=&purchaseNature=&operationStartTime=&operationEndTime=&selectTimeName=noticeTime&cityOrArea=6'
         print(url)
         payload =None
         data=None
@@ -156,12 +157,12 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl = f'http://www.ccgp-shaanxi.gov.cn/freecms{href}?noticeType=59&noticeId={articleId}'
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)
-        print(detailurl)
         print(prodict)
+        print(detailurl)
 
 
 def main(page, times, file):

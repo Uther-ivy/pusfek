@@ -77,35 +77,36 @@ class cgyxspider(object):
 
     def get_data_detail(self, res):
             detail_list=list()
-            size=len(res.xpath("//tbody/tr"))
-            for num in range(2,size+1):
-                detail_dict = {}
-                if num > 1:
-                    proname = res.xpath(f"//tr[{num}]/td[2]/p/text()")
-                    if proname:
-                        proname = proname[0]
-                    price = res.xpath(f"//tr[{num}]/td[4]/p/text()")
-                    if price :
+            content=etree.tostring(res.xpath("//div[@class='art_con']/div[2]")[0],method="HTML").decode()
+            # size=len(res.xpath("//tbody/tr"))
+            # for num in range(2,size+1):
+            #     detail_dict = {}
+            #     if num > 1:
+            #         proname = res.xpath(f"//tr[{num}]/td[2]/p/text()")
+            #         if proname:
+            #             proname = proname[0]
+            price = res.xpath(f"//tr[2]/td[4]/p/text()")
+            if price :
                         price = price[0]
-                    require = res.xpath(f"//tr[{num}]/td[3]/p/text()")
-                    if require:
-                        require = require[0]
-                    futher = res.xpath(f"//tr[{num}]/td[5]/p/text()")
-                    if futher:
+                    # require = res.xpath(f"//tr[{num}]/td[3]/p/text()")
+                    # if require:
+                    #     require = require[0]
+            futher = res.xpath(f"//tr[2]/td[5]/p/text()")
+            if futher:
                         futher = int(time.mktime(time.strptime(futher[0], "%Y-%m")))
-                    comment = res.xpath(f"//tr[{num}]/td[6]/p/text()")
-                    if comment:
-                        comment = comment[0]
-
-                    detail_dict['proname'] = proname
-                    detail_dict['price'] = price
-                    detail_dict['require'] = require
-                    detail_dict['futher'] = futher
-                    detail_dict['comment'] = comment
-                    detail_list.append(detail_dict)
+                    # comment = res.xpath(f"//tr[{num}]/td[6]/p/text()")
+                    # if comment:
+                    #     comment = comment[0]
+                    #
+                    # detail_dict['proname'] = proname
+                    # detail_dict['price'] = price
+                    # detail_dict['require'] = require
+                    # detail_dict['futher'] = futher
+                    # detail_dict['comment'] = comment
+                    # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
 
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -176,6 +177,7 @@ def run(page,spider,times,file):
                     # re_num=re.findall('(\d{4}-\d{2})-\d+',date)[0]
                     # id='/'+re_num.replace('-','/')+'/'+articleId
                     detailurl='http://www.ccgp-hubei.gov.cn'+href
+                    print(detailurl)
                     prodict['detailurl']=detailurl
                     content = spider.get_data_info(detailurl)
                     if content:
@@ -184,7 +186,7 @@ def run(page,spider,times,file):
                         proc=detail_data.xpath("//div[1]/div/span[2]/text()")[0]
                         print(proc)
                         prodict['procurement'] =re.findall('发布单位[：:]\s?(\S+)',proc)[0]
-                        prodict['detail'] = spider.get_data_detail(detail_data)
+                        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detail_data)
                         mysqldb = serversql()
                         rundb(mysqldb, prodict)
                     print(detailurl)

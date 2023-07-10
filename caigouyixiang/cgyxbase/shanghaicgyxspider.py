@@ -6,7 +6,7 @@ import re
 import threading
 import time
 import traceback
-
+import urllib.parse
 
 import requests as requests
 from lxml import etree
@@ -24,6 +24,8 @@ class cgyxspider(object):
         }
         self.headers= {
             'Content-Type': 'application/json',
+            'Host':'www.ccgp-shanghai.gov.cn',
+            'Referer':'http://www.ccgp-shanghai.gov.cn/luban/detail?parentId=137119&articleId=ow2ayKhKZA4TfNxrK94cTQ==&utm=',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
     }
         self.errors=0
@@ -74,41 +76,40 @@ class cgyxspider(object):
             res = self.req_(url, method, data, param)
         return res
 
-    def get_data_detail(self, res):
-            detail_list=list()
-            for detail in res.xpath('//tbody/tr'):
-                detail_dict = {}
-                proname = detail.xpath("./td[@class='code-purchaseProjectName']/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                price = detail.xpath("./td[@class='code-budgetPrice']/text()")
+    def get_data_detail(self, detail):
+            # detail_list=list()
+            # for detail in res.xpath('//tbody/tr'):
+            #     detail_dict = {}
+            #     proname = detail.xpath("./td[@class='code-purchaseProjectName']/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+                price = detail.xpath("//td[@class='code-budgetPrice']/text()")
                 if price :
                     dor=float(price[0])/10000
                     price = round(dor,2)
-                require = detail.xpath("./td[@class='code-purchaseRequirementDetail']/text()")
-                if require:
-                    require = require[0]
-                futher = detail.xpath("./td[@class='code-estimatedPurchaseTime']/text()")
+                # require = detail.xpath("./td[@class='code-purchaseRequirementDetail']/text()")
+                # if require:
+                #     require = require[0]
+                futher = detail.xpath("//td[@class='code-estimatedPurchaseTime']/text()")
                 if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath("./td[@class='code-remark']/text()")
-                if comment:
-                    comment = comment[0]
-
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
+                # comment = detail.xpath("./td[@class='code-remark']/text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
                 # detail_dict['protype'] =
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
 
-            return detail_list
+                return futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -118,12 +119,8 @@ class cgyxspider(object):
         return res
 
     def get_data_list(self, page):
-        url = 'http://www.ccgp-shanghai.gov.cn/front/search/category'
-        payload = {
-            'categoryCode':"ZcyAnnouncement10016",
-            'pageNo': page,
-            'pageSize':15,
-            'utm':"sites_group_front.2ef5001f.0.0.ea5361d05cc111eda9bbfdfb393a9737"}
+        url = 'http://www.ccgp-shanghai.gov.cn/portal/category'
+        payload = {"pageNo":page,"pageSize":15,"categoryCode":"ZcyAnnouncement10016","_t":int(time.time()*1000)}
         method='post'
         res = self.request_(url, method,json.dumps(payload))
         if res:
@@ -142,8 +139,7 @@ def run(page,spider,times,file):
 
             data_list = spider.get_data_list(page)
             # print(data_list)
-            for data in data_list['hits']['hits']:
-                lis=data['_source']
+            for lis in data_list['result']['data']['data']:
                 # releasetime = int(time.mktime(time.strptime(lis['publishDate'], "%Y-%m-%d %H:%M:%S")))
                 releasetime = int(lis['publishDate']/1000)
                 todaytime = int(time.mktime(time.strptime(times, "%Y-%m-%d")))
@@ -155,23 +151,25 @@ def run(page,spider,times,file):
                     articleId=lis['articleId']
                     title=lis['title']
                     prodict['districtName'] = districtName
-                    prodict['articleId'] =articleId
+                    prodict['articleId'] =int(str(int(time.time()*100000+random.random()*200))[-6:])
                     prodict['publishDate'] = releasetime
                     prodict['title'] = title
-                    detailurl=f'http://www.ccgp-shanghai.gov.cn/front/search/mobile/detail?id={articleId}&timestamp={int(time.time())}'
-                    print(detailurl)
+                    showurl=f'http://www.ccgp-shanghai.gov.cn/luban/detail?parentId=137119&articleId={articleId}&utm='
+                    detailurl=f'http://www.ccgp-shanghai.gov.cn/front/search/mobile/detail?id={urllib.parse.quote(articleId)}&timestamp={int(time.time())}'
+                    prodict['detailurl']=showurl
+                    # print(detailurl)
                     content = spider.get_data_info(detailurl)
-                    prodict['detailurl']=detailurl
+                    # print(content)
                     if content:
                         html=json.loads(content).get('result').get('content')
                         detail_data = etree.HTML(html)
                         prodict['procurement'] = detail_data.xpath("//samp[@class='bookmark-item uuid-1610438087802 code-singleChoicePurchaser editDisable addContent drop-list-cls readonly']/text()")[0]
-                        prodict['detail'] = spider.get_data_detail(detail_data)
+                        prodict['detail']=html
+                        prodict['futher'],prodict['price'] = spider.get_data_detail(detail_data)
                         # spider.write_data(file,str(prodict)+"\n")
+                        print(prodict)
                         mysqldb = serversql()
                         rundb(mysqldb, prodict)
-                    print(detailurl)
-                    print(prodict)
 
                 #
                 else:

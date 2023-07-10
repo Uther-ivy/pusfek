@@ -15,13 +15,13 @@ class serversql(object):
                         charset='utf8'
                 )
 
-    def insertinto(self,mid,title,senddate,body,url,addtime,click,nativeplace,price):
+    def insertinto(self,mid, title, senddate, body, url,addtime, click,nativeplace,price):
         sql='insert into ' \
-            'dede_addoninfos12(mid,title,senddate,body,url,addtime,click,nativeplace,price)' \
+            'dede_addoninfos12(mid, title, senddate, body, url,addtime, click,nativeplace,price)' \
             'values ' \
             '(%s,%s,%s,%s,%s,%s,%s,%s,%s);'
         cur=self.db.cursor()
-        cur.execute(sql,(mid,title,senddate,body,url,addtime,click,nativeplace,price))
+        cur.execute(sql,(mid, title, senddate, body, url,addtime, click,nativeplace,price))
         self.db.commit()
 
     def selectcityid(self,city):
@@ -44,33 +44,36 @@ def rundb(serverdb, data):
 
 
     districtName = data.get('districtName')
+
     if districtName:
         nativeplace = serverdb.selectcityid(districtName)  # 地区id
         print(districtName)
 
     mid = data.get('articleId')  # 用户mid
+    title=data.get('title')
     # mid=int(str(time.time()*1000)[::3])
     senddate = data.get('publishDate')  #
     url = data.get('detailurl')  #
-    details=data.get('detail')
-    if details:
-        for detial in details:
-            title = detial.get('proname')  # 标题
-            body = detial.get('require')  #
-            addtime = detial.get('futher')
-            if not addtime:  #
-                addtime = int(time.time())
-            click = detial.get('')  #
-            price = detial.get('price')  #
-            try:
-                reference= serverdb.selectbody(title)
-                if not reference:
-                    serverdb.insertinto(mid, title, senddate, body, url, addtime, click, nativeplace, price)
-                    print('数据保存成功')
-                else:
-                    print('已存在')
-            except Exception as e:
-                print(f"{e}\n{traceback.format_exc()}")
+    body=data.get('detail')
+    addtime = data.get('futher')
+    if not addtime:  #
+        addtime = int(time.time())
+    click = data.get('')  #
+    price = data.get('price')
+
+    try:
+        reference= serverdb.selectbody(title)
+        if not reference:
+            serverdb.insertinto(mid, title, senddate, body, url,addtime, click,nativeplace,price)
+            print('数据保存成功')
+        else:
+            print('已存在')
+    except Exception as e:
+        print(f"{e}\n{traceback.format_exc()}")
+
+
+
+
 
 if __name__ == '__main__':
     serverdb = serversql()

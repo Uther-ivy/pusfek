@@ -75,45 +75,46 @@ class cgyxspider(object):
 
     def get_data_detail(self, url):
         detail_list=list()
+        print(url)
         res = self.request_(url, method='get')
         if res:
             detail = etree.HTML(res)
-            size= detail.xpath("//table[@class='noticeTable']//tr")
-            for num in range(2,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[2]/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                price = detail.xpath(f"//tr[{num}]/td[4]/text()")
-                if price :
-                    price=price[0]
+            content= etree.tostring(detail.xpath("//table[@class='noticeTable']")[0],method="HTML").decode()
+            # for num in range(2,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[2]/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            price = detail.xpath(f"//tr[{2}]/td[4]/text()")
+            if price :
+                    price=price[0].replace(',','')
 
-                require = detail.xpath(f"//tr[{num}]/td[3]/div")
-                if require:
-                    content = ''
-                    for text in require:
-                        content += text.xpath('./text()')[0].strip()
-                    require = content
-                futher = detail.xpath(f"//tr[{num}]/td[5]/text()")
-                if futher:
+                # require = detail.xpath(f"//tr[{num}]/td[3]/div")
+                # if require:
+                #     content = ''
+                #     for text in require:
+                #         content += text.xpath('./text()')[0].strip()
+                #     require = content
+            futher = detail.xpath(f"//tr[{2}]/td[5]/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[6]/text()")
-                if comment:
-                    comment = comment[0]
-
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
+                # comment = detail.xpath(f"//tr[{num}]/td[6]/text()")
+                # if comment:
+                #     comment = comment[0]
+                #
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
                 # detail_dict['protype'] =
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -182,10 +183,10 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl = href
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
         # spider.write_data(file,str(prodict)+"\n")
-        # mysqldb = serversql()
-        # rundb(mysqldb, prodict)
+        mysqldb = serversql()
+        rundb(mysqldb, prodict)
         print(detailurl)
         print(prodict)
 

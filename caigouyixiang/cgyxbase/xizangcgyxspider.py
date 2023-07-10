@@ -74,16 +74,56 @@ class cgyxspider(object):
             res = self.req_(url, method, data, param)
         return res
 
+    def get_data_detail(self, url):
+        print(url)
+        detail_list = list()
+        res = self.request_(url, method='get')
+        if res:
+            detail = etree.HTML(res)
+            content = etree.tostring(detail.xpath("//div[@class='noticeArea']")[0],method='HTML').decode()
+            # size = detail.xpath('//tbody/tr')
+            # for num in range(1, len(size) + 1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tbody/tr[{num}]/td[2]/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000', '')
+            price = detail.xpath(f"//tr[2]/td[4]/text()")
+            if price:
+                price = float(price[0].replace(',',''))
+            # require = detail.xpath(f"//tbody/tr[{num}]/td[3]/text()")
+            # if require:
+            #     require = require[0]
+            futher = detail.xpath(f"//tr[2]/td[5]/text()")
+            if futher:
+                futher = futher[0]
+                if '年' in futher:
+                    futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
+                else:
+                    futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
+            # comment = detail.xpath(f"//tbody/tr[{num}]/td[7]/text()")
+            # if comment:
+            #     comment = comment[0]
+            #
+            # detail_dict['proname'] = proname
+            # detail_dict['price'] = price
+            # detail_dict['protype'] =
+            # detail_dict['require'] = require
+            # detail_dict['futher'] = futher
+            # detail_dict['comment'] = comment
+            # detail_list.append(detail_dict)
+            # print( proname,price,require,futher,comment)
 
-
+            return content, futher, price
 
 
     def get_data_list(self, times,page):
-        url = f'http://www.ccgp-xizang.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do?&siteId=18de62f0-2fb0-4187-a6c1-cd8fcbfb4585&channel=b541ffff-03ee-4160-be64-b11ccf79660d&currPage={page}&pageSize=100&noticeType=00101&cityOrArea=&noticeName=&operationStartTime=&operationEndTime=&selectTimeName=noticeTime'
+        url = f'http://www.ccgp-xizang.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do?&siteId=18de62f0-2fb0-4187-a6c1-cd8fcbfb4585&channel=b541ffff-03ee-4160-be64-b11ccf79660d&currPage={page}&pageSize=100&noticeType=59&cityOrArea=&noticeName=&operationStartTime=&operationEndTime=&selectTimeName=noticeTime'
+               # 'http://www.ccgp-xizang.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do?&siteId=18de62f0-2fb0-4187-a6c1-cd8fcbfb4585&channel=b541ffff-03ee-4160-be64-b11ccf79660d&currPage=1     &pageSize=100&noticeType=59&cityOrArea=&noticeName=&operationStartTime=&operationEndTime=&selectTimeName=noticeTime'
         print(url)
         payload =None
         data=None
         data_list = self.request_(url,  method='get',data=data,param=payload)
+        print(data_list)
         if data_list:
             jsondata=json.loads(data_list)
             for lis in jsondata.get('data'):
@@ -95,9 +135,8 @@ class cgyxspider(object):
                     title=lis['title']
                     articleId=lis['htmlIndexnum']
                     href=lis['pageurl']
-                    detail_info=lis['description']
-
-                    yield releasetime,articleId,title,href,detail_info
+                    procurement=''
+                    yield releasetime,procurement,articleId,title,href
                 else:
                     print(f'{times}获取完毕{page}页')
                     self.err()
@@ -114,48 +153,44 @@ class cgyxspider(object):
 def run(page,spider,times,file):
 
     for lis in spider.get_data_list(times,page):
-        releasetime,articleId,title,href,detail_info=lis
+        releasetime,procurement,articleId,title,href=lis
+        # print(lis)
         prodict = spider.article_field()
         # prodict['articleId'] = int(str(time.time()*1000)[::3])
         prodict['articleId'] = articleId
         prodict['publishDate'] = releasetime
         prodict['title'] = title
-        detailurl = f'http://www.ccgp-xizang.gov.cn{href}'
-        prodict['detailurl'] = detailurl
-        procurement=title
+
+        prodict['procurement']=procurement
         # detail =spider.get_data_detail(detailurl,detail_info)
-        prodict['detail']=[]
-        detail_dict={}
-        detail_dict['proname'] = title
-        detail_dict['price'] = 0
-        detail_dict['require'] = title+detailurl
-        detail_dict['futher'] = releasetime
-        detail_dict['comment'] = '无'
-        prodict['detail'].append(detail_dict)
-        if '县' in procurement:
-            districtName = re.findall('(\w+县).*', procurement)
+
+        if '县' in title:
+            districtName = re.findall('(\w+县).*', title)
             if '市' in districtName:
-                districtName = re.findall('市(\w+县)', districtName[0])
+                districtName = re.findall('市(\w+县)', title)
             else:
                 districtName = ['西藏自治区']
-        elif '区' in procurement:
-            districtName = re.findall('(\w+区)', procurement)
+        elif '区' in title:
+            districtName = re.findall('(\w+区)', title)
             if '市' in districtName:
-                districtName = re.findall('市(\w+区)', districtName[0])
+                districtName = re.findall('市(\w+区)', title)
             else:
                 districtName = ['西藏自治区']
-        elif '市' in procurement:
-            districtName = re.findall('年?(\w+市).*', procurement)
+        elif '市' in title:
+            districtName = re.findall('年?(\w+市).*', title)
 
         else:
             districtName = ['西藏自治区']
         prodict['procurement'] = procurement
         prodict['districtName'] = districtName
+        detailurl = f'http://www.ccgp-xizang.gov.cn{href}'
+        prodict['detailurl'] = detailurl
+        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(detailurl)
+        print(prodict)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)
         print(detailurl)
-        print(prodict)
 
 
 def main(page, times, file):

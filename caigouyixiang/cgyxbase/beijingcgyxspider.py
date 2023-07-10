@@ -82,31 +82,32 @@ class cgyxspider(object):
             # size=len(res.xpath("//tbody/tr"))
             # for num in range(1,size+1):
             #     if num > 1:
-            proname = res.xpath(f"//tr/td[3]/text()")
-            if proname:
-                proname = proname[0]
+            content=etree.tostring(res.xpath("//div[@class='mainTextBox']")[0], method='HTML').decode()
+            # proname = res.xpath(f"//tr/td[3]/text()")
+            # if proname:
+            #     proname = proname[0]
             price = res.xpath(f"//tr/td[5]/text()")
             if price :
                 price = price[0]
-            require = res.xpath(f"//tr/td[4]/text()")
-            if require:
-                require = require[0]
+            # require = res.xpath(f"//tr/td[4]/text()")
+            # if require:
+            #     require = require[0]
             futher = res.xpath(f"//tr/td[6]/text()")
             if futher:
                 futher = int(time.mktime(time.strptime(futher[0], "%Y-%m")))
-            comment = res.xpath(f"//tr/td[7]/text()")
-            if comment:
-                comment = comment[0]
-
-            detail_dict['proname'] = proname
-            detail_dict['price'] = price
-            detail_dict['require'] = require
-            detail_dict['futher'] = futher
-            detail_dict['comment'] = comment
-            detail_list.append(detail_dict)
+            # comment = res.xpath(f"//tr/td[7]/text()")
+            # if comment:
+            #     comment = comment[0]
+            #
+            # detail_dict['proname'] = proname
+            # detail_dict['price'] = price
+            # detail_dict['require'] = require
+            # detail_dict['futher'] = futher
+            # detail_dict['comment'] = comment
+            # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
 
-            return detail_list
+            return content, futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -168,10 +169,11 @@ def run(page,spider,times,file):
                         if content:
                             detail_data = etree.HTML(content)
                             proc=detail_data.xpath("//tr/td[2]/text()")
+
                             if proc:
                                 proc=proc[0]
                             prodict['procurement'] =proc
-                            prodict['detail'] = spider.get_data_detail(detail_data)
+                            prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(detail_data)
                             mysqldb = serversql()
                             rundb(mysqldb,prodict)
                             # spider.write_data(file,str(prodict)+"\n")

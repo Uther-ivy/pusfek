@@ -4,9 +4,10 @@ import pymysql, tool
 import random, traceback
 
 # 保存招投标信息
-conn = pymysql.connect(host='47.92.73.25', user='python', passwd='Kp123...', port=3306, db='yqc')
-# conn = pymysql.connect(host='127.0.0.1', port=3306, db="uther_test", user='root', password='root', charset="utf8")
-cursor=conn.cursor()
+conn = pymysql.connect(host='47.92.73.25', user='duxie', passwd='jtkpwangluo.com', port=3306, db='ytb')
+# conn = pymysql.connect(host='192.168.1.53', port=3306, database="ztb", user='root', password='10036'
+#                             , charset="utf8")
+cursor = conn.cursor()
 
 
 def redis_save(item):
@@ -58,50 +59,119 @@ def mc_matching_title(title):
             break
     return title
 
-def search_title(title):
-    sql = f"select * from yunqi_ztb where title ='{title}'"
-    cursor.execute(sql)
-    data=cursor.fetchone()
-    return data
-
-
 
 def process_item(item):
     time.sleep(1)
-    print('item',item)
+    # print('item',item)
     try:
+        try:
+            conn.ping()
+        except:
+            conn()
+        item['title'] = item['title'].replace(' ', '')
         if '测试' in item['title']:
             print('测试数据', item['url'])
             return True
-        title=item['title']
-        if search_title(title):
-            print(f'mysql {title} exist')
+        entry_name = mc_matching_title(item['title'])
+        type_id = item['typeid'][0]
+        item['typeid'] = [str(i) for i in item['typeid']]
+        item['typeid'] = ','.join(item['typeid'])
+        item['title'] = item['title'].replace(' ', '')
+        sql = """insert into `dede_arctiny`(`typeid`, `senddate`, `mid`, `infotype`, `nativeplace`, `url`, `title`, `function`,`shi`,`sheng`,`entry_name`) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        cursor.execute(sql, (
+            item["typeid"], item["senddate"], item["mid"], item["infotype"], item["nativeplace"], item["url"],
+            item["title"], item["function"], item["shi"], item["sheng"], entry_name))
+        aid = cursor.lastrowid
+        conn.commit()
+
+        try:
+            conn.ping()
+        except:
+            conn()
+        sqlstr = """insert into `{}`(`aid`, `typeid`, `mid` ,`title`,  `senddate`, `nativeplace`, `infotype`, `body`, `endtime`, `tel`, `email`, `address`, `linkman`,`function`, `url`, `resource`, `click`,`shi`,`sheng`)
+                                      values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"""
+        if type_id in [16, 13, 77, 76, 73, 65, 64, 63, 74, 75, 19, 18, 17, 131, 132, 133, 134, 135, 136, 137, 138, 139,
+                       140,
+                       141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159,
+                       160, 161, 162,
+                       163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181,
+                       182, 183, 184, 185,
+                       186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204,
+                       205, 206, 207,
+                       208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]:  # 施工总承包
+            db = "dede_addoninfos1"
+        elif type_id in [21, 22, 80, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 87,
+                         23]:  # 工程设计
+            db = "dede_addoninfos2"
+        elif type_id in [39, 40, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 86]:  # 施工劳务
+            db = "dede_addoninfos3"
+        elif type_id in [69, 70, 78, 90, 91, 92, 67, 71, 83, 84, 15, 66, 91, 90, 84, 83, 78, 71, 70, 69, 68,
+                         67, 92, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117,
+                         118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 68]:  # 专业承包
+            db = "dede_addoninfos4"
+        elif type_id in [14, 52, 89, 60, 59, 58, 57, 56, 55, 54, 53, 93]:  # 工程监理
+            db = "dede_addoninfos5"
+        elif type_id == 20:  # 招标变更
+            db = "dede_addoninfos6"
+        elif type_id == 72:  # 材料采购
+            db = "dede_addoninfos7"
+        elif type_id == 81:  # 工程造价
+            db = "dede_addoninfos8"
         else:
+            db = "dede_addoninfos9"  # 土地规划
+        sql2 = sqlstr.format(db)
+        try:
             try:
                 conn.ping()
             except:
                 conn()
-
-            sql = "insert into " \
-                  "yunqi_ztb(mid ,title, senddate, nativeplace, infotype, body, endtime, tel, email, address, linkman,function, url, resource, click,shi,sheng,gl)" \
-                  "values " \
-                  "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            cursor.execute(sql, (item["mid"], item["title"],
-                    item["senddate"], item["nativeplace"], item["infotype"], item["body"], item["endtime"],
-                    item["tel"],item["email"],item["address"], item["linkman"], item["function"], item["url"],
-                    item["resource"], random.randint(500, 1000), item["shi"], item["sheng"],item["winner"]))
+            cursor.execute(sql2, (
+                aid, item["typeid"], item["mid"], item["title"],
+                item["senddate"], item["nativeplace"], item["infotype"], item["body"], item["endtime"],
+                item["tel"],
+                item["email"],
+                item["address"], item["linkman"], item["function"], item["url"],
+                item["resource"], random.randint(500, 1000), item["shi"], item["sheng"]))
             conn.commit()
-            # redis_save(item)
-            print("[插入成功]", item["mid"], item["title"],
-                      item["senddate"], item["nativeplace"], item["date"], item["infotype"],item["endtime"], item["tel"],
-                  item["email"],item["address"], item["linkman"], item["function"], item["url"],item["resource"])
+            redis_save(item)
+            print("[插入成功]", item["typeid"], item["mid"], item["title"],
+                  item["senddate"], item["nativeplace"], item["date"], item["infotype"],
+                  item["endtime"], item["tel"],
+                  item["email"],
+                  item["address"], item["linkman"], item["function"], item["url"],
+                  item["resource"])
             print("-" * 100)
-            time.sleep(4)
-    # except pymysql.err.OperationalError:
-    #     print("pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')")
-
+            time.sleep(3)
+        except pymysql.err.OperationalError:
+            print("pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')")
+            try:
+                conn.ping()
+            except:
+                conn()
+            sql = """DELETE FROM dede_arctiny WHERE id = {}""".format(aid)
+            cursor.execute(sql)
+            conn.commit()
+        except Exception as e:
+            traceback.print_exc()
+            print(e)
+            try:
+                conn.ping()
+            except:
+                conn()
+            sql = """DELETE FROM dede_arctiny WHERE id = {}""".format(aid)
+            cursor.execute(sql)
+            conn.commit()
     except Exception as e:
-        traceback.print_exc()
+        conn.rollback()
+        try:
+            print(item)
+        except:
+            pass
+        err = ["[插入失败]", e]
+        print(err)
+        with open('error.txt', 'a') as f:
+            f.write(item["url"])
+            f.write('\r\n')
     # conn.close()
     # cursor.close()
     return item
@@ -110,40 +180,100 @@ def process_item(item):
 def save_db(item):
     # mysql = pymysql.connect(host='47.92.73.25', user='duxie', passwd='jtkpwangluo.com', port=7306,db='ytb')
     # mysql = pymysql.connect(host='localhost', user='root', passwd='123456', port=3306, db='local')
-    # if tool.removal(item['title'], item['zhao_time']):
-    #     print("打开mysql")
+    if tool.removal(item['title'], item['zhao_time']):
+        print("打开mysql")
+        try:
+            conn.ping()
+        except:
+            conn()
         item['title'] = item['title'].replace(' ', '')
-        # item['typeid'] = [str(i) for i in item['typeid']]
-        # item['typeid'] = ','.join(item['typeid'])
-        sql = "insert into yunqi_ztb(`mid` ,`click`,`title`, `body`, `senddate`, `nativeplace`, `infotype`,`endtime`,`tel`,`email`,`address`,`linkman`, `function`,`url`, `resource`, `sheng`,`shi`)values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        entry_name = mc_matching_title(item['title'])
+        type_id = item['typeid'][0]
+        item['typeid'] = [str(i) for i in item['typeid']]
+        item['typeid'] = ','.join(item['typeid'])
+        try:
+            conn.ping()
+        except:
+            conn()
+        sql = "insert into `dede_arctiny`(`typeid`, `senddate`, `mid`, `title`, `function`, `nativeplace`,`infotype`, `url`, `shi`,`sheng`, `entry_name`) values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        cursor.execute(sql, (
+            item['typeid'], item['senddate'], item['mid'], item['title'], item['function'], item['nativeplace'],
+            item['infotype'], item['info_url'], item['shi'], item['sheng'], entry_name))
+        conn.commit()
+        print("[dede_arctiny,插入成功]：", item['typeid'], item['title'])
+        aid = cursor.lastrowid
+        try:
+            conn.ping()
+        except:
+            conn()
+        sqlstr = "insert into `{}`(`aid`, `typeid`, `mid` ,`click`,`title`, `body`, `senddate`, `nativeplace`, `infotype`,`endtime`,`tel`,`email`,`address`,`linkman`, `function`,`url`, `resource`, `sheng`,`shi`)values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        if type_id in [16, 13, 77, 76, 73, 65, 64, 63, 74, 75, 19, 18, 17, 131, 132, 133, 134, 135, 136, 137, 138,
+                       139, 140,
+                       141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158,
+                       159, 160, 161, 162,
+                       163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180,
+                       181, 182, 183, 184, 185,
+                       186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203,
+                       204, 205, 206, 207,
+                       208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220]:  # 施工总承包
+            db = "dede_addoninfos1"
+
+        elif type_id in [21, 22, 80, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 87, 23]:  # 工程设计
+            db = "dede_addoninfos2"
+
+        elif type_id in [39, 40, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 86]:  # 施工劳务
+            db = "dede_addoninfos3"
+        elif type_id in [69, 70, 78, 90, 91, 92, 67, 71, 83, 84, 15, 66, 91, 90, 84, 83, 78, 71, 70, 69, 68, 67,
+                         92, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
+                         120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 68]:  # 专业承包
+            db = "dede_addoninfos4"
+        elif type_id in [14, 52, 89, 60, 59, 58, 57, 56, 55, 54, 53, 93]:  # 工程监理
+            db = "dede_addoninfos5"
+        elif type_id == 20:  # 招标变更
+            db = "dede_addoninfos6"
+        elif type_id == 72:  # 材料采购
+            db = "dede_addoninfos7"
+        elif type_id == 81:  # 工程造价
+            db = "dede_addoninfos8"
+        else:
+            db = "dede_addoninfos9"  # 土地规划
+        sql2 = sqlstr.format(db)
         try:
             try:
                 conn.ping()
             except:
                 conn()
-            cursor.execute(sql, (
-                item['mid'], item['click'], item['title'], item['body'], item['senddate'],
-                item['nativeplace'], item['endtime'], item['tel'], item['email'],
+            cursor.execute(sql2, (
+                aid, item['typeid'], item['mid'], item['click'], item['title'], item['body'], item['senddate'],
+                item['nativeplace'], item['infotype'], item['endtime'], item['tel'], item['email'],
                 item['address'], item['linkman'], item['function'], item['info_url'], item['resource'],
                 item['sheng'], item['shi']))
             conn.commit()
-            print( ",[插入成功]：", item['title'])
+            print(db + ",[插入成功]：", item['typeid'], item['title'])
             print("-" * 100)
-
+        except pymysql.err.OperationalError:
+            print("pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')")
+            try:
+                conn.ping()
+            except:
+                conn()
+            sql = """DELETE FROM dede_arctiny WHERE id = {}""".format(aid)
+            cursor.execute(sql)
+            conn.commit()
         except Exception as e:
             traceback.print_exc()
-
+            print(e)
+            sql = """DELETE FROM dede_arctiny WHERE id = {}""".format(aid)
+            cursor.execute(sql)
+            conn.commit()
         # conn.close()
         # cursor.close()
+    else:
+        print("该内容已存在，" + item['info_url'])
 # conn.close()
 # cursor.close()
 if __name__ == '__main__':
 
-    item=[
-    {'title': '福建省宁化县隆陂水库引调水工程施工监理', 'url': 'http://smggzy.sm.gov.cn/smwz/InfoDetail/?InfoID=a75f2a1f-1493-41b9-a37e-6168c5cdfef5&CategoryNum=022001005', 'date': '2019-03-25', 'typeid': [14,87,84], 'senddate': 1680863562, 'mid': 867, 'nativeplace': 7004.005, 'infotype': 2001, 'body': '<div class="ewb-show-con" id="mainContent">\r\n                    <!--EpointContent-->\r\n                    <p align="center" style=\'margin: 0cm -19.65pt 0pt 0cm; text-align: center; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><b><span style="font-family: 宋体; font-size: 16pt;">福建省宁化县隆陂水库引调水工</span></b></span><span><b><span style="font-family: 宋体; font-size: 16pt;">程施工监理</span></b></span></p>\n<p align="center" style=\'margin: 0cm -19.65pt 0pt 0cm; text-align: center; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><b><span style="font-family: 宋体; font-size: 16pt;">中标结果公告</span></b></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 32pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'>\xa0</p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><b><span style="font-size: 12pt;"><span>\xa0\xa0\xa0\xa0\xa0\xa0\xa0 </span></span></b></span><span><span><b><u><span style="font-family: 宋体; font-size: 12pt;">福建平诚工程造价咨询有限公司</span></u></b></span></span><span><span style="font-family: 宋体; font-size: 12pt;">受<b><u>宁化县翠城水务有限公司</u></b>的委托，对<b><u>福建省宁化县隆陂水库引调水工程施工监理</u></b>进行公开招标，本项目于</span></span><span><b><span style="font-size: 12pt;">2019</span></b></span><span><b><span style="font-family: 宋体; font-size: 12pt;">年</span></b></span><span><b><span style="font-size: 12pt;">3</span></b></span><span><b><span style="font-family: 宋体; font-size: 12pt;">月</span></b></span><span><b><span style="font-size: 12pt;">20</span></b></span><span><b><span style="font-family: 宋体; font-size: 12pt;">日</span></b></span><span style="font-family: 宋体; font-size: 12pt;">开标、评标，开评标会结束后根据有关法律、法规要求，对中标候选人进行公示，公示期为</span><span style="font-size: 12pt;">2019</span><span style="font-family: 宋体; font-size: 12pt;">年</span><span style="font-size: 12pt;">3</span><span style="font-family: 宋体; font-size: 12pt;">月</span><span style="font-size: 12pt;">20</span><span style="font-family: 宋体; font-size: 12pt;">日至</span><span style="font-size: 12pt;">2019</span><span style="font-family: 宋体; font-size: 12pt;">年</span><span style="font-size: 12pt;">3</span><span style="font-family: 宋体; font-size: 12pt;">月</span><span style="font-size: 12pt;">23</span><span style="font-family: 宋体; font-size: 12pt;">日，在公示期间，未收到各投标单位对本次招标候选人提出复议的书面材料，本司将中标结果公告在福建省公共资源交易电子公共服务平台及三明市公共资源交易中心电子交易平台发布，相关事项如下：</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">一、项目概况</span><span style="font-size: 12pt;"> </span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><span style="font-family: 宋体; font-size: 12pt;">招标项目名称：<span>福建省宁化县隆陂水库引调水工程施工监理</span></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><span style="font-family: 宋体; font-size: 12pt;">招标人：<span>宁化县翠城水务有限公司</span></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">招标方式</span><span style="font-size: 12pt;">: </span><span style="font-family: 宋体; font-size: 12pt;">公开招标</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">二、中标人名称及相关内容：</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">中标人：三明市联盛工程咨询监理有限公司；中标价：</span><span style="font-size: 12pt;">618968</span><span style="font-family: 宋体; font-size: 12pt;">元；</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><span style="font-family: 宋体; font-size: 12pt;">三、确定为废标的投标人名称及原因：<u>无</u></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">四、中标结果公示期：</span><span style="font-size: 12pt;">2019</span><span style="font-family: 宋体; font-size: 12pt;">年</span><span style="font-size: 12pt;">3</span><span style="font-family: 宋体; font-size: 12pt;">月</span><span style="font-size: 12pt;">25</span><span style="font-family: 宋体; font-size: 12pt;">日至</span><span style="font-size: 12pt;">2019</span><span style="font-family: 宋体; font-size: 12pt;">年</span><span style="font-size: 12pt;">4</span><span style="font-family: 宋体; font-size: 12pt;">月</span><span style="font-size: 12pt;">3</span><span style="font-family: 宋体; font-size: 12pt;">日</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">五、联系方式</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><span style="font-family: 宋体; font-size: 12pt;">招标单位名称：<span>宁化县翠城水务有限公司</span></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">地</span><span><span style="font-size: 12pt;"> <span>\xa0\xa0\xa0\xa0</span></span></span><span style="font-family: 宋体; font-size: 12pt;">址：宁化县翠江镇财富源附属四楼</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">联系人：</span><span style="font-size: 12pt;">\xa0</span><span style="font-family: 宋体; font-size: 12pt;">罗先生</span><span style="font-family: 宋体; font-size: 12pt;">电话：</span><span style="font-size: 12pt;">0598-6666116</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'>\xa0</p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">招标代理机构：</span><span style="font-family: 宋体; font-size: 12pt;">福建平诚工程造价咨询有限公司</span><span><span style="font-family: 宋体; font-size: 12pt;"><span>\xa0\xa0\xa0\xa0 </span></span></span></p>\n<p align="left" style=\'margin: 0cm 0cm 0pt; text-align: left; line-height: 19.5pt; text-indent: 23.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph; tab-stops: 25.5pt 45.0pt 55.0pt;\'><span><span style="font-family: 宋体; font-size: 12pt;">电话：<span>15280235085</span></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-layout-grid-mode: char; -ms-text-justify: inter-ideograph;\'><span><span style="font-family: 宋体; font-size: 12pt;">联系人：<span>王先生<b><u> </u></b></span></span></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'>\xa0</p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">六、监督单位及电话：</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 21.25pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">招投标监督机构名称：宁化县水利局</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 21.25pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">联系电话：</span><span style="font-size: 12pt;">0598-6822578</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><u><span style="font-size: 12pt;"><p><span style="text-decoration: none;"><br>\n</span></p></span></u></span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span style="font-family: 宋体; font-size: 12pt;">本项目中标结果现予以公示，接受社会监督，公示期内，投标人和其他利害关系人有权向招标人提出疑义或可按《工程建设项目招标投标活动投诉处理办法》（七部委第</span><span style="font-size: 12pt;">11</span><span style="font-family: 宋体; font-size: 12pt;">号令）的相关规定向监管该项目的招投标监督机构进行投诉。</span></p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'>\xa0</p>\n<p style=\'margin: 0cm 0cm 0pt; text-align: justify; line-height: 19.5pt; text-indent: 24pt; font-family: "Times New Roman","serif"; font-size: 10.5pt; -ms-text-justify: inter-ideograph;\'><span><span style="font-size: 12pt;"><span>\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0 </span>2019</span></span><span style="font-family: 宋体; font-size: 12pt;">年</span><span style="font-size: 12pt;">3</span><span style="font-family: 宋体; font-size: 12pt;">月</span><span style="font-size: 12pt;">25</span><span style="font-family: 宋体; font-size: 12pt;">日</span><span><b><span style="font-size: 16pt;"><span>\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0 </span></span></b></span></p>\r\n                    <!--EpointContent-->\r\n            </div>\r\n            ', 'endtime': 1554220800, 'tel': '0598-6822578', 'email': '', 'winner': ['三明市联盛工程咨询监理有限公司'], 'address': '宁化县翠江镇财富源附属四楼', 'linkman': '罗先生', 'function': 0, 'resource': '三明市公共资源交易网', 'shi': 7004, 'sheng': 7000, 'removal': '福建省宁化县隆陂水库引调水工程施工监理[中标公示]'},
-    {'title': '明溪县明源水厂及渔塘溪生态水系综合治理工程监理招标异常公告','url': 'http://smggzy.sm.gov.cn/smwz/InfoDetail/?InfoID=1de65976-c03d-41db-8deb-c450bf546e6a&CategoryNum=022001005','date': '2019-03-29', 'typeid': [14], 'senddate': 1680863556, 'mid': 867, 'nativeplace': 7004.003,'infotype': 1501,'body': '<div class="ewb-show-con" id="mainContent">\r\n                    <!--EpointContent-->\r\n                    <p align="center" style=\'margin: 0cm 0cm 10pt; text-align: center; font-family: "Tahoma","sans-serif"; font-size: 11pt; -ms-layout-grid-mode: char;\'><span style=\'background: white; font-family: "微软雅黑","sans-serif"; font-size: 14pt;\'>明溪县明源水厂及渔塘溪生态水系综合治理工程监理</span></p>\r\n<p align="center" style=\'margin: 0cm 0cm 10pt; text-align: center; font-family: "Tahoma","sans-serif"; font-size: 11pt; -ms-layout-grid-mode: char;\'><span style=\'font-family: "微软雅黑","sans-serif"; font-size: 14pt;\'>流标公示</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt 37.5pt; line-height: 20.25pt; font-family: 宋体; font-size: 12pt;"><span style="font-size: 15pt;">\xa0</span></p>\r\n<p align="right" style="background: white; margin: 0cm 0cm 0pt; text-align: right; line-height: 20.25pt; font-family: 宋体; font-size: 12pt;"><span>招标编号<span>:</span></span><span style="background: white; color: blue; font-size: 14pt;"> </span><span>E3504210401100022001</span><span>\xa0</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><strong><span style="font-family: 宋体;">1</span></strong><strong><span style="font-family: 宋体;">、招标工程项目概况</span></strong></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>工程项目名称：<u>明溪县明源水厂及渔塘溪生态水系综合治理工程监理</u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>招标人：<u><span>\xa0</span>福建省明溪县珩城水业有限公司</u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>招标方式<span>:<u>\xa0</u></span><u>公开招标<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><b><span>2</span></b><b><span>、<strong><span style="font-family: 宋体;">招标失败原因</span></strong></span></b></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>本招标项目投标截止时间为<u><span>2019</span></u>年<u><span>3</span></u>月<u><span>29</span></u>日<u><span>9</span>时<span>00</span></u>分，投标截止时递交投标文件的投标人少于<span>3</span>个。</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><strong><span style="font-family: 宋体;">3</span></strong><strong><span style="font-family: 宋体;">、公示时间</span></strong></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>公示期为<u><span>2019</span></u>年<u><span>3</span></u>月<u><span>29</span></u>日至<u><span>2019</span></u>年<u><span>4</span></u>月<u><span>1</span></u>日。</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><strong><span style="font-family: 宋体;">4</span></strong><strong><span style="font-family: 宋体;">、联系方式</span></strong></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>招标人：<u><span>\xa0</span>福建省明溪县珩城水业有限公司</u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>办公地址：<u><span>\xa0</span>雪峰镇青年路<span>688</span>号<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>邮政编码：<u><span>\xa0365200\xa0</span></u>，联系电话：<u><span>\xa018020853958\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>联系人：<u><span>\xa0</span>梁先生<span>\xa0\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>\xa0</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>招标代理机构：<u><span>\xa0</span>福建平诚工程造价咨询有限公司<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>办公地址：<u><span>\xa0</span>三明市梅列区东新四路海峡银行十四楼<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>邮政编码：<u><span>\xa0366100\xa0</span></u>，联系电话：<u><span>\xa00598-6629809</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>联系人：<u><span>\xa0</span>王先生<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>\xa0</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>监督机构名称：<u><span>\xa0</span>明溪县住房和城乡规划建设局、明溪县水利局<span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>办公地址：<u><span>\xa0</span>明溪县中山路<span>846</span>号、明溪县青年路<span>2</span>号<span>\xa0\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>联系电话：<u><span>\xa00598-2818891</span><span>、<span>0598-2813540</span></span><span>\xa0</span></u></span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 24pt; font-family: 宋体; font-size: 12pt;"><span>\xa0</span></p>\r\n<p style="background: white; margin: 0cm 0cm 0pt; line-height: 21.75pt; text-indent: 246pt; font-family: 宋体; font-size: 12pt;"><span>日期：<u><span>2019</span></u>年<u><span>\xa03\xa0</span></u>月<u><span>\xa029\xa0</span></u>日</span></p>\r\n<p style=\'margin: 0cm 0cm 10pt; line-height: 11pt; font-family: "Tahoma","sans-serif"; font-size: 11pt; -ms-layout-grid-mode: char;\'>\xa0</p>\r\n                    <!--EpointContent-->\r\n            </div>\r\n            ','endtime': 1553788800, 'tel': '18020853958', 'email': '', 'winner': None, 'address': '', 'linkman': '','function': 0, 'resource': '三明市公共资源交易网', 'shi': 7004, 'sheng': 7000,'removal': '明溪县明源水厂及渔塘溪生态水系综合治理工程监理招标异常公告'},
+    item={'title': '【中标公告】镇江市第一人民医院口腔3合1摄片设备采购中标结果公告', 'url': 'http://www.ggzy.gov.cn/information/html/b/320000/0202/202306/20/003203378569e09d45c992b1c41ad558b612.shtml', 'date': '2023-06-20', 'typeid': '72', 'senddate': 1687249377, 'mid': 867, 'nativeplace': '5511.001', 'infotype': 2000, 'body': '<div id="mycontent">\n<div class="detail_content"><meta http-equiv="X-UA-Compatible" content="IE=edge"> <style tyle="text/css"> .title{ text-align:left; font-size:14pt; } .title1{ text-align:left; font-size:14pt; } .content{ text-align:left; font-size:14pt; } .content1{ align:right; font-size:14pt; } .tablep{ text-align:left; font-size:14pt; border-collapse:collapse } </style> <br> <br> <table  style="line-height: 1.5; font-family: " font-size: border="0" cellpadding="10"> <tbody> <tr> <td colspan="3"> <div class="title">一、项目编号：<u>ZJZCFSDZ-(2023)公字第0090号</u></div> </td> </tr> <tr> <td colspan="3"> <div class="title">二、项目名称：<u> 镇江市第一人民医院口腔3合1摄片设备采购 </u></div> </td> </tr> <tr> <td colspan="3"> <div class="title">三、中标（成交）信息</div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 供应商名称：<u> 镇江京丹医疗器械有限公司 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 供应商地址：<u> 镇江市京口区谷阳路199号沃得雅苑2-104 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 中标金额：<u> 480000.00(元) </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="title">四、主要标的信息</div> </td> </tr> <tr> <td colspan="3"> <div class="title1">货物类标的</div> </td> </tr> <tr> <td> <table  class="tablep" border="1" cellspacing="0" cellpadding="10"> <tbody> <tr> <td>名称</td> <td>品牌</td> <td>规格型号</td> <td>数量</td> <td>单价</td> </tr> <tr> <td>镇江市第一人民医院口腔3合1摄片设备采购</td> <td>美亚光电</td> <td>SS-X9010Dpro-3DE</td> <td>1</td> <td>480000.0</td> </tr> </tbody> </table> </td> </tr> <tr> <td colspan="3"> <div class="title">五、评审专家（单一来源采购人员）名单：<u> 韦孔明;秦芳;朱镇;薛国庆;张光建; </u></div> </td> </tr> <tr> <td colspan="3"> <div class="title">六、代理服务收费标准及金额：<u> 2450.00 </u></div> </td> </tr> <tr> <td colspan="3"> <div class="title">七、公告期限</div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 自本公告发布之日起1个工作日。<br> </div> </td> </tr> <tr> <td colspan="3"> <div class="title">八、其他补充事宜</div> </td> </tr> <tr> <td> <table  class="tablep" border="1" cellspacing="0" cellpadding="10"> <tbody> <tr> <td>供应商名称</td> <td>得分</td> <td>排名</td> </tr> <tr> <td>镇江京丹医疗器械有限公司</td> <td>92.6</td> <td>1</td> </tr> <tr> <td>镇江纬凡医疗器械有限公司</td> <td>77.63</td> <td>2</td> </tr> <tr> <td>无锡国耀众康商贸有限公司</td> <td>77.38</td> <td>3</td> </tr> </tbody> </table> </td> </tr> <tr> <td colspan="3"> <div class="content"> 无<br> </div> </td> </tr> <tr> <td colspan="3"> <div class="title">九、凡对本次公告内容提出询问，请按以下方式联系。</div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 1.采购人信息<br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 名称：<u> 镇江市第一人民医院 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 地址：<u> 镇江市润州区电力路8号 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 联系方式：<u> 0511-88917939 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 2.采购代理机构信息 <br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 名称：<u> 苏世建设管理集团有限公司 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 地址：<u> 镇江市运河路21号1幢301室 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 联系方式：<u> 0511-88833166 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 3.项目联系方式 <br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 项目联系人：<u> 袁工 </u><br> </div> </td> </tr> <tr> <td colspan="3"> <div class="content"> 电\u3000话：<u> 13052901388 </u><br> </div> </td> </tr> </tbody> </table> <div align="right"><span style="font-size: 14pt;">苏世建设管理集团有限公司</span></div> <div align="right"><span style="font-size: 14pt;">2023年06月20日</span></div></div>\n</div>\n', 'endtime': 1687190400, 'tel': '', 'email': '', 'address': '镇江市运河路21号1幢301室', 'linkman': '袁工', 'function': 0, 'resource': '全国公共资源交易平台', 'shi': 5511, 'sheng': 5500, 'removal': '【中标公告】镇江市第一人民医院口腔3合1摄片设备采购中标结果公告'}
 
-    ]
-    for i in item:
-
-        process_item(i)
+    # process_item(item)

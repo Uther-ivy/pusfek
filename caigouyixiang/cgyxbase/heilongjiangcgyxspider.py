@@ -76,35 +76,36 @@ class cgyxspider(object):
 
     def get_data_detail(self, res):
             detail_list=list()
-            size = len(res.xpath("//table[@class='noticeTable']//tr"))
-            for num in range(2, size + 1):
-                detail_dict = {}
-                proname = res.xpath(f"//tr[{num}]/td[2]//text()")
-                if proname:
-                    proname = proname[0]
-                price = res.xpath(f"//tr[{num}]/td[4]//text()")
-                if price:
-                    price = price[0]
-                require = res.xpath(f"//tr[{num}]/td[3]/div")
-                if require:
-                    content=''
-                    for con in require:
-                        content +=con.xpath('./text()')[0].strip()
-                    require = content
-                futher = res.xpath(f"//tr[{num}]/td[5]//text()")
-                if futher:
-                    futher = int(time.mktime(time.strptime(futher[0], "%Y年%m月")))
-                comment = res.xpath(f"//tr[{num}]/td[6]//text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+            content=etree.tostring(res.xpath("//div[@class='noticeArea']")[0],method="HTML").decode()
+            # size = len(res.xpath("//table[@class='noticeTable']//tr"))
+            # for num in range(2, size + 1):
+            #     detail_dict = {}
+            #     proname = res.xpath(f"//tr[{num}]/td[2]//text()")
+            #     if proname:
+            #         proname = proname[0]
+            price = res.xpath(f"//tr[2]/td[4]//text()")
+            if price:
+                price = price[0]
+            # require = res.xpath(f"//tr[{num}]/td[3]/div")
+            # if require:
+            #     content=''
+            #     for con in require:
+            #         content +=con.xpath('./text()')[0].strip()
+            #     require = content
+            futher = res.xpath(f"//tr[2]/td[5]//text()")
+            if futher:
+                futher = int(time.mktime(time.strptime(futher[0], "%Y年%m月")))
+                # comment = res.xpath(f"//tr[{num}]/td[6]//text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
 
-            return detail_list
+            return content, futher,price
     def get_data_info(self, url):
         # id='1467440'
 
@@ -172,10 +173,10 @@ def run(page,spider,times,file):
                     content = spider.get_data_info(detailurl)
                     if content:
                         detail_data = etree.HTML(content)
-                        prodict['detail'] = spider.get_data_detail(detail_data)
+                        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(detail_data)
                         # spider.write_data(file, str(prodict) + '\n')
-                        mysqldb = serversql()
-                        rundb(mysqldb, prodict)
+                        # mysqldb = serversql()
+                        # rundb(mysqldb, prodict)
                     print(detailurl)
                     print(prodict)
                     # print(prodict)

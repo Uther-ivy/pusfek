@@ -77,43 +77,43 @@ class cgyxspider(object):
     def get_data_detail(self, url):
         detail_list=list()
         res = self.request_(url, method='get')
-        # print(res)
+        print(res)
         if res:
 
             data= json.loads(res)
             content=data.get('result').get('data').get('content')
             # print(content)
             detail = etree.HTML(content)
-            size= detail.xpath("//tbody/tr")
-            for num in range(1,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
-                if require:
-                    require = require[0]
-                price = detail.xpath(f"//tr[{num}]/td[@class='code-budgetPrice']/text()")
-                if price :
-                    price =float(price[0])/10000
-                futher = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
-                if futher:
+            # size= detail.xpath("//tbody/tr")
+            # for num in range(1,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            #     require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
+            #     if require:
+            #         require = require[0]
+            price = detail.xpath(f"//td[@class='code-budgetPrice']/text()")
+            if price :
+                    price =float(price[0])
+            futher = detail.xpath(f"//td[@class='code-estimatedPurchaseTime']/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -122,40 +122,40 @@ class cgyxspider(object):
     def get_data_list(self, times,page):
         url = f'http://ccgp-bingtuan.gov.cn/portal/category'
         print(url)
-        for discode in ['660000','660199','660299','660399','660499','660599','660699','660799','660899','660999','661099','661199','661299','661399','661499']:
+        payload = {
+            "categoryCode": "ZcyAnnouncement11",
+            # "districtCode": [discode],
+            "pageNo":page,
+            "pageSize":15,
+            "_t": int(time.time()*1000)
+        }
+        # for discode in ['660000','660199','660299','660399','660499','660599','660699','660799','660899','660999','661099','661199','661299','661399','661499']:
 
-            payload = {
-                "categoryCode": "ZcyAnnouncement10016",
-                "districtCode": [discode],
-                "pageNo":page,
-                "pageSize":100,
-                "_t": int(time.time()*1000)
-            }
-            data=None
-            data_list = self.request_(url,  method='post',data=json.dumps(payload),param=data)
-            if data_list:
-                # return data_list
-                jsondata=json.loads(data_list)
-                lis = jsondata.get('result').get('data').get('data')
-                for num in range(len(lis)):
-                    # releasetime = int(time.mktime(time.strptime(lis['auditTime'], "%Y-%m-%d")))
-                    releasetime = int(lis[num]['publishDate']/1000)
-                    todaytime = int(time.mktime(time.strptime(times, "%Y-%m-%d")))
-                    print(releasetime,todaytime)
-                    if releasetime >= todaytime:
-                        district=lis[num]['districtName']
-                        if "师" in district:
-                            districtName = re.findall(r".*师(\w+市)本?级?",district)
-                        else:
-                            districtName='新疆维吾尔自治区'
-                        articleId=lis[num]['articleId']
-                        title=lis[num]['title']
-                        procurement=lis[num]['author']
-                        href=f'http://ccgp-bingtuan.gov.cn/luban/detail?parentId=189169&articleId={articleId}&utm=luban.luban-PC-4840.633-pc-websitegroup-secondlevelpage-front.{num+1}.c25843506b0b11ed8d01831ca74ff0e7'
-                        yield districtName,releasetime,articleId,title,href,procurement
+        data=None
+        data_list = self.request_(url,  method='post',data=json.dumps(payload),param=data)
+        if data_list:
+            # return data_list
+            jsondata=json.loads(data_list)
+            lis = jsondata.get('result').get('data').get('data')
+            for num in range(len(lis)):
+                # releasetime = int(time.mktime(time.strptime(lis['auditTime'], "%Y-%m-%d")))
+                releasetime = int(lis[num]['publishDate']/1000)
+                todaytime = int(time.mktime(time.strptime(times, "%Y-%m-%d")))
+                print(releasetime,todaytime)
+                if releasetime >= todaytime:
+                    district=lis[num]['districtName']
+                    if "师" in district:
+                        districtName = re.findall(r".*师(\w+市)本?级?",district)
                     else:
-                        print(f'{discode}{times}获取完毕{page}页')
-                        self.err()
+                        districtName='新疆维吾尔自治区'
+                    articleId=lis[num]['articleId']
+                    title=lis[num]['title']
+                    procurement=lis[num]['author']
+                    href=f'http://ccgp-bingtuan.gov.cn/luban/detail?parentId=189169&articleId={articleId}&utm=luban.luban-PC-4840.633-pc-websitegroup-secondlevelpage-front.{num+1}.c25843506b0b11ed8d01831ca74ff0e7'
+                    yield districtName,releasetime,articleId,title,href,procurement
+                else:
+                    print(f'{times}获取完毕{page}页')
+                    self.err()
             else:
                 print(f'{times}获取完毕{page}页')
                 self.err()
@@ -179,12 +179,12 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl = f'http://ccgp-bingtuan.gov.cn/portal/detail?articleId={articleId}&timestamp={str(int(time.time()))}'
         prodict['detailurl'] = href
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
+        print(prodict)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)
         print(detailurl)
-        print(prodict)
 
 
 def main(page, times, file):

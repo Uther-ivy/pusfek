@@ -77,40 +77,41 @@ class cgyxspider(object):
     def get_data_detail(self, url):
         detail_list=list()
         res = self.request_(url, method='get')
+        print(url)
         if res:
             detail = etree.HTML(res)
-            size= detail.xpath("//table[@class='template-bookmark uuid-1609312554335 code-publicNoticeOfPurchaseIntentionDetailTable text-意向公开明细']/tbody/tr")
-            for num in range(1,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                price = detail.xpath(f"//tr[{num}]/td[@class='code-budgetPrice']/text()")
-                if price :
+            content = etree.tostring(detail.xpath("//div[@id='template-center-mark']/div")[0],method="HTML").decode()
+            # for num in range(1,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            price = detail.xpath(f"//td[@class='code-budgetPrice']/text()")
+            if price :
                     price =float(price[0])/10000
-                require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']//text()")
-                if require:
-                    require = require[0]
-                futher = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
-                if futher:
+                # require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']//text()")
+                # if require:
+                #     require = require[0]
+            futher = detail.xpath(f"//td[@class='code-estimatedPurchaseTime']/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
-                if comment:
-                    comment = comment[0]
-
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
+                # comment = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
+                # if comment:
+                #     comment = comment[0]
+                #
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
                 # detail_dict['protype'] =
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -171,7 +172,7 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl =f'https://www.ccgp-ningbo.gov.cn/project/{href}'
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)

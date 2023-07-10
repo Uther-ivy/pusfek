@@ -8,7 +8,9 @@ import time
 import traceback
 import urllib.parse
 
+import pytesseract
 import requests as requests
+from PIL import Image
 from lxml import etree
 
 import ip_proxys
@@ -79,75 +81,116 @@ class cgyxspider(object):
             res = self.request_(url, method='get')
             if res:
                 detail = etree.HTML(res)
-                size= detail.xpath("//table[@id='budgetListTable']//tr")
-                for num in range(2,len(size)+1):
-                    detail_dict = {}
-                    proname = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[3]/text()")
-                    if proname:
-                        proname = proname[0].replace('\u3000','')
-                    price = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[6]/text()")
-                    if price :
-                        price =price[0]
-                    require = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[5]/text()")
-                    if require:
-                        require = require[0]
-                    futher = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[8]/text()")
-                    if futher:
-                        futher=futher[0]
-                        if '年' in futher:
-                            futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
-                        else:
-                            futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                    comment = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[9]/text()")
-                    if comment:
-                        comment = comment[0]
-
-                    detail_dict['proname'] = proname
-                    detail_dict['price'] = price
+                text= detail.xpath("//div[@class='noticeArea']")
+                content=etree.tostring(text[0],method='HTML').decode()
+                # size = detail.xpath("//table[@id='budgetListTable']//tr")
+                # for num in range(2, len(size) + 1):
+                #     detail_dict = {}
+                #     proname = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[3]/text()")
+                #     if proname:
+                #         proname = proname[0].replace('\u3000', '')
+                price = detail.xpath(f"//table[@class='noticeTable']//tr[2]/td[4]/text()")
+                if price:
+                    price = price[0]
+                    # require = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[5]/text()")
+                    # if require:
+                    #     require = require[0]
+                futher = detail.xpath(f"//table[@class='noticeTable']//tr[2]/td[5]/text()")
+                if futher:
+                    futher = futher[0]
+                    if '年' in futher:
+                        futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
+                    else:
+                        futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
+                    # comment = detail.xpath(f"//table[@id='budgetListTable']//tr[{num}]/td[9]/text()")
+                    # if comment:
+                    #     comment = comment[0]
+                    #
+                    # detail_dict['proname'] = proname
+                    # detail_dict['price'] = price
                     # detail_dict['protype'] =
-                    detail_dict['require'] = require
-                    detail_dict['futher'] = futher
-                    detail_dict['comment'] = comment
-                    detail_list.append(detail_dict)
+                    # detail_dict['require'] = require
+                    # detail_dict['futher'] = futher
+                    # detail_dict['comment'] = comment
+                    # detail_list.append(detail_dict)
                     # print( proname,price,require,futher,comment)
-                return detail_list
+                # print( proname,price,require,futher,comment)
+                return content, futher,price
         except Exception as e:
             logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
 
+    def get_png_code(self):
+        session = requests.Session()
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
+        pngurl = f'https://zfcg.czt.fujian.gov.cn/freecms/verify/verifyCode.do?createTypeFlag=n&name=notice&{int(float(time.time()))}'
+        res = session.get(pngurl, headers=headers).content
+        with open('fujian.jpg', 'wb') as w:
+            w.write(res)
+        image = Image.open('fujian.jpg')
+        image = image.convert('L')
+        # image = image.convert('1')
+        count = 120
+        table = []
+        for i in range(256):
+            if i < count:
+                table.append(0)
+            else:
+                table.append(1)
+        # print(table)
+        image = image.point(table, '1')
+        img_rec = pytesseract.image_to_string(image).strip()
+        print(img_rec)
+        return img_rec
+
 
     def get_data_list(self, times,page):
-        if page==1:
-            url = 'http://www.ccgp-fujian.gov.cn/'
+
+            url = 'https://zfcg.czt.fujian.gov.cn/freecms/rest/v1/notice/selectInfoMoreChannel.do'
             print(url)
-            payload = None
+            payload = {
+            'siteId': 'd36a6e8b-4363-4b52-a00b-79ca47033923',
+            'channel': 'f582600e-065d-4f35-8966-48a33fa93863',
+            'currPage': page,
+            'pageSize': '10',
+            'noticeType': '59',
+            'regionCode': '',
+            'purchaseManner': '',
+            'title': '',
+            'verifyCode': self.get_png_code(),
+            'openTenderCode': '',
+            'purchaser': '',
+            'agency': '',
+            'purchaseNature': '',
+            'operationStartTime': '',
+            'operationEndTime': '',
+            'selectTimeName': 'noticeTime',
+            'cityOrArea': ''}
             data=None
             data_list = self.request_(url, method='get',data=data,param=payload)
-            html=etree.HTML(data_list)
-            for idname in ['tab-a8','tab-b8','tab-c8']:
-                base = html.xpath(f"//div[@id='{idname}']")[0]
-                all_data = base.xpath(".//li")
-                for num in range(1, len(all_data) + 1):
-                    auditTime = base.xpath(f".//li[{num}]/a/span[4]/text()")
-                    releasetime = int(time.mktime(time.strptime(auditTime[0].strip(), "%Y-%m-%d")))
-                    # releasetime = int(lis['publishDate']/1000)
+            print(data_list)
+            if data_list:
+                for data in json.loads(data_list).get('data'):
+                    print(data)
+                    releasetime = int(data['addtime'])/1000
                     todaytime = int(time.mktime(time.strptime(times, "%Y-%m-%d")))
                     print(releasetime, todaytime)
                     if releasetime >= todaytime:
-                        title = base.xpath(f".//li[{num}]/a/span[2]/text()")[0]
-                        href = base.xpath(f".//li[{num}]/a/@href")[0]
+                        title = data.get('title')
+                        href =  data.get("pageurl")
                         # articleId = int(str(time.time()*1000)[::3])
                         # articleId = re.findall(r'id=(\d+)', href)[0]
-                        procurement =  base.xpath(f".//li[{num}]/a/span[1]/text()")[0]
-                        districtName =  base.xpath(f".//li[{num}]/span[@class='col-sm-1']/text()")[0]
+                        procurement =  data.get('purchaser')
+                        districtName =  data.get("regionName")
                         if districtName:
-                            districtName=districtName.replace('省本级',"福建省")
+                            districtName=districtName.replace('本级',"")
                             # print(districtName, releasetime, articleId, procurement, href, title)
                         yield districtName, releasetime, procurement, href, title
                     else:
                         print(f'{times}获取完毕{page}页')
                         self.err()
-        else:
+            else:
                 print(f'{times}获取完毕{page}页')
                 self.err()
     def write_data(self,file,data):
@@ -168,13 +211,13 @@ def run(page,spider,times,file):
         prodict['publishDate'] = releasetime
         prodict['title'] = title
         detailurl = f'http://www.ccgp-fujian.gov.cn{href}'
-        prodict['detailurl'] = detailurl
         print(detailurl)
-        prodict['detail'] = spider.get_data_detail(detailurl)
-        # spider.write_data(file,str(prodict)+"\n")
+        prodict['detailurl'] = detailurl
+        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(detailurl)
         mysqldb = serversql()
         rundb(mysqldb, prodict)
         print(prodict)
+        # spider.write_data(file,str(prodict)+"\n")
 
 
 def main(page, times, file):

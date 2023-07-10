@@ -78,7 +78,11 @@ class cgyxspider(object):
 
             detail_list=list()
             # detail_data =
+            table_html=''
+            num=0
+
             for detail in res:
+                num+=1
                 detail_dict = {}
                 proname = detail.get('title')
                 price = detail.get('money')
@@ -87,15 +91,40 @@ class cgyxspider(object):
                 if futher:
                     futher=futher/1000
                 comment = detail.get('remarks')
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                table_html += f"""
+                                       <tr>
+                                           <th width="30"  align="center">{num}</th>
+                                           <th width="90" >{proname}</th>
+                                           <th width="600" >{require}</th>
+                                           <th width="60"  align="center">{price}</th>
+                                           <th width="90"  align="center">{futher}</th>
+                                           <th width="30" >{comment}</th>
+                                       </tr>"""
+
+            htmlss = f"""
+                <table width="1100" border="1" align="center" cellpadding="0" cellspacing="1"  id="intentionAnnc" style="table-layout: fixed;word-break: break-all; word-wrap: break-word;">
+                   <tbody>
+                       <tr>
+                           <th width="30" bgcolor="#FFFFFF" align="center">序号</th>
+                           <th width="90" bgcolor="#FFFFFF">采购项目名称</th>
+                           <th width="600" bgcolor="#FFFFFF">采购需求概况</th>
+                           <th width="60" bgcolor="#FFFFFF" align="center">预算金额（万元）</th>
+                           <th width="90" bgcolor="#FFFFFF" align="center">预计采购时间</th>
+                           <th width="30" bgcolor="#FFFFFF">备注</th>
+                       </tr>
+                        {table_html}
+                       </tbody>
+                   </table>
+                                      """
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
 
-            return detail_list
+            return htmlss , futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -150,13 +179,14 @@ def run(page,spider,times,file):
                     prodict['publishDate'] = publishDate
                     prodict['title'] = title
                     # print(lis)
+                    showurl=f'https://www.ccgp-chongqing.gov.cn/stock-resources-front/intentionView?id={articleId}'
+                    prodict['detailurl']=showurl
                     detailurl = f'https://www.ccgp-chongqing.gov.cn/yw-gateway/demand/demand/{articleId}/front'
-                    prodict['detailurl']=detailurl
                     content = spider.get_data_info(detailurl)
                     if content:
                         html=json.loads(content).get('data').get('intentionDetaileList')
                         # detail_url = 'http://cgyx.ccgp.gov.cn/' + parse_data.xpath('//tbody/tr/td[5]/a/@href')[0]
-                        prodict['detail'] = spider.get_data_detail(html)
+                        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(html)
                         mysqldb = serversql()
                         rundb(mysqldb, prodict)
                         # spider.write_data(file,str(prodict)+"\n")

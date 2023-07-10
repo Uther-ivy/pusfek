@@ -76,64 +76,61 @@ class cgyxspider(object):
 
     def get_data_detail(self, url):
         detail_list=list()
+        print(url)
         res = self.request_(url, method='get')
         # print(res)
         if res:
-            html = etree.HTML(res)
-            jsdata=html.xpath("//input[@name='articleDetail']/@value")
-            data= json.loads(jsdata[0])
-            content=data.get('content')
+            data = json.loads(res)
+            # jsdata=html.xpath("//input[@name='articleDetail']/@value")
+            # data= json.loads(jsdata[0])
+            content=data.get('result').get('data').get('content')
             detail = etree.HTML(content)
-            size= detail.xpath("//tbody/tr")
-            for num in range(1,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
-                if require:
-                    require = require[0]
-                price = detail.xpath(f"//tr[{num}]/td[@class='code-budgetPrice']/text()")
-                if price :
+            # size= detail.xpath("//tbody/tr")
+            # for num in range(1,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            #     require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
+            #     if require:
+            #         require = require[0]
+            price = detail.xpath(f"//td[@class='code-budgetPrice']/text()")
+            if price :
                     price =float(price[0])/10000
-                futher = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
-                if futher:
+            futher = detail.xpath(f"//td[@class='code-estimatedPurchaseTime']/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
 
 
     def get_data_list(self, times,page):
-        url = f'http://www.ccgp-jilin.gov.cn/front/search/category'
+        url = f'http://www.ccgp-jilin.gov.cn/portal/category'
         print(url)
-        payload = {
-            "categoryCode": "ZcyAnnouncement1",
-            "pageNo": f"{page}",
-            "pageSize": "100"
-        }
+        payload = {"pageNo": page, "pageSize": 15, "categoryCode": "ZcyAnnouncement1", "_t": int(time.time())*1000}
         data=None
         data_list = self.request_(url,  method='post',data=json.dumps(payload),param=data)
         if data_list:
             # return data_list
             jsondata=json.loads(data_list)
-            for data in jsondata.get('hits').get('hits'):
-                lis=data.get('_source')
+            for lis in jsondata.get('result').get('data').get('data'):
+                # lis=data.get('_source')
                 # releasetime = int(time.mktime(time.strptime(lis['auditTime'], "%Y-%m-%d")))
                 releasetime = int(lis['publishDate']/1000)
                 todaytime = int(time.mktime(time.strptime(times, "%Y-%m-%d")))
@@ -142,9 +139,10 @@ class cgyxspider(object):
                     districtName = lis['districtName'].replace('本级','')
                     articleId=lis['articleId']
                     title=lis['title']
-                    href=lis['url']
-                    procurement=re.findall(r'(.*)\d{4}',title)[0]
-                    yield districtName,releasetime,articleId,title,href,procurement
+                    href=f'http://www.ccgp-jilin.gov.cn/portal/detail?articleId={urllib.parse.quote(articleId)}&parentId=550068&timestamp={int(time.time())}'
+                    showurl=f'http://www.ccgp-jilin.gov.cn/luban/detail?parentId=550068&articleId={articleId}'
+                    procurement=lis['author']
+                    yield districtName,releasetime,articleId,title,href,showurl,procurement
                 else:
                     print(f'{times}获取完毕{page}页')
                     self.err()
@@ -162,21 +160,20 @@ class cgyxspider(object):
 def run(page,spider,times,file):
 
     for lis in spider.get_data_list(times,page):
-        districtName, releasetime, articleId, title, href, procurement = lis
+        districtName, releasetime, articleId, title, href,showurl, procurement= lis
         prodict = spider.article_field()
         prodict['procurement'] = procurement
         prodict['districtName'] = districtName
         prodict['articleId'] = int(str(int(time.time() * 100000 + random.random() * 200))[-6:])
         prodict['publishDate'] = releasetime
         prodict['title'] = title
-        detailurl = f'http://www.ccgp-jilin.gov.cn{href}'
-        prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detailurl'] = showurl
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(href)
         # spider.write_data(file,str(prodict)+"\n")
+        print(prodict)
         mysqldb = serversql()
         rundb(mysqldb, prodict)
-        print(detailurl)
-        print(prodict)
+        print(showurl)
 
 
 def main(page, times, file):

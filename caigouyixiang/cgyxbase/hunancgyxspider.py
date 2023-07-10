@@ -75,34 +75,35 @@ class cgyxspider(object):
 
     def get_data_detail(self, res):
         detail_list = list()
-        size = len(res.xpath("//tbody/tr"))
-        for num in range(1, size):
-            detail_dict = {}
-            proname = res.xpath(f"//tr[@id='tr_num{num}']/td[2]/p/span/text()")
-            if proname:
-                proname = proname[0]
-            require = res.xpath(f"//tr[@id='tr_num{num}']/td[3]/p/span/text()")
-            if require:
-                require = require[0]
-            price = res.xpath(f"//tr[@id='tr_num{num}']/td[4]/p/span/text()")
-            if price:
+        content = etree.tostring(res.xpath("//div[@id='yxgk_content']")[0], method="HTML").decode()
+        # size = len(res.xpath("//tbody/tr"))
+        # for num in range(1, size):
+        #     detail_dict = {}
+        #     proname = res.xpath(f"//tr[@id='tr_num{num}']/td[2]/p/span/text()")
+        #     if proname:
+        #         proname = proname[0]
+        #     require = res.xpath(f"//tr[@id='tr_num{num}']/td[3]/p/span/text()")
+        #     if require:
+        #         require = require[0]
+        price = res.xpath(f"//tr[@id='tr_num1']/td[4]/p/span/text()")
+        if price:
                 price = price[0].replace('万元','').replace(',','')
-            futher = res.xpath(f"//tr[@id='tr_num{num}']/td[5]/p/span/text()")
-            if futher:
+        futher = res.xpath(f"//tr[@id='tr_num1']/td[5]/p/span/text()")
+        if futher:
                 futher =int(time.mktime(time.strptime(futher[0], "%Y%m")))
-            comment = res.xpath(f"//tr[@id='tr_num{num}']/td[6]/p/span/text()")
-            if comment:
-                comment = comment[0]
-
-            detail_dict['proname'] = proname
-            detail_dict['price'] = price
-            detail_dict['require'] = require
-            detail_dict['futher'] = futher
-            detail_dict['comment'] = comment
-            detail_list.append(detail_dict)
+            # comment = res.xpath(f"//tr[@id='tr_num{num}']/td[6]/p/span/text()")
+            # if comment:
+            #     comment = comment[0]
+            #
+            # detail_dict['proname'] = proname
+            # detail_dict['price'] = price
+            # detail_dict['require'] = require
+            # detail_dict['futher'] = futher
+            # detail_dict['comment'] = comment
+            # detail_list.append(detail_dict)
             # print( proname,price,require,futher,comment)
 
-        return detail_list
+        return content,futher,price
 
     def get_data_info(self, url):
         # id='1467440'
@@ -160,15 +161,15 @@ def run(page,spider,times,file):
                     # print(lis)
                     detailurl = f'http://www.ccgp-hunan.gov.cn/mvc/viewContent.do?columnId={articleId}'
                     prodict['detailurl']=detailurl
+                    print(detailurl)
                     content = spider.get_data_info(detailurl)
                     if content:
                         detail_data = etree.HTML(content)
-                        prodict['detail'] = spider.get_data_detail(detail_data)
+                        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detail_data)
                         mysqldb = serversql()
                         rundb(mysqldb, prodict)
-                    print(detailurl)
                     print(prodict)
-                        # exit()
+                    # exit()
 
                     #
                 else:

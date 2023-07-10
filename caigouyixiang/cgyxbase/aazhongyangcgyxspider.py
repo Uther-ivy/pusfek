@@ -1,3 +1,4 @@
+import html
 import json
 import logging
 import os
@@ -75,21 +76,26 @@ class cgyxspider(object):
     def get_data_detail(self, url):
         detail_list=list()
         detail_dict = {}
+        print(url)
         res = self.request_(url, method='get')
+        # print(res)
         if res:
+
             detail_data = etree.HTML(res)
-            proname = detail_data.xpath('//tr[4]/td[2]//text()')
-            if proname:
-                proname = proname[0]
+            content = etree.tostring(detail_data.xpath("//div[@class='pubtable']")[0],method='HTML').decode()
+
+            # proname = detail_data.xpath('//tr[4]/td[2]//text()')
+            # if proname:
+            #     proname = proname[0]
             price = detail_data.xpath('//tr[5]/td[2]//text()')
             if price:
                 price = price[0].replace("万元(人民币)",'')
-            protype = detail_data.xpath('//tr[6]/td[2]//text()')
-            if protype:
-                protype = protype[0]
-            require = detail_data.xpath('//tr[7]/td[2]//text()')
-            if require:
-                require = require[0]
+            # protype = detail_data.xpath('//tr[6]/td[2]//text()')
+            # if protype:
+            #     protype = protype[0]
+            # require = detail_data.xpath('//tr[7]/td[2]//text()')
+            # if require:
+            #     require = require[0]
             futher = detail_data.xpath('//tr[8]/td[2]//text()')
             if futher:
                 futher = futher[0]
@@ -97,18 +103,18 @@ class cgyxspider(object):
                     futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                 else:
                     futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))
-            comment = detail_data.xpath('//tr[9]/td[2]//text()')
-            if comment:
-                comment = comment[0]
-            detail_dict['proname'] = proname
-            detail_dict['price'] = price
-            detail_dict['protype'] = protype
-            detail_dict['require'] = require
-            detail_dict['futher'] = futher
-            detail_dict['comment'] = comment
-            detail_list.append(detail_dict)
+            # comment = detail_data.xpath('//tr[9]/td[2]//text()')
+            # if comment:
+            #     comment = comment[0]
+            # detail_dict['proname'] = proname
+            # detail_dict['price'] = price
+            # detail_dict['protype'] = protype
+            # detail_dict['require'] = require
+            # detail_dict['futher'] = futher
+            # detail_dict['comment'] = comment
+            # detail_list.append(detail_dict)
 
-            return detail_list
+            return content,futher ,price
         # except Exception as e:
         #     logging.error(f"list获取失败{e}\n{traceback.format_exc()}")
 
@@ -170,7 +176,7 @@ def run(page,spider,times,file):
         for href in url_list:
             detailurl = f'http://cgyx.ccgp.gov.cn{href}'
             prodict['detailurl'] = detailurl
-            prodict['detail'] = spider.get_data_detail(detailurl)
+            prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
             # spider.write_data(file,str(prodict)+"\n")
             mysqldb = serversql()
             rundb(mysqldb, prodict)

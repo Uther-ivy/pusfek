@@ -214,31 +214,7 @@ def io_test(text):
         print(a)
         # return read
     r.close()
-def thread_test():
-    text=os.listdir('../四库一平台/企业名称')
-    print(text)
-    for re in text:
-        thread = threading.Thread(target=io_test,args=(re,))
-        thread.start()
-        print(thread.name)
-        # thread.join()
-    # io_test(text)
 
-def process_test():
-
-    def test2():
-        print('process_2')
-    def test3():
-        print('process_3')
-    lis=[]
-    for i in range(10):
-        p = Process(target=thread_test)
-        p.start()
-        lis.append(p)
-        # time.sleep(1)  # 1秒中之后，立即结束子进程
-        # p.terminate()
-    for li in lis:
-        li.join()
 # def chatgpt():
     # import openai
     # openai.api_key = "YOUR API KEY"
@@ -259,124 +235,8 @@ def base64_decode():
     print(base64.b64decode(ss).decode())
 
 
-def doc_html():
-    htmldata = f'''
-                    <tbody>
-                            <th>{toubiaoren}</th>
-                            <th>{biaoduan}</th>
-                            <th>{biaoduanbaojia}</th>
-                            <th>{jishufen}</th>
-                            <th>{shangwufen}</th>
-                            <th>{jiagefen}</th>
-                            <th>{pingbiaozongfen}</th>
-                            <th>{paiming}</th>
-                   </tbody>   
-                '''
-    html = f"""
-                <div>
-                    <table border="='0.5" width="70%">
-                        <p class="pj">招标投标项目名称:{toubiaomingcheng}</p>
-                        <p class="jg">招标代理机构：{zhaobiaojigou}</p>
-                        <tbody>
-                            <td >投标人</td>
-                            <td>标段	</td>
-                            <td>标段报价(元)	</td>
-                            <td>技术分</td>
-                            <td>商务分</td>
-                            <td>价格分</td>
-                            <td>评标总分</td>
-                            <td>排名</td>
-                            <td>备注</td>
-                        </tbody>
-                            {htmldata}
-
-                    </table>
-                    <p>公示日期：{gongshiriqi}</p>
-                    <p>公示结束日期：{gongshijieshuriqi}</p>
-                    <p>联系人：{lianxiren}</p>
-                    <p>代理机构电话：{dianhua}</p>
-
-    </div>
-            """
-
-def img_recognition():
-    session = requests.Session()
-    tokenurl='https://bid.zyepp.com/EpointWebBuilder/rest/getOauthInfoAction/getNoUserAccessToken'
-    headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
-    res=session.post(tokenurl, headers).content.decode()
-    get_token=json.loads(res)['custom']['access_token']
-    print(get_token)
-    headers = {
-        'Authorization': f'Bearer {get_token}',
-        # 'Cookie': f'HWWAFSESTIME=1681096055386; noOauthAccessToken=f0f818706bcdacedcb8a9dd095a1dfc2; pageViewNum=16; sid=51DD427B9D46473ABBB418F2A7FD579C; XsP1ZwLDfbxnS=5dBAXpGOxMbXeXAjOvKD9Ck48Pj3.N9Ppghj.b8.3OSMtxW2NA6MbQcKfrr6ZRvwujrCzNot2BgAJXbpi3swmWA; userGuid=1047923792; oauthClientId=admin; oauthPath=http://172.16.0.34:8080/EpointWebBuilder; oauthLoginUrl=http://127.0.0.1:1112/membercenter/login.html?redirect_uri=; oauthLogoutUrl=; HWWAFSESID=1b860731d37a994cee; HWWAFSESTIME=1681096055386; uuid_aeecbc90-b7d9-11ed-abd1-1d76e963c6be=662640fb-0140-4fb0-949b-9cdedd0701c4; href=https%3A%2F%2Fbid.zyepp.com%2Fzbzq%2F001001%2F20230410%2Fd69350e2-4d0a-465b-a0a1-f60e41997599.html; accessId=aeecbc90-b7d9-11ed-abd1-1d76e963c6be; noOauthRefreshToken=07e32f765c564d865c52fe1c23f1be10; noOauthAccessToken=f0f818706bcdacedcb8a9dd095a1dfc2; qimo_seosource_0=%E7%AB%99%E5%86%85; qimo_seokeywords_0=; qimo_seosource_aeecbc90-b7d9-11ed-abd1-1d76e963c6be=%E7%AB%99%E5%86%85; qimo_seokeywords_aeecbc90-b7d9-11ed-abd1-1d76e963c6be=; qimo_xstKeywords_aeecbc90-b7d9-11ed-abd1-1d76e963c6be=; pageViewNum=17',
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
-    getcode = 'https://bid.zyepp.com/EpointWebBuilder/rest/frontAppNotNeedLoginAction/getVerificationCode?params=%7B%22width%22%3A%22100%22%2C%22height%22%3A%2240%22%2C%22codeNum%22%3A%224%22%2C%22interferenceLine%22%3A%221%22%2C%22codeGuid%22%3A%22%22%7D'
-    # data ='params=%7B%22siteGuid%22%3A%227eb5f7f1-9041-43ad-8e13-8fcb82ea831a%22%2C%22ImgGuid%22%3A%2266748e96-9f07-475e-879b-518701914862%22%2C%22YZM%22%3A%223w5e%22%7D'
-    res = session.post(getcode, headers=headers).content.decode()
-    custom=json.loads(res)['custom']
-    imgCode=(custom['imgCode']).replace('data:image/jpg;base64,','')
-    guid=custom['verificationCodeGuid']
-    print(imgCode)
-    print(guid)
-    print(base64.b64decode(imgCode))
-    with open('中原云商电子招投标平台.jpg', 'wb') as w:
-        w.write(base64.b64decode(imgCode))
-    image=Image.open('中原云商电子招投标平台.jpg')
-    image = image.convert('L')
-    # image = image.convert('1')
-    count = 180
-    table = []
-    for i in range(256):
-        if i < count:
-            table.append(0)
-        else:
-            table.append(1)
-    print(table)
-    image = image.point(table, '1')
-
-    img_rec= pytesseract.image_to_string(image).strip()
-    # re.findall(r'',img_rec)
-    print(img_rec)
-
-    pagelist='https://bid.zyepp.com/EpointWebBuilder/rest/frontAppNotNeedLoginAction/pageListVerify'
-
-    param='params='+urllib.parse.quote('{"siteGuid":"7eb5f7f1-9041-43ad-8e13-8fcb82ea831a","ImgGuid":"'+guid+'","YZM":"'+img_rec+'"}')
-    # res=session.post(pagelist,headers=headers).content.decode()
-    print(param)
-    # jsondata = json.loads(reslist.decode())
-
-def wirte_xls():
-
-    with open('../四库一平台/test_siku/companyname/河北二级.txt', 'r', encoding='utf-8') as r:
-        datalist=r.readlines()
-
-    print(datalist)
-    # time.sleep(2222)
-    book = xlwt.Workbook(encoding="utf-8", style_compression=0)
-    sheet = book.add_sheet('河北二级数据', cell_overwrite_ok=True)
-    caption = ['company', 'phone', 'email', 'address']
-    print()
-    for i in range(0, len(caption)):
-        sheet.write(0, i, caption[i])
-    print(len(datalist))
-
-    for i in range(len(datalist)):
-
-        print(type(datalist[i]),datalist[i])
-        # time.sleep(2222)
-
-        if '[' in datalist[i]:
-            for j in range(len(caption)):
-                print(i+1,j,eval(datalist[i])[j])
-                sheet.write(i+1,j,eval(datalist[i])[j])  # 写入一行数据
-
-        else:
-            style = xlwt.easyxf('font: bold on')
-            sheet.write(i + 1, 0, datalist[i], style)
 
 
-    book.save('./河北二级数据.xls')  # 保存
 
 
 
@@ -419,7 +279,7 @@ if __name__ == '__main__':
     # replace_ip()
     # base64_decode()
     # nodejs()
-    times()
+
     # runjs()
     # regex()
     # mid = str(time.time() * 1000)

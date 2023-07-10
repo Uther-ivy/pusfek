@@ -23,38 +23,27 @@ def excute_company():
         fil = f'company_id{times}.txt'
         spider = MinSpider()
         spider.replace_ip()
-        # companylist = read_file('企业名称/1.txt')
+        companylist = read_file('errorcompany2023-06-27.txt')
         # companylist = read_file('./test_siku/companyname/errorname2.txt')
-        companylist=[
-            # '东营格瑞电子科技有限公司','泰安市恒泰消防工程有限公司','山东中优建设工程有限公司',
-            '新疆华博建筑工程有限公司',
-            '西藏曲协建设工程有限公司',
-            '广州晟开工程有限公司',
-            '西藏添宝建筑工程有限公司',
-            '中交（三沙）开发建设有限公司',
-            '青海平垣建设工程有限公司',
-            '西藏斯巴尔建设有限公司',
-            '新疆毫美建筑工程有限责任公司',
-            '新疆百诚建筑工程有限公司',
-            '西藏桥穆玉日建筑工程有限责任公司',
-            '新疆振峰工程建设有限公司',
-            # '91610800064834709T',
-            # '南京鑫盈和装饰工程有限公司', '湖南忆江南园林有限公司','全椒县方唐建筑设计有限公司',
-            #  '瑞安永捷环境工程有限公司', '天津蓝铃盛丰广告有限公司','菏泽华杰东方装饰设计有限公司',
-            #   '葫芦岛市惠群物业管理有限公司', '天津市南开区金桥装饰装修服务中心','上海壹杰信息技术有限公司','浙江砼盟建筑材料有限公司',
-            # '中建八局第一建设有限公司','吉林亿北建设工程有限公司','攀枝花市一通建筑工程有限责任公司','内蒙古万兴建设有限公司',
-            # '贵州德亨环境科技工程有限公司','集安市清云市政设计有限公司','河北建设集团卓诚路桥工程有限公司','徐闻县第一建筑工程总公司',
-            # '青岛海洋工程勘察设计研究院','海南壹鼎建筑工程有限公司','广西巍海消防工程有限公司','广西好气派装饰有限公司',
-            # '西藏征程钢结构工程有限公司','新疆新烨建设工程有限公司','广西远邕建筑有限公司','华润混凝土（澄迈金江）有限公司',
-            # '中国十九冶集团（防城港）设备结构有限公司','唐山怡景市政园林绿化工程有限公司','新疆渝江建筑安装工程有限公司铁门关市分公司','新疆峰臻商贸有限公司',
-            # '沙湾耀能能源有限公司','铁门关市久远园林绿化工程有限公司','新疆尚坤建设工程有限责任公司','华夏子弟科技(新疆)有限公司',
-            # '铁门关市鑫泉商贸有限责任公司','新疆玖鑫商贸有限公司','铁门关市双博科技有限公司','铁门关市帮达商贸有限公司',
-            # '新疆运丰棉业机械有限公司','新疆中如新材料有限责任公司','新疆久泰钢结构工程有限公司','铁门关市中意新材料有限公司'
-        ]#
+        # companylist=[
+        #     # '东营格瑞电子科技有限公司','泰安市恒泰消防工程有限公司','山东中优建设工程有限公司',
+        #     '新疆华博建筑工程有限公司',
+        #     '西藏曲协建设工程有限公司',
+        #     '广州晟开工程有限公司',
+        #     '西藏添宝建筑工程有限公司',
+        #     '中交（三沙）开发建设有限公司',
+        #     '青海平垣建设工程有限公司',
+        #     '西藏斯巴尔建设有限公司',
+        #     '新疆毫美建筑工程有限责任公司',
+        #     '新疆百诚建筑工程有限公司',
+        #     '西藏桥穆玉日建筑工程有限责任公司',
+        #     '新疆振峰工程建设有限公司',
+        #
+        # ]#
         print(companylist)
         while True:
             threads = []
-            if len(companylist)>10:
+            if len(companylist)>=10:
                 rangenum=10
             elif len(companylist)<10 and len(companylist)>0:
                 rangenum=len(companylist)
@@ -64,6 +53,7 @@ def excute_company():
                 companyname = companylist.pop()
                 if companyname:
                     print(companyname)
+
                     threadid = threading.Thread(target=spider.get_company_id, args=(companyname, fil), )
                     threadid.start()
                     threadid.join()
@@ -87,13 +77,12 @@ def excute_company():
             spider.randomtime()
     except Exception as e:
         logging.error(f"excute_companyid获取失败{e}\n{traceback.format_exc()}")
-def get_redis_company_id_base_cert(fil):
+def get_redis_company_id_base_cert():
     try:
         spider = MinSpider()
         spider.replace_ip()
         # while True:
         companys = set()
-        today_timestamp = int(time.mktime(time.strptime(fil, "%Y-%m-%d")))
         while True:
             for n in range(10):
                 company=company_four()
@@ -120,8 +109,6 @@ def get_redis_company_id_base_cert(fil):
                 threads_base_cert.append(scthread)
             for thread in threads_base_cert:
                 thread.join()
-            if int(time.time()) >= today_timestamp+75600:
-                sys.exit()
             else:
                 companys.clear()
                 spider.companyset.clear()
@@ -129,11 +116,11 @@ def get_redis_company_id_base_cert(fil):
     except Exception as e:
         logging.error(f"def get_redis_company_id_base_cert 获取失败{e}\n{traceback.format_exc()}")
 def excute_company_read_file():
-    fil = str(datetime.datetime.today().strftime('%Y-%m-%d'))
+    times = str(datetime.date.today())
     # get_redis_company_id_base_cert(fil)
     spider = MinSpider()
     spider.replace_ip()
-    company_list = read_file('company_id2023')
+    company_list = read_file('errorcompany2023-06-27.txt')
 
     threads = []
     for company in company_list:
@@ -141,15 +128,16 @@ def excute_company_read_file():
         company = eval(company)
         cname = company[0]
         cid = company[1]
-        scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, fil, cname), )
+        scthread = threading.Thread(target=spider.run_search_base_cert, args=(cid, cname,times), )
         scthread.start()
         threads.append(scthread)
     for thread in threads:
         thread.join()
     spider.companyset.clear()
-def excute_listdir_company(fil):
+def excute_listdir_company():
     try:
-        spider = MinSpider(fil)
+        times = str(datetime.date.today())
+        spider = MinSpider()
         spider.replace_ip()
         ls=os.listdir('企业名称')[35:40]
         print(ls)
@@ -169,7 +157,7 @@ def excute_listdir_company(fil):
                 for n in range(rangenum):
                     companyname = companylist.pop().replace('\n', '')
                     print(companyname)
-                    threadid = threading.Thread(target=spider.get_company_id, args=(companyname, fil), )
+                    threadid = threading.Thread(target=spider.get_company_id, args=(companyname, times), )
                     threadid.start()
                     threadid.join()
                 print(spider.companyset)

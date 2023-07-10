@@ -29,12 +29,12 @@ def job():
     times = time.time()
     print(times)
     # files = os.listdir('./cgyxbase')
-    files = ['hebeicgyxspider.py']
+    files = ['liaoningcgyxspider.py']
     for file in files:
         if '__pycache__' not in file:
-            times_('2022-5-1')
+            times_('2023-5-1')
             files_(file)
-            pages_(3000)
+            pages_(20)
             # print(data_dict)
             f = open('unit.txt', 'w')
             f.write(json.dumps(data_dict))

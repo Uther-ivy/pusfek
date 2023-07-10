@@ -98,36 +98,37 @@ class cgyxspider(object):
             content=data.get('content')
             # print(content)
             detail = etree.HTML(content)
-            size= detail.xpath("//tbody/tr")
-            for num in range(1,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
-                if require:
-                    require = require[0]
-                price = detail.xpath(f"//tr[{num}]/td[@class='code-budgetPrice']/text()")
-                if price :
-                    price =float(price[0])/10000
-                futher = detail.xpath(f"//tr[{num}]/td[@class='code-estimatedPurchaseTime']/text()")
-                if futher:
-                    futher=futher[0]
-                    if '年' in futher:
-                        futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
-                    else:
-                        futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+            # text= detail.xpath("//tbody/tr")
+
+            # for num in range(1,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseProjectName']/text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            #     require = detail.xpath(f"//tr[{num}]/td[@class='code-purchaseRequirementDetail']/text()")
+            #     if require:
+            #         require = require[0]
+            price = detail.xpath(f"//td[@class='code-budgetPrice']/text()")
+            if price :
+                price =float(price[0])/10000
+            futher = detail.xpath(f"//td[@class='code-estimatedPurchaseTime']/text()")
+            if futher:
+                futher=futher[0]
+                if '年' in futher:
+                    futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
+                else:
+                    futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
+                # comment = detail.xpath(f"//tr[{num}]/td[@class='code-remark']/text()")
+            #     if comment:
+            #         comment = comment[0]
+            #     detail_dict['proname'] = proname
+            #     detail_dict['price'] = price
+            #     detail_dict['require'] = require
+            #     detail_dict['futher'] = futher
+            #     detail_dict['comment'] = comment
+            #     detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher ,price
     def get_data_detail_xpath(self, url):
         if self.headers.get('Content-Type'):
             self.headers.pop('Content-Type')
@@ -228,11 +229,11 @@ def run(page,spider,times,file):
         prodict['articleId'] = int(str(int(time.time()*100000+random.random()*200))[-6:])
         prodict['publishDate'] = releasetime
         prodict['title'] = title
-        detailurl = f'http://www.ccgp-anhui.gov.cn/luban/detail?parentId=541080&articleId=LmYvnjdtHaQJguU1Vi99eA==&utm=luban.luban-PC-4720.878-pc-websitegroup-anhuisecondLevelPage-front.16.efb164f0ebe211ed977cab0b3cbfc657'
-        detailurl = f'http://www.ccgp-anhui.gov.cn/luban/detail?parentId=541080&articleId=2WJZZKUSMkGsaJwS5z6ihw==&utm=luban.luban-PC-4720.878-pc-websitegroup-anhuisecondLevelPage-front.21.efb164f0ebe211ed977cab0b3cbfc657'
+        detailurl = f'http://www.ccgp-anhui.gov.cn/luban/detail?parentId=541080&articleId={articleId}&utm=luban.luban-PC-4720.878-pc-websitegroup-anhuisecondLevelPage-front.16.efb164f0ebe211ed977cab0b3cbfc657'
+        # detailurl = f'http://www.ccgp-anhui.gov.cn/luban/detail?parentId=541080&articleId=2WJZZKUSMkGsaJwS5z6ihw==&utm=luban.luban-PC-4720.878-pc-websitegroup-anhuisecondLevelPage-front.21.efb164f0ebe211ed977cab0b3cbfc657'
         print(detailurl)
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(href)
+        prodict['detail'], prodict['futher'], prodict['price'] = spider.get_data_detail(href)
         # spider.write_data(file,str(prodict)+"\n")
         mysqldb = serversql()
         rundb(mysqldb, prodict)

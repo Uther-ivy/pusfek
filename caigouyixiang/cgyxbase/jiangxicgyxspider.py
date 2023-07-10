@@ -75,39 +75,41 @@ class cgyxspider(object):
 
     def get_data_detail(self, url):
         detail_list=list()
+        print(url)
         res = self.request_(url, method='get')
         if res:
             detail = etree.HTML(res)
-            size= detail.xpath("//div[@class='con']//tr")
-            for num in range(2,len(size)+1):
-                detail_dict = {}
-                proname = detail.xpath(f"//tr[{num}]/td[2]//text()")
-                if proname:
-                    proname = proname[0].replace('\u3000','')
-                price = detail.xpath(f"//tr[{num}]/td[5]/span/text()")
-                if price :
+            content = etree.tostring(detail.xpath("//div[@class='con']/div")[0], method="HTML").decode()
+            # size= detail.xpath("//div[@class='con']//tr")
+            # for num in range(2,len(size)+1):
+            #     detail_dict = {}
+            #     proname = detail.xpath(f"//tr[{num}]/td[2]//text()")
+            #     if proname:
+            #         proname = proname[0].replace('\u3000','')
+            price = detail.xpath(f"//tr[2]/td[3]/span/text()")
+            if price :
                     price =float(price[0])/10000
-                require = detail.xpath(f"//tr[{num}]/td[4]/span/text()")
-                if require:
-                    require = require[0]
-                futher = detail.xpath(f"//tr[{num}]/td[6]/span/text()")
-                if futher:
+                # require = detail.xpath(f"//tr[{num}]/td[4]/span/text()")
+                # if require:
+                #     require = require[0]
+            futher = detail.xpath(f"//tr[2]/td[4]/span/text()")
+            if futher:
                     futher=futher[0]
                     if '年' in futher:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y年%m月")))  #
                     else:
                         futher = int(time.mktime(time.strptime(futher.strip(), "%Y-%m")))  #
-                comment = detail.xpath(f"//tr[{num}]/td[7]/span/text()")
-                if comment:
-                    comment = comment[0]
-                detail_dict['proname'] = proname
-                detail_dict['price'] = price
-                detail_dict['require'] = require
-                detail_dict['futher'] = futher
-                detail_dict['comment'] = comment
-                detail_list.append(detail_dict)
+                # comment = detail.xpath(f"//tr[{num}]/td[7]/span/text()")
+                # if comment:
+                #     comment = comment[0]
+                # detail_dict['proname'] = proname
+                # detail_dict['price'] = price
+                # detail_dict['require'] = require
+                # detail_dict['futher'] = futher
+                # detail_dict['comment'] = comment
+                # detail_list.append(detail_dict)
                 # print( proname,price,require,futher,comment)
-            return detail_list
+            return content,futher,price
 
 
         # except Exception as e:
@@ -174,7 +176,7 @@ def run(page,spider,times,file):
         prodict['title'] = title
         detailurl = 'http://www.ccgp-jiangxi.gov.cn'+href
         prodict['detailurl'] = detailurl
-        prodict['detail'] = spider.get_data_detail(detailurl)
+        prodict['detail'],prodict['futher'],prodict['price'] = spider.get_data_detail(detailurl)
         # spider.write_data(file,str(prodict)+"\n")
         if  not prodict['detail']:
             continue
