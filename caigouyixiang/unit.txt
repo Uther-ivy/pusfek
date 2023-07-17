@@ -1,1 +1,1 @@
-{"time": "2022-5-5", "file": "./cgyxdata/tianjincgyxspider.txt", "page": 20}
+{"time": "2022-5-5", "file": "./cgyxdata/liaoningcgyxspider.txt", "page": 20}

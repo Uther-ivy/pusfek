@@ -1,6 +1,8 @@
+import json
 import traceback
 
 import pymysql
+import requests
 from lxml import etree
 
 import tool
@@ -62,6 +64,13 @@ def search_data():
     data= excute_mysql(sql)
     print(data)
     return data
+
+def get_aid_api():
+    url='http://srms.jianqicha.com.cn/Sphinx/pythonIDs?pages=6&shi=9000&url=yichang'
+    session=requests.Session()
+    res=session.get(url).content.decode()
+    print(res)
+    return res
 # def del_():
 #     sql = f"--  delete from dede_addoninfos7 where url='http://cr16g.crcc.cn%';"
 #     data = excute_mysql(sql,commit=True)
@@ -72,19 +81,21 @@ def search_data():
 
 
 if __name__ == '__main__':
-
+    aids=json.loads(get_aid_api())['aid']
     jl = alashan_ggzy()
-    for data in search_data():
+    num=0
+    for data in aids:
         print(data)
-        #
-        code= jl.parse_detile(data[2], data[1], data[3])
-        print(code)
+
+        # code= jl.parse_detile(data[2], data[1], data[3])
+        # print(code)
 
         #     sheng=7500
         #     update_sheng(id, sheng)
         #     if data[1]!=8002.0:
         # shi=7502
-        # update_shi(id, shi)
-        # print(data)
-        id=data[0]
+        update_shi(data, 9004)
+        num+=1
+        print(data,'update complate',num)
+        # id=data[0]
         # updata_body(id,code)

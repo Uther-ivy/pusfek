@@ -25,17 +25,9 @@ class cgyxspider(object):
         }
         self.headers= {
 'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-# 'Accept-Encoding':'gzip, deflate',
-# 'Accept-Language':'zh-CN,zh;q=0.9',
-# 'Cache-Control':'max-age=0',
-            'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
 'Connection':'keep-alive',
-# 'Cookie':'PYCCS=1688782948|NMfde/5HqWiybuxXVCAfuvwBAsoDiLBvkrKGuIamydE=;',#rg0rqWKwpCndPRdA
-    # 'xincaigou=49737.2927.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; PYCCS=1688780173|wn33KqkCRE1UMd8AGmm4Gcl16pCs/YjLgiVDiNc2CQE=; JSESSIONID=WXgzIgAAjIPYWpiNKppfkBJ2KDuIIUgEGepRfdy6ZxDO-BW7Pl_X!870859519',
-          #xincaigou=49737.2927.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; PYCCS=1688780173|wn33KqkCRE1UMd8AGmm4Gcl16pCs/YjLgiVDiNc2CQE=; JSESSIONID=WXgzIgAAjIPYWpiNKppfkBJ2KDuIIUgEGepRfdy6ZxDO-BW7Pl_X!870859519
-          #,
 'Host':'www.ccgp-yunnan.gov.cn',
-# 'Upgrade-Insecure-Requests':1,
 'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
     }
         self.errors=0

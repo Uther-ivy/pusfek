@@ -5,7 +5,7 @@ import time
 import traceback
 from multiprocessing import Process
 
-from params_setting import project_params, person_params
+from params_setting import get_params
 from spider.sikuyipingminspider import MinSpider
 from spider.sql import serch_siku
 from spider.sql import searchdb
@@ -49,12 +49,12 @@ def get_company_project(get_company_project):
         logging.error(f"get_company_base_cert 获取失败{e}\n{traceback.format_exc()}")
 
 
-def run_project():
+def run_project(param):
     company_list = list(serch_siku())
     lists = []
-    start = project_params[0]  # person_params[0]开始数  person_params[1] 迭代次数 person_params[2]增加个数
-    for a in range(project_params[1]):
-        end = start + project_params[2]
+    start = param[0]  # person_params[0]开始数  person_params[1] 迭代次数 person_params[2]增加个数
+    for a in range(param[1]):
+        end = start + param[2]
         print(start, end)
         if int(datetime.datetime.now().day) % 2 == 0:
             lists.append(company_list[start:end])
@@ -78,7 +78,12 @@ def run_project():
 if __name__ == '__main__':
 
     while True:
-        run_project()
+        for param in get_params():
+            print(param)
+             # params[0]开始数  params[1] 迭代次数 params[2]增加个数
+
+            run_project(param)
+            print('获取project')
         print('完成，休息25分继续')
         time.sleep(1500)
 

@@ -30,7 +30,7 @@ def job():
     print(times)
     # files = os.listdir('./cgyxbase')
     # files = ['zhejiangcgyxspider.py']
-    files = ['tianjincgyxspider.py']
+    files = ['liaoningcgyxspider.py']
     for file in files:
         if '__pycache__' not in file:
             times_('2022-5-5')

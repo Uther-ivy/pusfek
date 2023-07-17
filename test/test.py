@@ -59,21 +59,38 @@ def run():
     # proxy =replace_ip()
     # print(proxy)
     session=requests.session()
-    url = f'http://39.107.102.206:8087/permission/getSecretKey'
+    url = f'http://www.yngp.com/api/captcha/captcha.get.svc'
     print(url)
-    payload = {"entstatus":"",
-               "enttype":"","nic":"E",
-               "esdate_start":"2022-06-13",
-               "esdate_end":"2023-06-13","regcap_start":"",
-               "regcap_end":"","region":"","opscope":"",
-               "ltype":"","page_size":20,"page_index":3}
+    payload ={"captchaType":"clickWord","clientUid":"point-47ffb2be-4f06-49b8-8d59-40cd09d7a299","ts":int(time.time()*1000)}
     headers={
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+# 'Accept':'*/*',
+# 'Accept-Encoding':'gzip, deflate',
+# 'Accept-Language':'zh-CN,zh;q=0.9',
+# 'Connection':'keep-alive',
+# 'Content-Length':'103',
+'Content-Type':'application/json;charset=UTF-8',
+# 'Cookie':'PYCCS=1689236091|DNgYTt+z/JPnBTdPARoW2G9erroAYrLvwDrLfBtk8pU=;xincaigou=49737.2943.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; JSESSIONID=8HdOTpudAFB8wDp8agdCEU2JBLd0en-6Nq5ry1FT1o0inTq_gRhU!870859519',
+'Cookie':'PYCCS=1689300466|HDHy/Ol5x9nIgpLULXPSzWmdgdVo+jhbNBlZk2VwV4g=; '
+         'xincaigou=49737.2927.1035.0000; route=e54581605adaa48023fa3cb7a6b63f8d; '
+         'JSESSIONID=UjlSJUnLRNhVTK3A6bzLIw28nMv2_YJfs-L-cYLh-Da6_4c_S8-B!2024805249',
+# 'Host':'www.yngp.com',
+# 'Origin':'http://www.yngp.com',
+# 'Referer':'http://www.yngp.com/page/procurement/procurementList.html',
+'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
              }
+    # 'PYCCS=1689238612|owV0DeLY30lXDknJaYTI9A4iw4YFv92J3hHX8vVGy+o='
     # data_list = session.get(url,headers=headers)
-    data=session.post(url,headers=headers).content.decode()
-    print(data)
-
+    res=session.post(url,headers=headers,data=json.dumps(payload)).content.decode()
+    print(res)
+    data=json.loads(res).get('data').get('repData')
+    key=data.get('secretKey')
+    img=data.get('originalImageBase64')
+    wordlist=data.get('wordList')
+    token=data.get('token')
+    print(key)
+    print(img)
+    print(wordlist)
+    print(token)
 #
 def BeautifulStoneSoup():
     # proxy =replace_ip()
@@ -269,7 +286,7 @@ if __name__ == '__main__':
     # times()
     # pop_test()
     # urllibtest()
-    # run()
+    run()
 
 
     # img_recognition()

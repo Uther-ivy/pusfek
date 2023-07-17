@@ -842,6 +842,7 @@ def process_request():
     print("ip获取中")
     url = 'http://api2.xkdaili.com/tools/XApi.ashx?apikey=XK2C1C3E708F5D494F17&qty=1&format=json&split=0&iv=0&sign=07f208e19a95015125b82b5019350d4e'
     headers2 = {
+
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
     }
     try:
