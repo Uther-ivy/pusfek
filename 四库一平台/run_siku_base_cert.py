@@ -85,7 +85,7 @@ if __name__ == '__main__':
     while True:
          for  param in  get_params():
             print(param)
-            run_base(param)#params[0]开始数  params[1] 迭代次数 params[2]增加个数
+            # run_base(param)#params[0]开始数  params[1] 迭代次数 params[2]增加个数
             # print('获取base_cert')
             # run_person(param)
             # print('获取person')
