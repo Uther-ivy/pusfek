@@ -1178,7 +1178,7 @@ def removal(title, date):
     title = title.replace('\r', '').replace('\n', '').replace('\t', '').replace(' ', '').replace('�', '')
     qu_url = 'http://srms.jianqicha.com.cn/admin.php/ztb_unrepeat?title=' + title
     ls = json.loads(requests_get(qu_url, headers))
-    # print(ls)
+    print(ls)
     if len(ls) == 0:
         return True
     return False

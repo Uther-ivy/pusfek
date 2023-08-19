@@ -2,6 +2,8 @@
 import json
 import re
 import time, html
+
+import execjs
 import requests
 from lxml import etree
 from lxml.etree import HTML
@@ -20,7 +22,99 @@ class wenshan_ggzy:
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
 
         }
+    def get_code(self):
+        url = 'https://ec.minmetals.com.cn/open/homepage/public'
+        # res=tool.requests_post(url, data=None, headers=self.headers)
+        # print(res)
+        data=r'''
+var v, b = {
+            decode: function(e) {
+                var t;
+                if (void 0 === d) {
+                    var n = "0123456789ABCDEF"
+                      , r = " \f\n\r\t \u2028\u2029";
+                    for (d = {},
+                    t = 0; t < 16; ++t)
+                        d[n.charAt(t)] = t;
+                    for (n = n.toLowerCase(),
+                    t = 10; t < 16; ++t)
+                        d[n.charAt(t)] = t;
+                    for (t = 0; t < r.length; ++t)
+                        d[r.charAt(t)] = -1
+                }
+                var o = []
+                  , i = 0
+                  , s = 0;
+                for (t = 0; t < e.length; ++t) {
+                    var a = e.charAt(t);
+                    if ("=" == a)
+                        break;
+                    if (a = d[a],
+                    -1 != a) {
+                        if (void 0 === a)
+                            throw new Error("Illegal character at offset " + t);
+                        i |= a,
+                        ++s >= 2 ? (o[o.length] = i,
+                        i = 0,
+                        s = 0) : i <<= 4
+                    }
+                }
+                if (s)
+                    throw new Error("Hex encoding incomplete: 4 bits missing");
+                return o
+            }
+        }
+function g(e) {
+        var t;
+        if (void 0 === v) {
+            var n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+                , r = "= \f\n\r\t \u2028\u2029";
+            for (v = Object.create(null),
+                     t = 0; t < 64; ++t)
+                v[n.charAt(t)] = t;
+            for (v["-"] = 62,
+                     v["_"] = 63,
+                     t = 0; t < r.length; ++t)
+                v[r.charAt(t)] = -1
+        }
+        var o = []
+            , i = 0
+            , s = 0;
+        for (t = 0; t < e.length; ++t) {
+            var a = e.charAt(t);
+            if ("=" == a)
+                break;
+            if (a = v[a],
+            -1 != a) {
+                if (void 0 === a)
+                    throw new Error("Illegal character at offset " + t);
+                i |= a,
+                    ++s >= 4 ? (o[o.length] = i >> 16,
+                        o[o.length] = i >> 8 & 255,
+                        o[o.length] = 255 & i,
+                        i = 0,
+                        s = 0) : i <<= 6
+            }
+        }
+        switch (s) {
+            case 1:
+                throw new Error("Base64 encoding incomplete: at least 2 bits missing");
+            case 2:
+                o[o.length] = i >> 10;
+                break;
+            case 3:
+                o[o.length] = i >> 16,
+                    o[o.length] = i >> 8 & 255;
+                break
+        }
+        return o
+    }
 
+'''
+        # print(data)
+        res='MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCyIlvDj+fpEh6man5KXuP2v05zxS7o9A5yTbDsKdGcBZ8730VVzFO3iX/OGYygKCWtSzlsUKaD0ygo9+7n8KBljTccA/h36/ONIluwqGULRyPFdODwM+EEqCNswdlGGU/DK1FSGxwpJXL0bvaZrSGbFiGz/mzjJ+dBbOsmjaT5yQIDAQAB'
+        dedata = execjs.compile(data).call('g',res)
+        print(dedata)
     def parse(self):
         date = tool.date
         # date = '2020-09-27'
@@ -28,9 +122,8 @@ class wenshan_ggzy:
         while True:
             page += 1
             data = {
-                'pageNo': page,
-                'type': 10,
-                'paramJson': '{"title":"","consigncode":"","bidorg":"","prodcode":"","createtimeStart":"","createtimeEnd":"","opentimeStart":"","opentimeEnd":""}'
+
+            'param': ''
           }
             text = tool.session_post(self.url, data)
             print('*' * 20, page, '*' * 20)
@@ -44,7 +137,7 @@ class wenshan_ggzy:
                 date_Today = int(li['createdate']['time']/1000)
                 if 'http' not in url:
                     url = self.domain_name + url
-                # print(title, url, date_Today)
+                print(title, url, date_Today)
                 # time.sleep(666)
                 if tool.Transformation(date) >= date_Today:
                     if tool.removal(title, date):
@@ -109,15 +202,17 @@ class wenshan_ggzy:
         else:
             item['sheng'] = 0
         item['removal']= title
-        process_item(item)
-        # print(item)
+        # process_item(item)
+        print(item)
 
 
 if __name__ == '__main__':
     import traceback,os
     try:
         jl = wenshan_ggzy()
-        jl.parse()
+        jl.get_code()
+        # jl.parse()
+
     except Exception as e:
         traceback.print_exc()
         tool.send_error('报错文件：'+str(os.path.basename(__file__))+'报错信息：'+str(e))

@@ -59,7 +59,7 @@ def run():
     # proxy =replace_ip()
     # print(proxy)
     session=requests.session()
-    url = f'http://www.yngp.com/api/captcha/captcha.get.svc'
+    url = f'http://srms.jianqicha.com.cn/admin.php/Approval/ceshi/?act=app&approval=1&page=1&short_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaW5nYmFvZ3VhbiIsImF1ZCI6IiIsImlhdCI6MTY5MDUxOTU1OSwibmJmIjoxNjkwNTE5NTU5LCJleHAiOjE2OTA1Nzk1NTksImRhdGEiOnsibWlkIjozNTYyOX19.UyU2HuF48sUfcJ6G6K2IkaEy_NJc-VGPMWBbv8DOm2E&nativeplace=6000'
     print(url)
     payload ={"captchaType":"clickWord","clientUid":"point-47ffb2be-4f06-49b8-8d59-40cd09d7a299","ts":int(time.time()*1000)}
     headers={
@@ -68,11 +68,11 @@ def run():
 # 'Accept-Language':'zh-CN,zh;q=0.9',
 # 'Connection':'keep-alive',
 # 'Content-Length':'103',
-'Content-Type':'application/json;charset=UTF-8',
+# 'Content-Type':'application/json;charset=UTF-8',
 # 'Cookie':'PYCCS=1689236091|DNgYTt+z/JPnBTdPARoW2G9erroAYrLvwDrLfBtk8pU=;xincaigou=49737.2943.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; JSESSIONID=8HdOTpudAFB8wDp8agdCEU2JBLd0en-6Nq5ry1FT1o0inTq_gRhU!870859519',
-'Cookie':'PYCCS=1689300466|HDHy/Ol5x9nIgpLULXPSzWmdgdVo+jhbNBlZk2VwV4g=; '
-         'xincaigou=49737.2927.1035.0000; route=e54581605adaa48023fa3cb7a6b63f8d; '
-         'JSESSIONID=UjlSJUnLRNhVTK3A6bzLIw28nMv2_YJfs-L-cYLh-Da6_4c_S8-B!2024805249',
+# 'Cookie':'PYCCS=1689300466|HDHy/Ol5x9nIgpLULXPSzWmdgdVo+jhbNBlZk2VwV4g=; '
+#          'xincaigou=49737.2927.1035.0000; route=e54581605adaa48023fa3cb7a6b63f8d; '
+#          'JSESSIONID=UjlSJUnLRNhVTK3A6bzLIw28nMv2_YJfs-L-cYLh-Da6_4c_S8-B!2024805249',
 # 'Host':'www.yngp.com',
 # 'Origin':'http://www.yngp.com',
 # 'Referer':'http://www.yngp.com/page/procurement/procurementList.html',
@@ -80,17 +80,17 @@ def run():
              }
     # 'PYCCS=1689238612|owV0DeLY30lXDknJaYTI9A4iw4YFv92J3hHX8vVGy+o='
     # data_list = session.get(url,headers=headers)
-    res=session.post(url,headers=headers,data=json.dumps(payload)).content.decode()
-    print(res)
-    data=json.loads(res).get('data').get('repData')
-    key=data.get('secretKey')
-    img=data.get('originalImageBase64')
-    wordlist=data.get('wordList')
-    token=data.get('token')
-    print(key)
-    print(img)
-    print(wordlist)
-    print(token)
+    res=session.get(url,headers=headers)
+    print(res.content)
+    # data=json.loads(res).get('data').get('repData')
+    # key=data.get('secretKey')
+    # img=data.get('originalImageBase64')
+    # wordlist=data.get('wordList')
+    # token=data.get('token')
+    # print(key)
+    # print(img)
+    # print(wordlist)
+    # print(token)
 #
 def BeautifulStoneSoup():
     # proxy =replace_ip()

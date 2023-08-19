@@ -9,6 +9,7 @@ import execjs
 from binascii import a2b_hex
 
 from Crypto.Cipher import DES, AES
+from Crypto.Util.Padding import pad, unpad
 from lxml.builder import unicode
 
 
@@ -26,14 +27,14 @@ def web_jiema_AES(data):
     cryptos = AES.new(key, mode, iv)
     print(base64.b64decode(data))
     print(a2b_hex(data))
-    plain_text_ = cryptos.decrypt(a2b_hex(data))
+    plain_text_ = unpad(cryptos.decrypt(a2b_hex(data)),AES.block_size)
     print(plain_text_)
     Plain_text=bytes.decode(plain_text_)#.replace('',"").replace('',"").replace('',"").replace('',"").replace('',"").replace('',"")
-    Plain_text=re.findall(r'(.*})',Plain_text)[0]#.replace('',"").replace('',"").replace('',"").replace('',"").replace('',"").replace('',"")
+    # Plain_text=re.findall(r'(.*})',Plain_text)[0]#.replace('',"").replace('',"").replace('',"").replace('',"").replace('',"").replace('',"")
     print(type(Plain_text),Plain_text)
-    Plain_text=eval(Plain_text)
-    print(type(Plain_text),Plain_text)
-    return Plain_text
+    # Plain_text=eval(Plain_text)
+    # print(type(Plain_text),Plain_text)
+    return plain_text_
 
 def xiaochengxu_jiemi(data):
     js_infos = '''function deCrypt(t) {

@@ -4,7 +4,7 @@ import pymysql
 from lxml import etree
 
 import tool
-from 市级.衡水市公共资源交易平台 import alashan_ggzy
+
 
 
 def pooldb_conn():
@@ -73,11 +73,11 @@ def search_data():
 
 if __name__ == '__main__':
 
-    jl = alashan_ggzy()
+    # jl = alashan_ggzy()
     for data in search_data():
         print(data)
         #
-        code= jl.parse_detile(data[2], data[1], data[3])
+        # code= jl.parse_detile(data[2], data[1], data[3])
         print(code)
 
         #     sheng=7500

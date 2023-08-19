@@ -3,17 +3,15 @@ import datetime
 
 
 import time
-# dates = 1669823999000
+dates = 1691460466
 # dates='2022-10-18'
 # time.strftime('%Y-%m-%d', time.localtime())
-# futher=datetime.datetime.fromtimestamp(dates / 1000).strftime("%Y-%m-%d")
-# print(futher)
-today_date= datetime.date.today()
-today_str = time.strptime(str(today_date), "%Y-%m-%d")
-today_str2 = int(time.mktime(today_str))
-print(today_date,today_str,today_str2)
-print(int(time.mktime(time.strptime(str(datetime.date.today()), "%Y-%m-%d"))))
-print(datetime.datetime.now())
+print(time.time())
+print('获取当前年月日时分秒：',datetime.datetime.now())
+print('获取今年月日-------：',datetime.date.today())
+print('转换时间元组-------：',time.strptime(str(datetime.date.today()), "%Y-%m-%d"))
+print('时间戳转2023-11-30：',datetime.datetime.fromtimestamp(dates).strftime("%Y-%m-%d"))
+print('2023-11-30转时间戳：',time.mktime(time.strptime(str(datetime.date.today()), "%Y-%m-%d")))
 # 1682438400
 # if isinstance(dates, int):
 #     print(time.localtime())

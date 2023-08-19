@@ -126,9 +126,9 @@ class cgyxspider(object):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'}
         pngurl = f'https://zfcg.czt.fujian.gov.cn/freecms/verify/verifyCode.do?createTypeFlag=n&name=notice&{int(float(time.time()))}'
         res = session.get(pngurl, headers=headers).content
-        with open('fujian.jpg', 'wb') as w:
+        with open('fujian.txt', 'wb') as w:
             w.write(res)
-        image = Image.open('fujian.jpg')
+        image = Image.open('fujian.txt')
         image = image.convert('L')
         # image = image.convert('1')
         count = 120
