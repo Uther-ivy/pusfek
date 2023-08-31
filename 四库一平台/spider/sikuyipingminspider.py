@@ -709,8 +709,8 @@ class MinSpider(object):
             insert_base(company_data)
             # company_four_over(name)
         except Exception as e:
-            file=f"./errorcompany{fil}.txt"
-            wirte_file(file,name)
+            # file=f"./errorcompany{fil}.txt"
+            # wirte_file(file,name)
             logging.error(f"{name}获取失败{e}\n{traceback.format_exc()}")
 
     def companysearch(self, cid, name,fil):

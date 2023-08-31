@@ -59,29 +59,36 @@ def run():
     # proxy =replace_ip()
     # print(proxy)
     session=requests.session()
-    url = f'http://srms.jianqicha.com.cn/admin.php/Approval/ceshi/?act=app&approval=1&page=1&short_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJxaW5nYmFvZ3VhbiIsImF1ZCI6IiIsImlhdCI6MTY5MDUxOTU1OSwibmJmIjoxNjkwNTE5NTU5LCJleHAiOjE2OTA1Nzk1NTksImRhdGEiOnsibWlkIjozNTYyOX19.UyU2HuF48sUfcJ6G6K2IkaEy_NJc-VGPMWBbv8DOm2E&nativeplace=6000'
+    url = f'http://www.yngp.com/api/procurement/Procurement.gghtMoreList.svc?captchaCheckFlag=0&p=1'
     print(url)
-    payload ={"captchaType":"clickWord","clientUid":"point-47ffb2be-4f06-49b8-8d59-40cd09d7a299","ts":int(time.time()*1000)}
+    payload ={'current': 1,
+            'rowCount': 10,
+            'searchPhrase': ''}
     headers={
-# 'Accept':'*/*',
-# 'Accept-Encoding':'gzip, deflate',
-# 'Accept-Language':'zh-CN,zh;q=0.9',
-# 'Connection':'keep-alive',
-# 'Content-Length':'103',
-# 'Content-Type':'application/json;charset=UTF-8',
-# 'Cookie':'PYCCS=1689236091|DNgYTt+z/JPnBTdPARoW2G9erroAYrLvwDrLfBtk8pU=;xincaigou=49737.2943.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; JSESSIONID=8HdOTpudAFB8wDp8agdCEU2JBLd0en-6Nq5ry1FT1o0inTq_gRhU!870859519',
-# 'Cookie':'PYCCS=1689300466|HDHy/Ol5x9nIgpLULXPSzWmdgdVo+jhbNBlZk2VwV4g=; '
-#          'xincaigou=49737.2927.1035.0000; route=e54581605adaa48023fa3cb7a6b63f8d; '
-#          'JSESSIONID=UjlSJUnLRNhVTK3A6bzLIw28nMv2_YJfs-L-cYLh-Da6_4c_S8-B!2024805249',
-# 'Host':'www.yngp.com',
-# 'Origin':'http://www.yngp.com',
-# 'Referer':'http://www.yngp.com/page/procurement/procurementList.html',
-'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+
+'Accept':'*/*',
+'Accept-Encoding':'gzip, deflate',
+'Accept-Language':'zh-CN,zh;q=0.9',
+'Cache-Control':'no-cache',
+'Connection':'keep-alive',
+'Content-Length':'35',
+'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8',
+# 'Cookie':'xincaigou=49737.2943.1035.0000; route=d9b0266c2b8d5ad36e751f051b0faf07; JSESSIONID=1nNJU1FxCPc1nnJ0yyYNT3tAIYc607_FYVvJmOYtushG4a2TywNc!2013610438',
+'Cookie':'PYCCS=1693449415|0ch3ZYY0RGxcc0AQeboNBKoQ0zwzZO39bD2WOHQCVqk=',
+'Host':'www.yngp.com',
+'Origin':'http://www.yngp.com',
+'Pragma':'no-cache',
+'Referer':'http://www.yngp.com/page/procurement/procurementList.html',
+'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36',
+'X-Requested-With':'XMLHttpRequest',
+
              }
     # 'PYCCS=1689238612|owV0DeLY30lXDknJaYTI9A4iw4YFv92J3hHX8vVGy+o='
     # data_list = session.get(url,headers=headers)
-    res=session.get(url,headers=headers)
-    print(res.content)
+    res=session.get(url,headers=headers,data=json.dumps(payload))
+    print(res.content.decode())
+    # w=open('能瑞科技.png','wb')
+    # w.write(res.content)
     # data=json.loads(res).get('data').get('repData')
     # key=data.get('secretKey')
     # img=data.get('originalImageBase64')
@@ -303,3 +310,8 @@ if __name__ == '__main__':
     # print(mid)
     # print(int(mid[::2]))
     print(time.time()-start)
+
+
+
+
+

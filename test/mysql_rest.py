@@ -61,12 +61,13 @@ def updata_body(id ,code):
     return data
 
 def search_data( args):
-    sql=f"select  id ,url,title,senddate from dede_arctiny where id ='{args}';"
-    data = excute_mysql(sql, commit=True)
+    sql=f"select  id ,typeid,title,senddate,url from dede_arctiny where id ='{args}';"#dede_addoninfos dede_arctiny
+    # sql=f"select  aid ,typeid,title,senddate,url from dede_addoninfos9 where aid ='{args}';"#dede_addoninfos
+    data = excute_mysql(sql)
     print(data)
     return data
 def get_aid_api():
-    url='http://srms.jianqicha.com.cn/Sphinx/pythonIDs?pages=1&shi=&url=&title=潍坊经济开发区人力'
+    url='http://srms.jianqicha.com.cn/Sphinx/pythonIDs?pages=1&shi=&url=&title=福建鑫叶投资管理集团有限公司油墨'
     session=requests.Session()
     res=session.get(url).content.decode()
     print(res)
@@ -80,23 +81,23 @@ def run_(all_id):
     for args in  all_id:
         num += 1
         print(num)
-        if excute_mysql(f"select  id ,url,title,senddate from dede_arctiny where id ='{args}';"):
+        if excute_mysql(f"select  id ,typeid,title,senddate,url from dede_arctiny where id ='{args}';"):
             excute_mysql(f"delete from dede_arctiny where id='{args}';", commit=True)
             print(f'dede_arctiny delete {args}')
         else:
             print(f'dede_arctiny delete {args} not find')
-        if excute_mysql(f"select  aid ,url,title,senddate from dede_addoninfos9 where aid ='{args}';"):
-            excute_mysql(f"delete from dede_addoninfos9 where aid='{args}';", commit=True)
+        if excute_mysql(f"select  aid ,typeid,title,senddate,url from dede_addoninfos2 where aid ='{args}';"):
+            excute_mysql(f"delete from dede_addoninfos2 where aid='{args}';", commit=True)
             print(f'dede_addoninfos2 delete {args}')
         else:
             bugid.append(args)
             print(f'dede_addoninfos2 delete {args} not find')
     print(bugid)
 
-if __name__ == '__main__':
+def chaxun_run():
     # data=excute_mysql(f"select  id ,url,title,senddate from dede_arctiny where title ='';")
-    data=json.loads(get_aid_api())['aid']
     # data=[]
+    data=json.loads(get_aid_api())
     print(data)
     all_id=[]
     for ev in  data:
@@ -104,18 +105,30 @@ if __name__ == '__main__':
         search_data(ev)
         # all_id.append(ev[0])
     # print(all_id)
-    # run_(data)  #先查主表 在查附表 再删除
-    #
-    # jl = alashan_ggzy()
-    # num=0
-    # for data in aids:
-    #     print(data)
+if __name__ == '__main__':
 
-    # print(tool.removal('青州市邵庄镇南文登村石灰岩矿废弃矿坑地质...','2023-8-16'))
+    # chaxun_run()
 
+    qq=[59523199, 58010885, 58010879, 57530231]
+
+    run_(qq)  #先查主表 在查附表 再删除
 
 
-    # print(search_arctiny('59986053'))
+
+    # item={'title': '2020年森林生态效益补偿基金(围栏工程)项目', 'url': 'http://www.hlbeggzyjy.org.cn/jygk/021001/021001001/021001001007/20230828/0a79fff2-3bdd-4d79-bd4a-75449f3221ee.html', 'date': '2023-07-30', 'typeid': [87], 'senddate': 1693288927, 'mid': 867, 'nativeplace': 0, 'infotype': 2504, 'body': '<div id="info-list">\n        <div class="basic-box">\n            <h3 class="basic-tt">项目信息</h3>\n            <table class="basic-table">\n                <tbody>\n                    <tr>\n                        <td>招标项目编号</td>\n                        <td>S1507000733008622001</td>\n                        <td>招标项目名称</td>\n                        <td>阿荣旗2023年农村公路养护工程（岔路口至得力其尔公路）</td>\n                    </tr>\n                    <tr>\n                        <td>标段(包)编号</td>\n                        <td>S1507000733008622001006</td>\n                        <td>标段(包)名称</td>\n                        <td>阿荣旗2023年农村公路养护工程（岔路口至得力其尔公路）施工监理第三标段</td>\n                    </tr>\n                    <tr>\n                        <td>招标人名称</td>\n                        <td>阿荣旗交通运输局</td>\n                        <td>招标人代码</td>\n                        <td>11152122011610058E</td>\n                    </tr>\n                    <tr>\n                        <td>中标人名称</td>\n                        <td>吉林铭泽工程管理有限公司</td>\n                        <td>中标人代码</td>\n                        <td>9122039512492319XR</td>\n                    </tr>\n                    <tr>\n                        <td>合同名称</td>\n                        <td colspan="3">阿荣旗2023年农村公路养护工程（岔路口至得力其尔公路）施工监理第三标段</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n        <div class="basic-box">\n            <h3 class="basic-tt">合同信息</h3>\n            <table class="basic-table">\n               \n                <tbody>\n                    <tr>\n                        <td>合同金额</td>\n                        <td>270000</td>\n                    </tr>\n                    <tr>\n                        <td>金额单位</td>\n                        <td>元(人民币)</td>\n                    </tr>\n                    <tr>\n                        <td>合同期限</td>\n                        <td>810日历天</td>\n                    </tr>\n                    <tr>\n                        <td>质量要求</td>\n                        <td>标段工程交工验收的质量评定：合格；竣工验收的质量评定：优良。</td>\n                    </tr>\n                    <tr>\n                        <td>递交时间</td>\n                        <td>2023-08-28 10:54:19</td>\n                    </tr>\n                    <tr>\n                        <td>合同签署时间</td>\n                        <td>2023-07-20 00:00:00</td>\n                    </tr>\n                    <tr>\n                        <td>合同主要内容</td>\n                        <td>工程-监理-公路工程-路基、路面</td>\n                    </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>', 'endtime': 1693152000, 'tel': '', 'email': '', 'address': '', 'linkman': '', 'function': 0, 'resource': '呼伦贝尔市公共资源交易中心', 'shi': 3007, 'sheng': 3000, 'removal': '2020年森林生态效益补偿基金(围栏工程)项目', 'winner': ' '}
+    # process_item(item)
+
+
+
+    # title='内蒙古蒙维科技有限公司厂区新建职工餐厅项目'
+    # title='东北黑土区侵蚀沟综合治理工程阿荣旗2023年度第二批3个项目区施工五标段霍尔奇镇前进村项目区'
+    title = '南迎宾大道（高速口-紫帽高架桥 )、江夏丽景段绿地景观整治提升工程'
+    print(tool.removal(title, '2023-5-10'))
+
+
+
+
+    # print(search_data('65299677'))
     # print(search_addoninfos('59986053'))
     # print(del_('59986053'))
 

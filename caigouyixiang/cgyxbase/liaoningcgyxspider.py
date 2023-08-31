@@ -81,6 +81,7 @@ class cgyxspider(object):
         if html:
             detail=etree.HTML(html[0])
             content=etree.tostring(detail,method="HTML").decode()
+            print(content)
             # size= detail.xpath('//tbody/tr')
             # for num in range(1,len(size)+1):
             #     detail_dict = {}
